@@ -2,13 +2,19 @@ import { getDefaultNormalizer } from '@testing-library/react'
 import React, { Component } from 'react'
 import ApiHelper from '../../ApiHelper/ApiHelper'
 import Bookshelf from '../Bookshelf/Bookshelf'
+import PublishedStory from '../PublishedStory/PublishedStory'
 
 class LibraryView extends Component {
   constructor() {
     super()
     this.state = {
       stories: [],
-      currentStory: {}
+      currentStory: {
+        story: [],
+        title: '',
+        updated_at: '',
+        prompt: ''
+      }
     }
   }
 
@@ -35,6 +41,11 @@ class LibraryView extends Component {
           stories={this.state.stories}
           onClick={this.selectStoryToRead}
         />
+      {this.state.currentStory.story.length > 0 
+        && <PublishedStory 
+          currentStory={this.state.currentStory}
+          />
+      }
       </>
     );
   }

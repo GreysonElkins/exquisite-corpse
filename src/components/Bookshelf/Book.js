@@ -24,7 +24,10 @@ const Book = ({ story, onClick}) => {
       className="book" 
       style={{ backgroundImage: `url(${spine})` }}
       role="button"
-      onClick={() => onClick(story)}
+      onClick={(event) => {
+        event.preventDefault()
+        onClick(story)
+      }}
     >
       <span className="title">{story.title}</span>
       <span className="prompt">{story.prompt}</span>
