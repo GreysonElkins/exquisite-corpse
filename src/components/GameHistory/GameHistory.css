@@ -23,6 +23,6 @@
 }
   
 .close:hover {
-  color: cyan;
+  color: rgb(255, 166, 0);
   cursor: pointer;
 }
