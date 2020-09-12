@@ -13,7 +13,7 @@ class StorySetupView extends Component {
   render() {
     return (
       <>
-        <StorySetup />
+        <StorySetup userName={false}/>
       </>
     )
   }
