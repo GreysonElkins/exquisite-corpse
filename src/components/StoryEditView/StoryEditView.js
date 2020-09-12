@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import StoryEditFields from '../StoryEditFields/StoryEditFields'
 import TimerDisplay from '../TimerDisplay/TimerDisplay'
 import './StoryEditView.css'
 
@@ -22,19 +23,7 @@ class StoryEditView extends Component {
   render() {
     return (
       <main id="story-edit-container">
-        <h1 id="prompt">Prompt placeholder</h1>
-        <input
-          id="title"
-          type="text"
-          onChange={this.updateText}
-          placeholder="Enter your title here" // we can change the value of this to be whatever's passed in - same for line 25
-        />
-        <textarea
-          id="story"
-          onChange={this.updateText}
-          placeholder="Type your story here"
-          disabled={this.state.disabled ? "disabled" : false}
-        />
+        <StoryEditFields updateText={ this.updateText } disabled={ this.state.disabled }/>
         <section id="story-edit-footer">
           <TimerDisplay disableStoryInput={this.disableStoryInput} />
           <Link to="/">
