@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Timer from '../Timer/Timer'
 import './StoryEditView.css'
 
 class StoryEditView extends Component {
@@ -13,6 +14,7 @@ class StoryEditView extends Component {
         <input type="text" placeholder="Enter your title here" />
         <input type="textarea" placeholder="Type your story here" />
         <button type="button">Post</button>
+        <Timer />
       </main>
     )
   }
