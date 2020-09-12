@@ -3,7 +3,7 @@ import Book from './Book'
 import './Bookshelf.scss'
 
 const Bookshelf = ({ stories, onClick }) => {
-  
+
   const booksSelection = stories.map((story, i) => {
     return (
       <Book story={story} onClick={onClick} key={i}/>
@@ -11,10 +11,8 @@ const Bookshelf = ({ stories, onClick }) => {
   })
     
   return (
-    <section>
-      <span className="bookContainer">
-        {booksSelection}
-      </span>
+    <section className="bookContainer">
+      {booksSelection}
     </section>
   )
 }

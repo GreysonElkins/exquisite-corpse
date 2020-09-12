@@ -13,7 +13,7 @@ import book7 from "../../assets/bookspine7.png";
 const bookSpines = [book1, book2, book3, book4, book5, book6, book7];
 
 const getBookSpine = () => {
-  const random = Math.floor(Math.random() * Math.floor(5));
+  const random = Math.floor(Math.random() * 6);
   return bookSpines[random];
 };
 

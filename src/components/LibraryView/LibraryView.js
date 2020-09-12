@@ -1,4 +1,3 @@
-import { getDefaultNormalizer } from '@testing-library/react'
 import React, { Component } from 'react'
 import ApiHelper from '../../ApiHelper/ApiHelper'
 import Bookshelf from '../Bookshelf/Bookshelf'
