@@ -1,0 +1,19 @@
+.PromptCards-sec {
+  display: flex;
+  flex-direction: row;
+}
+
+.PromptCards {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 150px;
+  background-color: lightgray;
+  padding: 20px;
+  margin: 15px;
+  border-radius: 1em;
+}
+
+.start-button {
+  width: 40%;
+}

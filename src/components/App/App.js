@@ -2,15 +2,15 @@ import React, { Component } from 'react'
 import './App.css'
 import { Route } from 'react-router-dom'
 import WelcomePageView from '../WelcomePageView/WelcomePageView'
-import StorySetupView from '../StorySetupView/StorySetupView'
-import StoryEditView from '../StoryEditView/StoryEditView'
-import LibraryView from '../LibraryView/LibraryView'
-import PublishedStoryView from '../PublishedStoryView/PublishedStoryView'
+// import StorySetupView from '../StorySetupView/StorySetupView'
+// import StoryEditView from '../StoryEditView/StoryEditView'
+// import LibraryView from '../LibraryView/LibraryView'
+// import PublishedStoryView from '../PublishedStoryView/PublishedStoryView'
 
 class App extends Component {
-  constructor() {
-    super()
-  }
+  // constructor() {
+  //   super()
+  // }
 
   render() {
     return (

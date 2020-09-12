@@ -1,5 +1,6 @@
-import React, { Component } from "react";
-import './WelcomePageView.css';
+import React, { Component } from "react"
+import './WelcomePageView.css'
+import PromptCards from '../PromptCards/PromptCards'
 
 class WelcomePageView extends Component {
     constructor() {
@@ -12,6 +13,14 @@ class WelcomePageView extends Component {
   
     async componentDidMount() {
      console.log('Youre smart!') 
+     this.setState({ inProgressStories: [
+         "It was a dark and stormy party and suddenly the doorbell rang...",
+         "The warp core is putting off unusual photon emissions...",
+         "With a wave of the wand, the wizard cast a spell and suddenly...",
+         "There is a suspicious trail of cheetos leading down this hall...",
+         "For the first time in over 35 years, the vault doors groaned as they slowly creaked open..."
+      ]
+     })
     }
 
     showHistory = () => {
@@ -55,7 +64,11 @@ class WelcomePageView extends Component {
           </aside>
           <section className="WelcomePage-right-side-sec">
             <h3>Continue a story:</h3>
-            <h3>Bookshelf</h3>
+            <div>
+              <PromptCards 
+                inProgressStories={this.state.inProgressStories}
+              />
+            </div>
           </section>
         </section>
     )
