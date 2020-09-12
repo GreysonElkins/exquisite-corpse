@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Link } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import { screen, render } from '@testing-library/react'
 import StoryEditFooter from './StoryEditFooter'
 import '@testing-library/jest-dom'
@@ -17,5 +17,17 @@ describe('StoryEditFooter', () => {
     
     expect(timer).toBeInTheDocument()
     expect(submitButton).toBeInTheDocument()
+  })
+
+  it('should render two buttons if the story is publishable', () => {
+    render(
+      <Router>
+        <StoryEditFooter isPublishable={true} />
+      </Router>
+    )
+
+    const buttons = screen.getAllByRole('button')
+    
+    expect(buttons.length).toBe(2)
   })
 })
