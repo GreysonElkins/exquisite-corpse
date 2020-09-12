@@ -8,10 +8,6 @@ import WelcomePageView from '../WelcomePageView/WelcomePageView'
 // import PublishedStoryView from '../PublishedStoryView/PublishedStoryView'
 
 class App extends Component {
-  // constructor() {
-  //   super()
-  // }
-
   render() {
     return (
       <main>
