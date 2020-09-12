@@ -24,18 +24,24 @@ class StorySetup extends Component {
     })
   }
 
+  
+
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
         {!this.props.userName && 
-        <input
-          name='authorName'
-          type='text'
-          placeholder='create your pen name'
-          value={this.state.authorname}
-          onChange={this.handleChange}
-        />
+        <label>
+          Who Are You?<br/>
+          <input
+            name='authorName'
+            type='text'
+            placeholder='create your pen name'
+            value={this.state.authorname}
+            onChange={this.handleChange}
+          />
+        </label>
         }
+        {this.props.userName && <p>Hello {this.props.userName},</p>}
         <br/>
         <label>
           Would you like to start with a prompt?: 
