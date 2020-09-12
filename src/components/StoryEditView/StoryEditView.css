@@ -16,7 +16,12 @@
   font-family: inherit;
 }
 
+#story-edit-footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 button {
-  width: 20%;
   margin: 1em;
 }

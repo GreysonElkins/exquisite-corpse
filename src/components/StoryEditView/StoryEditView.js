@@ -26,28 +26,30 @@ class StoryEditView extends Component {
         <input
           id="title"
           type="text"
-          onChange={ this.updateText }
+          onChange={this.updateText}
           placeholder="Enter your title here"
         />
         <textarea
           id="story"
-          onChange={ this.updateText }
+          onChange={this.updateText}
           placeholder="Type your story here"
-          disabled={ this.state.disabled ? 'disabled' : false }
+          disabled={this.state.disabled ? "disabled" : false}
         />
-        <TimerDisplay disableStoryInput={this.disableStoryInput}/>
-        <Link to="/">
-          <button type="button" id="post-button">
-            Pass it on
-          </button>
-        </Link>
-        {this.props.isPublishable && (
+        <section id="story-edit-footer">
+          <TimerDisplay disableStoryInput={this.disableStoryInput} />
           <Link to="/">
-            <button type="button" id="publish-button">
-              Publish it
+            <button type="button" id="post-button">
+              Pass it on
             </button>
           </Link>
-        )}
+          {this.props.isPublishable && (
+            <Link to="/">
+              <button type="button" id="publish-button">
+                Publish it
+              </button>
+            </Link>
+          )}
+        </section>
       </main>
     );
   }
