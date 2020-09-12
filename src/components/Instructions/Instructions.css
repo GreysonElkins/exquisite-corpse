@@ -11,18 +11,16 @@
   font-size: 4em;
 }
 
-/* .drop-arrow-sec {
-  width: auto;
-  display: flex;
-  flex-direction: row;
-} */
-
 .show-history-button {
   height: 20px;
-  /* width: 20px; */
-  /* background-image: url(https://www.flaticon.com/svg/static/icons/svg/709/709586.svg); */
-  /* background-size: cover; */
-  /* border: none; */
+  background-color: white;
+  border: none;
+  color: rgb(70, 0, 128);
+  margin-bottom: 2em;
+}
+
+.start-new-story-link {
+  font-size: 400px;
 }
 
 button:hover {
@@ -32,8 +30,3 @@ button:hover {
 a {
   margin: 0;
 }
-
-/* .show-history-text { 
-  margin: 0;
-  margin-left: 5px;
-} */
