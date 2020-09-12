@@ -28,7 +28,10 @@ class StoryEditView extends Component {
           onChange={this.updateText}
           placeholder="Type your story here"
         />
-        <button type="button">Post</button>
+        <button type="button" id="post-button">Pass it on</button>
+        {this.props.isPublishable && 
+          <button type="button" id="publish-button">Publish it</button>
+        }
       </main>
     );
   }

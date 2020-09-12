@@ -6,7 +6,17 @@
   margin: auto;
 }
 
+#title {
+  margin-top: 1em;
+}
+
 #story {
-  font-family: inherit;
+  margin: 1em 0;
   height: 200px;
+  font-family: inherit;
+}
+
+#post-button {
+  width: 20%;
+  align-self: flex-end;
 }

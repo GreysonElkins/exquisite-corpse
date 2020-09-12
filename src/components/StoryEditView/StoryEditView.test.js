@@ -28,7 +28,7 @@ describe('StoryEditView', () => {
 
     const titleInput = screen.getByPlaceholderText('Enter your title here')
     const storyInput = screen.getByPlaceholderText('Type your story here')
-    const submitButton = screen.getByRole('button', {name: 'Post'})
+    const submitButton = screen.getByRole('button', {name: 'Pass it on'})
 
     expect(titleInput).toBeInTheDocument()
     expect(storyInput).toBeInTheDocument()
