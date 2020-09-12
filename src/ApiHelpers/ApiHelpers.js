@@ -4,7 +4,7 @@ class ApiHelper {
   }
 
   static postData = () => {
-    return {};
+    return {}
   }
 }
 
