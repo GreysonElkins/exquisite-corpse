@@ -3,7 +3,7 @@ import './App.css'
 import { Route } from 'react-router-dom'
 import Header from '../Header/Header'
 import WelcomePageView from '../WelcomePageView/WelcomePageView'
-// import StorySetupView from '../StorySetupView/StorySetupView'
+import StorySetupView from '../StorySetupView/StorySetupView'
 // import StoryEditView from '../StoryEditView/StoryEditView'
 // import LibraryView from '../LibraryView/LibraryView'
 // import PublishedStoryView from '../PublishedStoryView/PublishedStoryView'
@@ -12,6 +12,7 @@ class App extends Component {
   render() {
     return (
       <main>
+        <Header />
         <Route 
           exact path='/' 
           render={ () => {
