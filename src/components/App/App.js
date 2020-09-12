@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Route } from 'react-router-dom'
+import Header from '../Header/Header'
 import WelcomePageView from '../WelcomePageView/WelcomePageView'
 import StorySetupView from '../StorySetupView/StorySetupView'
 import StoryEditView from '../StoryEditView/StoryEditView'
@@ -10,6 +11,7 @@ import PublishedStoryView from '../PublishedStoryView/PublishedStoryView'
 function App() {
   return (
     <main>
+      <Header />
       {/* <Route
         exact path='/'
         render={() => {
