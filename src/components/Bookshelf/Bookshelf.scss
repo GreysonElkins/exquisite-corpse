@@ -1,0 +1,49 @@
+.bookContainer {
+  display: flex;
+  justify-content: center;
+  overflow: scroll;
+  width: 80%;
+  margin: auto
+}
+
+.book {
+  background-size: 2em;
+  background-repeat: no-repeat;
+  color: white;
+  display: flex; 
+  flex-direction: column;
+  height: 10em;
+  padding: .01em;
+  text-decoration: none;
+  width: 2em;
+}
+
+.book-link {
+  text-decoration: none;
+}
+
+.book > .title,
+.book > .prompt,
+.book > .date-published {
+  // color: white;
+  position: relative;
+  margin-left: 1em;
+  // font-style: none;
+}
+
+.book > .title {
+  margin-top: 1em;
+  font-size: .01em;
+}
+
+.book > .prompt {
+  // top: 15.2em;
+  font-size: .02em;
+  // margin-left: 1.5em
+}
+
+.book > .date-published {
+  font-size: .01em;
+  bottom: 2em;
+  // margin-left: 7em;
+}
