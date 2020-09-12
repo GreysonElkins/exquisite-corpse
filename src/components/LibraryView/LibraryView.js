@@ -26,9 +26,11 @@ class LibraryView extends Component {
   render() {
     return (
       <>
-        <Bookshelf />
+        <Bookshelf
+          stories={this.state.stories}
+        />
       </>
-    )
+    );
   }
 }
 
