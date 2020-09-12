@@ -16,4 +16,20 @@ describe('Header', () => {
     const title = getByRole('heading', { name: /exquisite corpse/i })
     expect(title).toBeInTheDocument()
   })
+
+  it('should display the navigation buttons', () => {
+    const { getByRole } = render (
+      <MemoryRouter>
+        <Header />
+      </MemoryRouter>
+    )
+
+    const newStory = getByRole('button', { name: /new story/i })
+    const library = getByRole('button', { name: /library/i })
+    const signIn = getByRole('button', { name: /sign in/i })
+
+    expect(newStory).toBeInTheDocument()
+    expect(library).toBeInTheDocument()
+    expect(signIn).toBeInTheDocument()
+  })
 })
