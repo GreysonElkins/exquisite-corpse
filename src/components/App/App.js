@@ -2,9 +2,9 @@ import React from 'react';
 import logo from '../../logo.svg';
 import './App.css';
 import { Route } from 'react-router-dom'
-import WelcomePageView from ' ../WelcomePageView/WelcomePageView'
-import StorySetupView from ' ../StorySetupView/StorySetupView'
-import StoryEditView from ' ../StorySetupView/StorySetupView'
+import WelcomePageView from '../WelcomePageView/WelcomePageView'
+import StorySetupView from '../StorySetupView/StorySetupView'
+import StoryEditView from '../StoryEditView/StoryEditView'
 import LibraryView from '../LibraryView/LibraryView'
 import PublishedStoryView from '../PublishedStoryView/PublishedStoryView'
 
@@ -36,7 +36,7 @@ function App() {
         }}
       />
       <Route 
-        exact path='/published-story' 
+        exact path='/published-story/:id' 
         render={ () => {
           return <PublishedStoryView /> 
         }}
