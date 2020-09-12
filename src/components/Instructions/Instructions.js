@@ -29,10 +29,13 @@ const Instructions = ( { displayHistory, showHistory } ) => {
              folding it to conceal his or her contribution (except a small portion), and then passing it to the next player for a further contribution.
              The game started as a fun way to pass time but later became an enriching experience for artists, writers and students alike.
           </p>
+          <div className="game-history-drawings">
+            
+          </div>
         </div>
       }
       <h3>Continue a story:</h3>
-      <Link to='story-setup'>Start a new story</Link>
+      <Link to='/story-setup'>Start a new story</Link>
     </section>
   )
 }
