@@ -24,8 +24,8 @@ class LibraryView extends Component {
     })
   }
 
-  selectStoryToRead() {
-    console.log('this will eventually cause a story component to render')
+  selectStoryToRead = (story) => {
+    this.setState({ currentStory: story})
   }
 
   render() {
