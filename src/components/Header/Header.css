@@ -4,7 +4,7 @@ header {
 }
 
 a {
-  margin-left: 35px;
+  margin: 10px 0 0 35px;
   text-decoration: none;
 }
 
@@ -12,3 +12,8 @@ a {
   margin: 35px 35px 0 0;
 }
 
+button {
+  height: 2.5em;
+  font-size: 1em;
+  cursor: pointer;
+}
