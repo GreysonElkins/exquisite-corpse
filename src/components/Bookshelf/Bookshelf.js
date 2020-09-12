@@ -34,6 +34,9 @@ const Bookshelf = (props) => {
       key={`book${i}`}
       className='book'
     >
+      <div className="title">Jack</div>
+      <div className="prompt">Test</div>
+      <div className="date-published">Sep 2020</div>
       <img src={spine.book} alt={`A ${spine.color} leather-bound book spine`} />
     </Link>
     )
