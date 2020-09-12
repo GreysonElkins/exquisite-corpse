@@ -11,36 +11,37 @@ import PublishedStoryView from '../PublishedStoryView/PublishedStoryView'
 function App() {
   return (
     <main>
-      {/* <Route
-        exact path='/'
-        render={() => {
-          return <WelcomePageView />
+      <Header />
+      {/* <Route 
+        exact path='/' 
+        render={ () => {
+          return <WelcomePageView /> 
         }}
       /> */}
-      <Route
-        exact path='/story-setup'
-        render={() => {
-          return <StorySetupView />
+      <Route 
+        exact path='/story-setup' 
+        render={ () => {
+          return <StorySetupView /> 
         }}
       />
-      {/* <Route
-        exact path='/story-edit'
-        render={() => {
-          return <StoryEditView />
+      {/* <Route 
+        exact path='/story-edit' 
+        render={ () => {
+          return <StoryEditView /> 
+        }}
+      />   */}
+      {/* <Route 
+        exact path='/library' 
+        render={ () => {
+          return <LibraryView /> 
         }}
       /> */}
-      {/* <Route
-        exact path='/library'
-        render={() => {
-          return <LibraryView />
+      {/* <Route 
+        exact path='/published-story/:id' 
+        render={ () => {
+          return <PublishedStoryView /> 
         }}
-      /> */}
-      {/* <Route
-        exact path='/published-story/:id'
-        render={() => {
-          return <PublishedStoryView />
-        }}
-      /> */}
+      />   */}
     </main>
   )
 }
