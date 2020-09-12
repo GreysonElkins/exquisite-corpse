@@ -9,7 +9,7 @@ class StoryEditView extends Component {
 
   render() {
     return (
-      <main>
+      <main id="story-edit-container">
         <h1 id="prompt">Prompt placeholder</h1>
         <input
           id="title-input"
