@@ -12,7 +12,7 @@ class StoryEditView extends Component {
         <h1 id="prompt">Prompt placeholder</h1>
         <input type="text" placeholder="Enter your title here" />
         <input type="textarea" placeholder="Type your story here" />
-        <button type="button">Submit</button>
+        <button type="button">Post</button>
       </main>
     )
   }
