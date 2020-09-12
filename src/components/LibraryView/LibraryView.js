@@ -1,8 +1,8 @@
 import { getDefaultNormalizer } from '@testing-library/react'
-import React, { component } from 'react'
+import React, { Component } from 'react'
 import ApiHelper from '../../ApiHelper/ApiHelper'
 
-class Library extends component {
+class LibraryView extends Component {
   constructor() {
     super()
     this.state = {
@@ -21,6 +21,12 @@ class Library extends component {
       })
     })
   }
+
+  render() {
+    return (
+      <div>Hello World</div>
+    )
+  }
 }
 
-export default Library
+export default LibraryView
