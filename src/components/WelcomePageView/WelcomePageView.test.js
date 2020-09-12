@@ -6,7 +6,6 @@ import { MemoryRouter } from 'react-router-dom'
 import ApiHelper from '../../ApiHelpers/apiCalls'
 jest.mock('../../ApiHelpers/apiCalls')
 
-
 describe('WelcomePageView', () => {
   it('Should have the correct content when rendered', () => {
     render(
@@ -28,34 +27,5 @@ describe('WelcomePageView', () => {
     expect(instrOne).toBeInTheDocument()
     expect(instrTwo).toBeInTheDocument()
     expect(instrThree).toBeInTheDocument()
-  })
-
-  it('Should fire method when button is clicked', () => {
-    const mockFun = jest.fn()
-
-    const { getByRole } = render(
-      <MemoryRouter>
-        <WelcomePageView onClick={mockFun} />
-      </MemoryRouter>
-      )
-
-    fireEvent.click(getByRole('button'))
-
-    expect(mockFun).toHaveBeenCalledTimes(0)
-  })
-
-  it('Should render history when state changes', () => {
-    render(
-      <MemoryRouter>
-        <WelcomePageView 
-         showHistory={true}
-        />
-      </MemoryRouter>
-    )
-
-    const hiddenHistory = screen.getByText('Exquisite Corpse, also known', { exact: false })
-
-    expect(hiddenHistory).toBeInTheDocument()
-
   })
 })
