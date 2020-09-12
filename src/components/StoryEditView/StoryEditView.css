@@ -5,23 +5,3 @@
   width: 80%;
   margin: auto;
 }
-
-#title {
-  margin-top: 1em;
-}
-
-#story {
-  margin: 1em 0;
-  height: 200px;
-  font-family: inherit;
-}
-
-#story-edit-footer {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-button {
-  margin: 1em;
-}

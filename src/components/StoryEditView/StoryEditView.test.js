@@ -7,31 +7,23 @@ import '@testing-library/jest-dom'
 jest.mock('../../ApiHelpers/ApiHelpers.js')
 
 describe('StoryEditView', () => {
-  it('should display a prompt', () => {
-    render(
-      <Router>
-        <StoryEditView />
-      </Router> 
-    )
-
-    const promptPlaceholder = screen.getByText('Prompt placeholder')
-
-    expect(promptPlaceholder).toBeInTheDocument()
-  })
-
-  it('should display a form to enter and submit a story', () => {
+  it('should display a header, a form, a timer and at least one button', () => {
     render(
       <Router>
         <StoryEditView />
       </Router>
     )
 
-    const titleInput = screen.getByPlaceholderText('Enter your title here')
-    const storyInput = screen.getByPlaceholderText('Type your story here')
-    const submitButton = screen.getByRole('button', {name: 'Pass it on'})
+    const promptHeader = screen.getByText(/Prompt placeholder/i)
+    const titleInput = screen.getByPlaceholderText(/Enter your title here/i)
+    const storyInput = screen.getByPlaceholderText(/Type your story here/i)
+    const timer = screen.getByText(/59/i)
+    const submitButton = screen.getByRole('button')
 
+    expect(promptHeader).toBeInTheDocument()
     expect(titleInput).toBeInTheDocument()
     expect(storyInput).toBeInTheDocument()
+    expect(timer).toBeInTheDocument()
     expect(submitButton).toBeInTheDocument()
   })
 })
