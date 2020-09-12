@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
+import logo from '../../logo.svg';
 import './App.css';
 import { Route } from 'react-router-dom'
 import Header from '../Header/Header'
@@ -8,43 +9,42 @@ import StoryEditView from '../StoryEditView/StoryEditView'
 import LibraryView from '../LibraryView/LibraryView'
 import PublishedStoryView from '../PublishedStoryView/PublishedStoryView'
 
-class App extends Component {
-  render() {
-    return (
-      <main>
-        {/* <Route 
-          exact path='/' 
-          render={ () => {
-            return <WelcomePageView /> 
-          }}
-        />   */}
-        <Route 
-          exact path='/story-setup' 
-          render={ () => {
-            return <StorySetupView /> 
-          }}
-        /> 
-        {/* <Route 
-          exact path='/story-edit' 
-          render={ () => {
-            return <StoryEditView /> 
-          }}
-        />   */}
-        <Route 
-          exact path='/library' 
-          render={ () => {
-            return <LibraryView /> 
-          }}
-        />
-        {/* <Route 
-          exact path='/published-story/:id' 
-          render={ () => {
-            return <PublishedStoryView /> 
-          }}
-        />   */}
-      </main>
-    )
-  }
+function App() {
+  return (
+    <main>
+      <Header />
+      {/* <Route 
+        exact path='/' 
+        render={ () => {
+          return <WelcomePageView /> 
+        }}
+      /> */}
+      <Route 
+        exact path='/story-setup' 
+        render={ () => {
+          return <StorySetupView /> 
+        }}
+      />
+      {/* <Route 
+        exact path='/story-edit' 
+        render={ () => {
+          return <StoryEditView /> 
+        }}
+      />   */}
+      {/* <Route 
+        exact path='/library' 
+        render={ () => {
+          return <LibraryView /> 
+        }}
+      /> */}
+      {/* <Route 
+        exact path='/published-story/:id' 
+        render={ () => {
+          return <PublishedStoryView /> 
+        }}
+      />   */}
+    </main>
+  )
 }
 
 export default App;
