@@ -22,8 +22,13 @@ class StoryEditView extends Component {
   render() {
     return (
       <main id="story-edit-container">
-        <StoryEditFields updateText={ this.updateText } disabled={ this.state.disabled }/>
-        <StoryEditFooter disableStoryInput={ this.disableStoryInput }/>
+        <StoryEditFields 
+          updateText={ this.updateText } 
+          disabled={ this.state.disabled }
+        />
+        <StoryEditFooter 
+          disableStoryInput={ this.disableStoryInput }
+        />
       </main>
     );
   }
