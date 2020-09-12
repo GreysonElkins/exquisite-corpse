@@ -15,8 +15,22 @@
   padding: 20px;
   border-radius: 5px;
   border: 2px solid black;
+  overflow: auto;
 }
-  
+
+.drawing {
+  height: 200px;
+  width: 150px;
+  background-size: cover;
+  margin: 10px;
+}
+
+.game-history-drawings {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  height: 50px;
+  width: 100%;
+}
 .close {
   color: Black;
   float: right;

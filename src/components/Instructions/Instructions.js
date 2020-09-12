@@ -1,7 +1,6 @@
 import React from 'react'
 import './Instructions.css'
 import GameHistory from '../GameHistory/GameHistory'
-import Bookshelf from '../Bookshelf/Bookshelf'
 import { Link } from 'react-router-dom'
 import LibraryView from '../LibraryView/LibraryView'
 
