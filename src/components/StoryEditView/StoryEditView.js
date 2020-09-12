@@ -27,7 +27,7 @@ class StoryEditView extends Component {
           id="title"
           type="text"
           onChange={this.updateText}
-          placeholder="Enter your title here"
+          placeholder="Enter your title here" // we can change the value of this to be whatever's passed in - same for line 25
         />
         <textarea
           id="story"
