@@ -1,6 +1,7 @@
 import { getDefaultNormalizer } from '@testing-library/react'
 import React, { Component } from 'react'
 import ApiHelper from '../../ApiHelper/ApiHelper'
+import Bookshelf from '../Bookshelf/Bookshelf'
 
 class LibraryView extends Component {
   constructor() {
@@ -24,7 +25,9 @@ class LibraryView extends Component {
 
   render() {
     return (
-      <div>Hello World</div>
+      <>
+        <Bookshelf />
+      </>
     )
   }
 }
