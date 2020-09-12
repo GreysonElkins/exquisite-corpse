@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
 import { Route } from 'react-router-dom'
+import Header from '../Header/Header'
 import WelcomePageView from '../WelcomePageView/WelcomePageView'
 // import StorySetupView from '../StorySetupView/StorySetupView'
 // import StoryEditView from '../StoryEditView/StoryEditView'
@@ -17,13 +18,13 @@ class App extends Component {
             return <WelcomePageView /> 
           }}
         />
-        {/* <Route 
+        <Route 
           exact path='/story-setup' 
           render={ () => {
             return <StorySetupView /> 
           }}
         />
-        <Route 
+        {/* <Route 
           exact path='/story-edit' 
           render={ () => {
             return <StoryEditView /> 
