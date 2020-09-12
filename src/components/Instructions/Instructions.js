@@ -2,7 +2,6 @@ import React from 'react'
 import './Instructions.css'
 import GameHistory from '../GameHistory/GameHistory'
 import { Link } from 'react-router-dom'
-import LibraryView from '../LibraryView/LibraryView'
 
 const Instructions = ( { displayHistory, showHistory } ) => {
   return (
