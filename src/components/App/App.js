@@ -1,26 +1,48 @@
 import React from 'react';
-import logo from './logo.svg';
+import logo from '../../logo.svg';
 import './App.css';
+import { Route } from 'react-router-dom'
+import WelcomePageView from ' ../WelcomePageView/WelcomePageView'
+import StorySetupView from ' ../StorySetupView/StorySetupView'
+import StoryEditView from ' ../StorySetupView/StorySetupView'
+import LibraryView from '../LibraryView/LibraryView'
+import PublishedStoryView from '../PublishedStoryView/PublishedStoryView'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <main>
+      <Route 
+        exact path='/' 
+        render={ () => {
+          return <WelcomePageView /> 
+        }}
+      />
+      <Route 
+        exact path='/story-setup' 
+        render={ () => {
+          return <StorySetupView /> 
+        }}
+      />
+      <Route 
+        exact path='/story-edit' 
+        render={ () => {
+          return <StoryEditView /> 
+        }}
+      />  
+      <Route 
+        exact path='/library' 
+        render={ () => {
+          return <LibraryView /> 
+        }}
+      />
+      <Route 
+        exact path='/published-story' 
+        render={ () => {
+          return <PublishedStoryView /> 
+        }}
+      />  
+    </main>
+  )
 }
 
 export default App;
