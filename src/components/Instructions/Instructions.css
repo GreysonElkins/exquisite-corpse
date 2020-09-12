@@ -1,0 +1,33 @@
+.Instructions-sec {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* width: 80%; */
+}
+
+.Instructions-header-text {
+  font-size: 4em;
+}
+
+.drop-arrow-sec {
+  width: auto;
+  display: flex;
+  flex-direction: row;
+}
+
+.drop-arrow-button {
+  height: 20px;
+  width: 20px;
+  background-image: url(https://www.flaticon.com/svg/static/icons/svg/709/709586.svg);
+  background-size: cover;
+}
+
+.show-history-text { 
+  margin: 0;
+  margin-left: 5px;
+}
+
+.game-history-box {
+  width: 80%;
+}
