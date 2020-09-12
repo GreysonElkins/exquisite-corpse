@@ -1,6 +1,6 @@
 class ApiHelper {
   static getData = () => {
-    return []
+    return Promise.resolve([])
   }
 }
 
