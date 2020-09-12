@@ -16,4 +16,18 @@ describe('StoryEditView', () => {
 
     expect(promptPlaceholder).toBeInTheDocument();
   })
+
+  it('should display an input field for the title and story', () => {
+    render(
+      <Router>
+        <StoryEditView />
+      </Router>
+    )
+
+    const titleInput = screen.getByPlaceholderText('Enter your title here')
+    const storyInput = screen.getByPlaceholderText('Type your story here')
+
+    expect(titleInput).toBeInTheDocument();
+    expect(storyInput).toBeInTheDocument();
+  })
 })
