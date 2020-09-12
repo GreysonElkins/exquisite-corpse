@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom'
 import Header from '../Header/Header'
 import WelcomePageView from '../WelcomePageView/WelcomePageView'
 import StorySetupView from '../StorySetupView/StorySetupView'
-// import StoryEditView from '../StoryEditView/StoryEditView'
+import StoryEditView from '../StoryEditView/StoryEditView'
 import LibraryView from '../LibraryView/LibraryView'
 // import PublishedStoryView from '../PublishedStoryView/PublishedStoryView'
 
@@ -25,12 +25,12 @@ class App extends Component {
             return <StorySetupView /> 
           }}
         />
-        {/* <Route 
+        <Route 
           exact path='/story-edit' 
           render={ () => {
             return <StoryEditView /> 
           }}
-        />   */}
+        />  
         <Route 
           exact path='/library' 
           render={ () => {
