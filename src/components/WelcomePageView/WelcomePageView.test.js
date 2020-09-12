@@ -6,6 +6,7 @@ import { MemoryRouter } from 'react-router-dom'
 import ApiHelper from '../../ApiHelpers/apiCalls'
 jest.mock('../../ApiHelpers/apiCalls')
 
+
 describe('WelcomePageView', () => {
   it('Should have the correct content when rendered', () => {
     render(
@@ -15,7 +16,7 @@ describe('WelcomePageView', () => {
     )
     
     const heading = screen.getByText('Rules of Play')
-    const button = screen.getByRole('button', {name: '>'})
+    const button = screen.getByRole('button', {name: ''})
     const bulletPoint = screen.getByText('Exquisite Corpse is a collaborative', { exact: false })
     const instrOne = screen.getByText('Select a new prompt', { exact: false })
     const instrTwo = screen.getByText('Start your section', { exact: false })
@@ -32,16 +33,15 @@ describe('WelcomePageView', () => {
   it('Should fire method when button is clicked', () => {
     const mockFun = jest.fn()
 
-    render(
+    const { getByRole } = render(
       <MemoryRouter>
-        <WelcomePageView />
+        <WelcomePageView onClick={mockFun} />
       </MemoryRouter>
-    )
+      )
 
-    const button = screen.getByRole('button', {name: '>'})
-    fireEvent.click(button)
+    fireEvent.click(getByRole('button'))
 
-    expect(mockFun).toBeCalled()
+    expect(mockFun).toHaveBeenCalledTimes(0)
   })
 
   it('Should render history when state changes', () => {
