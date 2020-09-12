@@ -1,3 +1,11 @@
-body {
-  background: gray;
+#story-edit-container {
+  display: flex;
+  flex-flow: column nowrap;
+  text-align: center;
+  width: 80%;
+  margin: auto;
+}
+
+#story-edit-header {
+  display: flex;
 }
