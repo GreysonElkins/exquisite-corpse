@@ -37,7 +37,7 @@ class PublishedStory extends Component {
         <header>
           <h2>{this.props.currentStory.title}</h2>
           <h4>
-            {moment(this.props.currentStory.updated_at).format('MMMM DD YYYY')} 
+            {moment(this.props.currentStory.updated_at).format('MMMM DD, YYYY')} 
             <br /> 
             Prompt: {this.props.currentStory.prompt}
           </h4>
