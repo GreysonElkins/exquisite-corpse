@@ -1,0 +1,14 @@
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+a {
+  margin-left: 35px;
+  text-decoration: none;
+}
+
+.navbar {
+  margin: 35px 35px 0 0;
+}
+
