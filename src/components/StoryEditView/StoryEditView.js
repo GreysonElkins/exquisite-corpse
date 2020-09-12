@@ -4,6 +4,8 @@ import TimerDisplay from '../TimerDisplay/TimerDisplay'
 import './StoryEditView.css'
 
 class StoryEditView extends Component {
+  // This was written with the assumption that the prompt / last sentence of
+  // previous story will be passed in as props
   constructor(props) {
     super(props)
     this.state = {}
@@ -17,7 +19,6 @@ class StoryEditView extends Component {
     return (
       <main id="story-edit-container">
         <h1 id="prompt">Prompt placeholder</h1>
-        <TimerDisplay />
         <input
           id="title"
           type="text"
@@ -29,6 +30,7 @@ class StoryEditView extends Component {
           onChange={this.updateText}
           placeholder="Type your story here"
         />
+        <TimerDisplay />
         <Link to="/">
           <button type="button" id="post-button">
             Pass it on

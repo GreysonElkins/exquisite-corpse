@@ -16,7 +16,7 @@
   font-family: inherit;
 }
 
-#post-button {
+button {
   width: 20%;
-  align-self: flex-end;
+  margin: 1em;
 }
