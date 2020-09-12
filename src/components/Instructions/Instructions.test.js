@@ -13,7 +13,7 @@ describe('Instructions', () => {
     )
     
     const heading = screen.getByText('Rules of Play')
-    const button = screen.getByRole('button', {name: 'Game History'})
+    const button = screen.getByRole('button', {name: 'History of Exquisite Corpse'})
     const bulletPoint = screen.getByText('Exquisite Corpse is a collaborative', { exact: false })
     const instrOne = screen.getByText('Select a new prompt', { exact: false })
     const instrTwo = screen.getByText('Start your section', { exact: false })
@@ -38,7 +38,7 @@ describe('Instructions', () => {
       </MemoryRouter>
       )
 
-    fireEvent.click(getByRole('button', { name: 'Game History' }))
+    fireEvent.click(getByRole('button', { name: 'History of Exquisite Corpse' }))
 
     expect(mockFun).toHaveBeenCalledTimes(1)
   })
