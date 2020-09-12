@@ -7,7 +7,8 @@ class LibraryView extends Component {
   constructor() {
     super()
     this.state = {
-      stories: []
+      stories: [],
+      currentStory: {}
     }
   }
 
@@ -23,11 +24,16 @@ class LibraryView extends Component {
     })
   }
 
+  selectStoryToRead() {
+    console.log('this will eventually cause a story component to render')
+  }
+
   render() {
     return (
       <>
         <Bookshelf
           stories={this.state.stories}
+          onClick={this.selectStoryToRead}
         />
       </>
     );

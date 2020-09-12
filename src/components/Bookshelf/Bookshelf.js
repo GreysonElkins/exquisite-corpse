@@ -2,11 +2,11 @@ import React from 'react'
 import Book from './Book'
 import './Bookshelf.scss'
 
-const Bookshelf = (props) => {
-  const booksSelection = props.stories.map((story, i) => {
-    
+const Bookshelf = ({ stories, onClick }) => {
+  
+  const booksSelection = stories.map((story, i) => {
     return (
-      <Book story={story} key={i}/>
+      <Book story={story} onClick={onClick} key={i}/>
     )
   })
     
