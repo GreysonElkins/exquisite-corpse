@@ -11,7 +11,6 @@ import PublishedStoryView from '../PublishedStoryView/PublishedStoryView'
 function App() {
   return (
     <main>
-      <Header />
       {/* <Route
         exact path='/'
         render={() => {
