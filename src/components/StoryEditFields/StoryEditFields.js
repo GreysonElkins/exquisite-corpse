@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import "../StoryEditFields/StoryEditFields.css";
 
 const StoryEditFields = ({ updateText, disabled }) => {
   return (

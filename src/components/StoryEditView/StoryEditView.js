@@ -4,8 +4,6 @@ import StoryEditFooter from '../StoryEditFooter/StoryEditFooter'
 import './StoryEditView.css'
 
 class StoryEditView extends Component {
-  // This was written with the assumption that the prompt / last sentence of
-  // previous story will be passed in as props
   constructor(props) {
     super(props)
     this.state = {}

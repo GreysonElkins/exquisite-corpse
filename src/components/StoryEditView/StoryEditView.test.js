@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 import StoryEditView from './StoryEditView'
 import ApiHelper from '../../ApiHelpers/ApiHelpers'
-import { screen, fireEvent, render } from '@testing-library/react'
+import { screen, render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 jest.mock('../../ApiHelpers/ApiHelpers.js')
 
