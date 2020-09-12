@@ -1,10 +1,23 @@
 import React, { Fragment } from 'react'
-// import Timer from 'react-compound-timer'
+import Timer from 'react-compound-timer'
 
-const Timer = () => {
+const TimerDisplay = () => {
   return(
-    <h1>Timer placeholder</h1>
+    <Timer 
+      initialTime={59000} 
+      direction="backward"
+      checkpoints={[
+        {
+          time: 0,
+          callback: () => console.log('Time\'s up!')
+        }
+      ]}
+    >
+      <Fragment>
+        <Timer.Seconds />
+      </Fragment>
+    </Timer>
   )
 }
 
-export default Timer
+export default TimerDisplay

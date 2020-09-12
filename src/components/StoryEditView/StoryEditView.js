@@ -1,6 +1,5 @@
-import React, { Component, Fragment } from 'react'
-// import Timer from '../Timer/Timer'
-import Timer from 'react-compound-timer';
+import React, { Component } from 'react'
+import TimerDisplay from '../TimerDisplay/TimerDisplay'
 import './StoryEditView.css'
 
 class StoryEditView extends Component {
@@ -15,14 +14,7 @@ class StoryEditView extends Component {
         <input type="text" placeholder="Enter your title here" />
         <input type="textarea" placeholder="Type your story here" />
         <button type="button">Post</button>
-        <Timer initialTime={60000} direction="backward">
-          {() =>
-            <Fragment>
-              <Timer.Minutes />
-              <Timer.Seconds />
-            </Fragment>
-          }
-        </Timer>
+        <TimerDisplay />
       </main>
     )
   }
