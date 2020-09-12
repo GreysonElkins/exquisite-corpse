@@ -1,0 +1,8 @@
+.bookContainer {
+  overflow: hidden;
+  width: 1em;
+}
+
+.book > img {
+  height: 20em;
+}

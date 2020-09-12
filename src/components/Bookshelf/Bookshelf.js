@@ -1,19 +1,23 @@
 import React from 'react'
-import book1 from "../../assets/book1.jpg";
-import book2 from "../../assets/book2.jpg";
-import book3 from "../../assets/book3.jpg";
-import book4 from "../../assets/book4.jpg";
-import book6 from "../../assets/book6.jpg";
-import book7 from "../../assets/book7.jpg";
+import { Link } from "react-router-dom";
+import './Bookshelf.css'
+import book1 from "../../assets/bookspine1.png";
+import book2 from "../../assets/bookspine2.png";
+import book3 from "../../assets/bookspine3.png";
+import book4 from "../../assets/bookspine4.png";
+import book5 from "../../assets/bookspine5.png";
+import book6 from "../../assets/bookspine6.png";
+import book7 from "../../assets/bookspine7.png";
 
 
 const bookSpines = [
-  <img src={book1} alt="A yellow leather-bound book spine" />,
-  <img src={book2} alt="A red leather-bound book spine" />,
-  <img src={book3} alt="A black leather-bound book spine" />,
-  <img src={book4} alt="A brown leather-bound book spine" />,
-  <img src={book6} alt="A purplish leather-bound book spine" />,
-  <img src={book7} alt="A green leather-bound book spine" />
+  {book: book1, color: 'yellow'},
+  {book: book2, color: 'red'},
+  {book: book3, color: 'black'},
+  {book: book4, color: 'green'},
+  {book: book5, color: 'brown'},
+  {book: book6, color: 'navy'},
+  {book: book7, color: 'purplish'}
 ]
 
 const getBookSpine = () => {
@@ -22,18 +26,24 @@ const getBookSpine = () => {
 }
 
 const Bookshelf = (props) => {
-
   const booksSelection = props.stories.map((story, i) => {
+    const spine = getBookSpine(i)
     return (
-      <span class="bookContainer" key={`book${i}`}>
-        {getBookSpine()}
-      </span>
+    <Link 
+      to={story.isComplete ? `/published-story/${story.id}` : `/story-edit/${story.id}`}
+      key={`book${i}`}
+      className='book'
+    >
+      <img src={spine.book} alt={`A ${spine.color} leather-bound book spine`} />
+    </Link>
     )
   })
-
+    
   return (
     <section>
-      {booksSelection}
+      <span className="bookContainer">
+        {booksSelection}
+      </span>
     </section>
   )
 }
