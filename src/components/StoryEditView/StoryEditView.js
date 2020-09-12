@@ -15,6 +15,10 @@ class StoryEditView extends Component {
     this.setState({ [e.target.id]: e.target.value })
   }
 
+  disableStoryInput = () => {
+    this.setState({ disabled: true })
+  }
+
   render() {
     return (
       <main id="story-edit-container">
@@ -22,15 +26,16 @@ class StoryEditView extends Component {
         <input
           id="title"
           type="text"
-          onChange={this.updateText}
+          onChange={ this.updateText }
           placeholder="Enter your title here"
         />
         <textarea
           id="story"
-          onChange={this.updateText}
+          onChange={ this.updateText }
           placeholder="Type your story here"
+          disabled={ this.state.disabled ? 'disabled' : false }
         />
-        <TimerDisplay />
+        <TimerDisplay disableStoryInput={this.disableStoryInput}/>
         <Link to="/">
           <button type="button" id="post-button">
             Pass it on

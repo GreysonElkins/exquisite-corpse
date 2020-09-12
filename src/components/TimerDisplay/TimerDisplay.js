@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import Timer from 'react-compound-timer'
 
-const TimerDisplay = () => {
+const TimerDisplay = (props) => {
   return(
     <Timer 
       initialTime={59000} 
@@ -9,7 +9,7 @@ const TimerDisplay = () => {
       checkpoints={[
         {
           time: 0,
-          callback: () => console.log('Time\'s up!')
+          callback: () => props.disableStoryInput()
         }
       ]}
     >
