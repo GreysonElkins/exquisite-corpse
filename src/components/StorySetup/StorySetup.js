@@ -24,6 +24,7 @@ class StorySetup extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
+        {!this.props.userName && 
         <input
           name="authorName"
           type="text"
@@ -31,6 +32,8 @@ class StorySetup extends Component {
           value={this.state.authorname}
           onChange={this.handleChange}
         />
+        }
+        <br/>
         <label>
           Would you like to start with a prompt?:
           <input
@@ -40,6 +43,7 @@ class StorySetup extends Component {
             onChange={this.handleChange}
           />
         </label>
+        <br/>
         {this.state.promptRequested &&
         <label>
           Please select a genre:
@@ -59,6 +63,15 @@ class StorySetup extends Component {
           </select>
         </label>
         }
+        <p>
+          You will have 60 seconds to free-write on the next screen.<br/>
+          {this.state.promptRequested && 
+          <span>Your prompt will be displayed at the top if the view.<br/></span>
+          }
+          The countdown will begin when you start typing,<br/>
+          and when the timer runs out you will no longer be able to type.<br/>
+          Have Fun!
+        </p>
         <button>Start Story</button>
       </form>
     );
