@@ -14,10 +14,10 @@ describe('StoryEditView', () => {
 
     const promptPlaceholder = screen.getByText('Prompt placeholder')
 
-    expect(promptPlaceholder).toBeInTheDocument();
+    expect(promptPlaceholder).toBeInTheDocument()
   })
 
-  it('should display an input field for the title and story', () => {
+  it('should display a form to enter and submit a story', () => {
     render(
       <Router>
         <StoryEditView />
