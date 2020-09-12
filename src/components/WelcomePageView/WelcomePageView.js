@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import './WelcomePageView.css'
 import PromptCards from '../PromptCards/PromptCards'
+import { Link } from 'react-router-dom'
+import ApiHelper from "../../ApiHelpers/apiCalls"
 
 class WelcomePageView extends Component {
     constructor() {
@@ -12,7 +14,12 @@ class WelcomePageView extends Component {
     }
   
     async componentDidMount() {
-     console.log('Youre smart!') 
+     try {
+         const stories = await ApiHelper.getData()
+     } catch (error) {
+         this.setState({ error: 'Something went wrong'})
+     }
+     // This is just mock data to display for now, will be replaced by fetch call above
      this.setState({ inProgressStories: [
          "It was a dark and stormy party and suddenly the doorbell rang...",
          "The warp core is putting off unusual photon emissions...",
@@ -34,7 +41,7 @@ class WelcomePageView extends Component {
     render() {
       return (
         <section className="WelcomePage">
-          <aside className="WelcomePage-left-side-sec">
+          <section className="WelcomePage-sec">
           <h2 className="WelcomePage-header-text">Rules of Play</h2>
           <div className="game-instructions">
             <ul>
@@ -61,14 +68,13 @@ class WelcomePageView extends Component {
               </p>
             </div>
           }
-          </aside>
-          <section className="WelcomePage-right-side-sec">
             <h3>Continue a story:</h3>
             <div>
               <PromptCards 
                 inProgressStories={this.state.inProgressStories}
               />
             </div>
+            <Link to='story-setup'>Start a new story</Link>
           </section>
         </section>
     )
