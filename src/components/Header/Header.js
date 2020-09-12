@@ -5,11 +5,17 @@ import './Header.css'
 const Header = () => {
   return (
     <header>
-      <Link><h1>Exquisite Corpse</h1></Link>
+      <Link to='/'><h1>Exquisite Corpse</h1></Link>
       <nav className='navbar'>
-        <NavLink to='/story-setup'><button>New Story</button></NavLink>
-        <NavLink to='/library'><button>Library</button></NavLink>
-        <NavLink to='/login'><button>Sign In</button></NavLink>
+        <NavLink to='/story-setup' activeClassName='selected'>
+          <button>New Story</button>
+        </NavLink>
+        <NavLink to='/library' activeClassName='selected'>
+          <button>Library</button>
+        </NavLink>
+        <NavLink to='/login' activeClassName='selected'>
+          <button>Sign In</button>
+        </NavLink>
       </nav>
     </header>
   );
