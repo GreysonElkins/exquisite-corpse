@@ -1,6 +1,22 @@
-// import React from 'react'
-// import StorySetup from '../StorySetupView'
+import React, { Component } from 'react'
+import StorySetup from '../StorySetup/StorySetup'
 
-// export default StorySetupView;
+class StorySetupView extends Component {
+  constructor() {
+    super()
+  }
 
-// just needs to render the StorySetup component
+  // method to get prompts based on genre
+
+  // method to select random prompt from returned genre
+
+  render() {
+    return (
+      <>
+        <StorySetup />
+      </>
+    )
+  }
+}
+
+export default StorySetupView;
