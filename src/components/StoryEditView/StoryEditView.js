@@ -1,4 +1,5 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import TimerDisplay from '../TimerDisplay/TimerDisplay'
 import './StoryEditView.css'
 
@@ -28,10 +29,18 @@ class StoryEditView extends Component {
           onChange={this.updateText}
           placeholder="Type your story here"
         />
-        <button type="button" id="post-button">Pass it on</button>
-        {this.props.isPublishable && 
-          <button type="button" id="publish-button">Publish it</button>
-        }
+        <Link to="/">
+          <button type="button" id="post-button">
+            Pass it on
+          </button>
+        </Link>
+        {this.props.isPublishable && (
+          <Link to="/">
+            <button type="button" id="publish-button">
+              Publish it
+            </button>
+          </Link>
+        )}
       </main>
     );
   }
