@@ -1,7 +1,9 @@
 import React from 'react'
 import './Instructions.css'
 import GameHistory from '../GameHistory/GameHistory'
+import Bookshelf from '../Bookshelf/Bookshelf'
 import { Link } from 'react-router-dom'
+import LibraryView from '../LibraryView/LibraryView'
 
 const Instructions = ( { displayHistory, showHistory } ) => {
   return (
@@ -21,6 +23,7 @@ const Instructions = ( { displayHistory, showHistory } ) => {
       <button className="show-history-button" onClick={displayHistory}>Game History</button>
       {showHistory ? <GameHistory displayHistory={displayHistory} /> : null}
       <h3>Continue a story:</h3>
+      <LibraryView />
       <Link to='/story-setup'>Start a new story</Link>
     </section>
   )
