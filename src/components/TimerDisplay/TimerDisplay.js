@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Fragment } from 'react'
+// import Timer from 'react-compound-timer'
 
 const Timer = () => {
   return(
