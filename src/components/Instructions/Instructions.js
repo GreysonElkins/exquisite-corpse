@@ -18,8 +18,8 @@ const Instructions = ( { displayHistory, showHistory } ) => {
           </ol>
         </ul>
       </div>
-      <button className="show-history-button" onClick={displayHistory}>History of the Game</button>
-      {showHistory ? <GameHistory displayHistory={displayHistory}/> : null}
+      <button className="show-history-button" onClick={displayHistory}>Game History</button>
+      {showHistory ? <GameHistory displayHistory={displayHistory} /> : null}
       <h3>Continue a story:</h3>
       <Link to='/story-setup'>Start a new story</Link>
     </section>

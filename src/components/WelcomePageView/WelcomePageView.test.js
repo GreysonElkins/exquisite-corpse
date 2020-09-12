@@ -13,7 +13,7 @@ describe('WelcomePageView', () => {
     )
     
     const heading = screen.getByText('Rules of Play')
-    const button = screen.getByRole('button', {name: ''})
+    const button = screen.getByRole('button', {name: 'Game History'})
     const bulletPoint = screen.getByText('Exquisite Corpse is a collaborative', { exact: false })
     const instrOne = screen.getByText('Select a new prompt', { exact: false })
     const instrTwo = screen.getByText('Start your section', { exact: false })
