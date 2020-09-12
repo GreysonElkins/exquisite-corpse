@@ -4,7 +4,7 @@ import './StoryEditView.css'
 
 class StoryEditView extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {}
   }
 
@@ -23,9 +23,8 @@ class StoryEditView extends Component {
           onChange={this.updateText}
           placeholder="Enter your title here"
         />
-        <input
+        <textarea
           id="story"
-          type="textarea"
           onChange={this.updateText}
           placeholder="Type your story here"
         />

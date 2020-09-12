@@ -6,6 +6,7 @@
   margin: auto;
 }
 
-#story-edit-header {
-  display: flex;
+#story {
+  font-family: inherit;
+  height: 200px;
 }
