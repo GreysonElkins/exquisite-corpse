@@ -8,10 +8,12 @@ const testData = {
         "He makes himself coffee, yes!",
         "He feels well rested and equipped to write tests, yes!",
       ],
-      prompt: null,
+      prompt: "journal",
       created_at: "2020-09-10T22:37:51.103Z",
       updated_at: "2020-09-10T22:37:51.103Z",
-    }, {
+      isComplete: true,
+    },
+    {
       id: 2,
       title: "Bowie makes a dog friend",
       story: [
@@ -20,11 +22,13 @@ const testData = {
         "They argue, but dad saves the day, yes!",
         "We're still friends - phew!",
       ],
-      prompt: null,
+      prompt: "Tell a story about your dog",
       created_at: "2020-11-10T22:37:51.103Z",
       updated_at: "2020-11-10T22:37:51.103Z",
-    }, {
-      id: 2,
+      isComplete: true,
+    },
+    {
+      id: 3,
       title: "Birdhouse in Your Soul",
       story: [
         "Blue canary in the outlet by the lightswitch.",
@@ -33,11 +37,24 @@ const testData = {
         "Not to put to fine a point on it.",
         "Say I'm the only bee in your bonnet.",
       ],
-      prompt: null,
+      prompt: "sci-fi",
       created_at: "2020-10-10T22:37:51.103Z",
       updated_at: "2020-10-10T22:37:51.103Z",
-    }
-  ]
-}
+      isComplete: true,
+    },
+    {
+      id: 4,
+      title: "The Birdman For Real",
+      story: [
+        "There's a bird-man in my bedroom.",
+        "He asks, who watches over you?",
+      ],
+      prompt: "horror",
+      created_at: "2020-10-10T22:37:51.103Z",
+      updated_at: "2020-10-10T22:37:51.103Z",
+      isComplete: false,
+    },
+  ],
+};
 
 export default testData
