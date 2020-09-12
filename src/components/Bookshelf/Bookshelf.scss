@@ -7,6 +7,7 @@
 }
 
 .book {
+  border: none;
   background-size: 2em;
   background-repeat: no-repeat;
   color: white;
@@ -16,10 +17,6 @@
   padding: .01em;
   text-decoration: none;
   width: 2em;
-}
-
-.book-link {
-  text-decoration: none;
 }
 
 .book > .title,
