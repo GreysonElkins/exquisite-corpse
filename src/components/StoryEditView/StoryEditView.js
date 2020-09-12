@@ -3,13 +3,13 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import './StoryEditView.css'
 
 class StoryEditView extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
   }
 
   render() {
     return (
-      <h1>Story Edits</h1>
+      <h1 id="prompt">Prompt placeholder</h1>
     )
   }
 }
