@@ -1,0 +1,54 @@
+.WelcomePage {
+  /* background-color: gray; */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.WelcomePage-left-side-sec {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  width: 50%;
+}
+
+.WelcomePage-right-side-sec {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+}
+
+.WelcomePage-header-text {
+  font-size: 4em;
+}
+
+.drop-arrow-sec {
+  width: auto;
+  display: flex;
+  flex-direction: row;
+}
+
+.drop-arrow-button {
+  height: 20px;;
+}
+
+.show-history-text { 
+  margin: 0;
+  margin-left: 5px;
+}
+
+.game-history-box {
+  width: 80%;
+}
+
+/* p {
+  padding: 50px;
+} */
+
+/* .game-instructions {
+  padding: 5em;
+} */
