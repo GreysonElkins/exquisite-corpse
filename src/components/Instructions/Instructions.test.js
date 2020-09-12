@@ -3,8 +3,6 @@ import Instructions from './Instructions'
 import { fireEvent, render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { MemoryRouter } from 'react-router-dom'
-import ApiHelper from '../../ApiHelpers/apiCalls'
-jest.mock('../../ApiHelpers/apiCalls')
 
 describe('Instructions', () => {
   it('Should have the correct content when rendered', () => {
@@ -34,13 +32,15 @@ describe('Instructions', () => {
 
     const { getByRole } = render(
       <MemoryRouter>
-        <Instructions />
+        <Instructions 
+          displayHistory={mockFun}
+        />
       </MemoryRouter>
       )
 
     fireEvent.click(getByRole('button'))
 
-    expect(mockFun).toHaveBeenCalledTimes(0)
+    expect(mockFun).toHaveBeenCalledTimes(1)
   })
 
   it('Should render history when state changes', () => {
