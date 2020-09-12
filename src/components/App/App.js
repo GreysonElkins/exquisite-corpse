@@ -12,6 +12,7 @@ class App extends Component {
   render() {
     return (
       <main>
+        <Header />
         {/* <Route 
           exact path='/' 
           render={ () => {

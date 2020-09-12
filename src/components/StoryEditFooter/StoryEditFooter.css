@@ -1,0 +1,9 @@
+#story-edit-footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+button {
+  margin: 1em;
+}
