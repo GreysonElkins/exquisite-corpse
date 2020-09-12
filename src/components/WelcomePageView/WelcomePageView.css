@@ -5,19 +5,12 @@
   align-items: center;
 }
 
-.WelcomePage-left-side-sec {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 50%;
-}
-
-.WelcomePage-right-side-sec {
+.WelcomePage-sec {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 50%;
+  width: 80%;
 }
 
 .WelcomePage-header-text {
