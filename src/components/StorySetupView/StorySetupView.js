@@ -6,19 +6,19 @@ class StorySetupView extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      error: '420',
+      error: '',
       prompt: ''
     }
   }
 
-  getPrompts(genre) {
-    apiHelper.getPrompts(genre)
-      .then(prompts => this.setState({
-        prompt: prompts[Math.floor(Math.random() * prompts.length)]
-      }))
-      .catch(error => this.setState({ error: error.status })
-    )
-  }
+  // getPrompts = genre => {
+  //   apiHelper.getPrompts(genre)
+  //     .then(prompts => this.setState({
+  //       prompt: prompts[Math.floor(Math.random() * prompts.length)]
+  //     }))
+  //     .catch(error => this.setState({ error: error.status })
+  //   )
+  // }
 
   render() {
     return (
@@ -28,7 +28,11 @@ class StorySetupView extends Component {
           I'm sorry, we could not retrieve a prompt. Error Status: {this.state.error}
         </h2>
         }
-        <StorySetup userName={'Dr Robotnik'} prompt={this.state.prompt} />
+        <StorySetup
+          userName={this.props.username}
+          getPrompts={this.getPrompts}
+          prompt={this.state.prompt}
+        />
       </section>
     )
   }
