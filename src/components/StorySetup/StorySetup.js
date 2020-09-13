@@ -10,9 +10,6 @@ class StorySetup extends Component {
       genre: ''
     }
   }
-
-  // getGenres() -> makes fetchCall, and makes an array of possible genres
-  // 
   
   handleChange = (event) => {
     const target = event.target
@@ -24,11 +21,16 @@ class StorySetup extends Component {
     })
   }
 
-  
+  // handle submit calls this.props.whatGenre(this.state.genre)
+  //// routes to <Redirect to={{
+    //      pathname: '/story-edit',
+    //      state: { prompt: this.state.prompt } 
+    //    }}
+    // />
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className='StorySetup' onSubmit={this.handleSubmit}>
         {!this.props.userName && 
         <label>
           Who Are You?<br/>
@@ -86,9 +88,5 @@ class StorySetup extends Component {
     )
   }
 }
-
-// button is router link to /storyedit/:genre
-// story edit grabs the param, and makes the fetch call for the genre
-// getDataPrompts happens in 
 
 export default StorySetup
