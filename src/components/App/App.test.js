@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom'
 import App from './App';
 
-test('should display the header when rendered', () => {
+test('renders learn react link', () => {
   const { getByText } = render(
     <MemoryRouter>
       <App />
