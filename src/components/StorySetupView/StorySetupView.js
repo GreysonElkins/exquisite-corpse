@@ -28,7 +28,7 @@ class StorySetupView extends Component {
           I'm sorry, we could not retrieve a prompt. Error Status: {this.state.error}
         </h2>
         }
-        <StorySetup userName={'Dr Robotnik'} whatGenre={null} />
+        <StorySetup userName={'Dr Robotnik'} prompt={this.state.prompt} />
       </section>
     )
   }
