@@ -27,8 +27,8 @@ class App extends Component {
         />
         <Route 
           exact path='/story-edit' 
-          render={ () => {
-            return <StoryEditView /> 
+          render={ (props) => {
+            return <StoryEditView {...props}/> 
           }}
         />  
         <Route 
