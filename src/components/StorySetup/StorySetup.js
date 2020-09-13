@@ -7,7 +7,7 @@ class StorySetup extends Component {
     this.state = {
       authorName: '',
       promptRequested: false,
-      genre: ''
+      genre: '',
     }
   }
   
@@ -21,12 +21,17 @@ class StorySetup extends Component {
     })
   }
 
-  // handle submit calls this.props.whatGenre(this.state.genre)
-  //// routes to <Redirect to={{
-    //      pathname: '/story-edit',
-    //      state: { prompt: this.state.prompt } 
-    //    }}
-    // />
+  handleSubmit = async (event) => {
+    event.preventDefault()
+    const prompt = await this.props.getPrompts(this.state.genre)
+    if(!this.props.error) {
+      return <Redirect to={{
+          pathname: '/story-edit',
+          state: { prompt } 
+        }}
+      />
+    }
+  }
 
   render() {
     return (
