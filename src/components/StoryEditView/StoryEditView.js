@@ -18,7 +18,6 @@ class StoryEditView extends Component {
   }
 
   render() {
-    console.log(this.props.location.state)
     return (
       <main id="story-edit-container">
         <StoryEditFields 
