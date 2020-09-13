@@ -6,15 +6,12 @@ import './PublishedStory.css'
 class PublishedStory extends Component {
   constructor(props) {
     super(props)
-    this.story = this.buildStory(props.currentStory.story)
     this.state = {
       authors: []
     }
   }
 
   buildStory = (story = []) => {
-    debugger
-    // console.log(story)
     return story.map(section => {
       return (
         <p>{section}</p>
@@ -44,7 +41,7 @@ class PublishedStory extends Component {
           <h3>By {this.state.authors}</h3>
         </header>
         <section>
-          {this.story}
+          {this.buildStory(this.props.currentStory.story)}
         </section>
       </article>
 
