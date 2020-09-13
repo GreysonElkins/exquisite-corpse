@@ -9,6 +9,8 @@ class StorySetup extends Component {
       authorName: '',
       promptRequested: false,
       genre: '',
+      submitOk: false,
+      prompt: ''
     }
   }
   
@@ -23,17 +25,23 @@ class StorySetup extends Component {
 
   handleSubmit = async (event) => {
     event.preventDefault()
-    const prompt = await this.props.getPrompts(this.state.genre)
+    // const prompt = await this.props.getPrompts(this.state.genre)
     if(!this.props.error) {
+      this.setState({
+        prompt: 'one time',
+        submitOk: true
+      })
+    }
+  }
+  
+  render() {
+    if (this.state.submitOk) {
       return <Redirect to={{
           pathname: '/story-edit',
-          state: { prompt } 
+          state: { prompt: this.state.prompt }
         }}
       />
     }
-  }
-
-  render() {
     return (
       <form className='StorySetup' onSubmit={this.handleSubmit}>
         {!this.props.userName && 
