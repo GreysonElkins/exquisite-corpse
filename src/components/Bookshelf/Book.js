@@ -24,8 +24,7 @@ const Book = ({ story, onClick}) => {
       className="book" 
       style={{ backgroundImage: `url(${spine})` }}
       role="button"
-      onClick={(event) => {
-        event.preventDefault()
+      onClick={() => {
         onClick(story)
       }}
     >
