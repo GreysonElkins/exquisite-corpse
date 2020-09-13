@@ -4,3 +4,8 @@
   flex-direction: column;
   align-items: center;
 }
+
+form label, 
+form p {
+  text-align: center;
+}
