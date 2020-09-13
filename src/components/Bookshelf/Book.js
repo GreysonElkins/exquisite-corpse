@@ -1,6 +1,7 @@
-import React from "react";
-import moment from "moment";
-import "./Bookshelf.scss";
+import React from "react"
+import moment from "moment"
+import "./Bookshelf.scss"
+import ReactTooltip from 'react-tooltip';
 
 import book1 from "../../assets/bookspine1.png";
 import book2 from "../../assets/bookspine2.png";
@@ -17,23 +18,30 @@ const getBookSpine = () => {
   return bookSpines[random];
 };
 
-const Book = ({ story, onClick }) => {
-  const spine = getBookSpine();
+const Book = ({ story, onClick, currentPage }) => {
+  const spine = getBookSpine()
+  let prompt = story.story.slice(-1)
   return (
-    <div 
-      className="book" 
-      style={{ backgroundImage: `url(${spine})` }}
-      role="button"
-      onClick={() => {
-        onClick(story)
-      }}
-    >
-      <span className="title">{story.title}</span>
-      <span className="prompt">{story.prompt}</span>
-      <span className="date-published">
-        {moment(story.updated_at).format("MMM YYYY")}
-      </span>
-    </div>
+    <>
+      <div 
+        data-tip={prompt}
+        className="book" 
+        style={{ backgroundImage: `url(${spine})` }}
+        role="button"
+        onClick={() => {
+          onClick(story)
+        }}
+      >
+        <span className="title">{story.title}</span>
+        <span className="prompt">{story.prompt}</span>
+        <span className="date-published">
+          {moment(story.updated_at).format("MMM YYYY")}
+        </span>
+      </div>
+      {currentPage === 'home' && 
+        <ReactTooltip place='top' effect='float' />
+      }
+    </>
   );
 }
 

@@ -8,6 +8,7 @@ class LibraryView extends Component {
     super()
     this.state = {
       stories: [],
+      currentPage: 'library',
       currentStory: {
         story: [],
         title: '',
@@ -39,6 +40,7 @@ class LibraryView extends Component {
         <Bookshelf
           stories={this.state.stories}
           onClick={this.selectStoryToRead}
+          currentStory={this.state.currentPage}
         />
       {this.state.currentStory.story.length > 0 
         && <PublishedStory 

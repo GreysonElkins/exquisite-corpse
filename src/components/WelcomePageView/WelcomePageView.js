@@ -15,7 +15,8 @@ class WelcomePageView extends Component {
       inProgressStories: [],
       stories: [],
       redirect: false,
-      selectedStory: {}
+      selectedStory: {},
+      currentPage: 'home'
     }
   }
   componentDidMount() {
@@ -81,6 +82,7 @@ class WelcomePageView extends Component {
           <Bookshelf
             stories={this.state.stories}
             onClick={this.takeToWritingSection}
+            currentPage={this.state.currentPage}
           />
       </section>
     )
