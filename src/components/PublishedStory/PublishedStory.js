@@ -10,22 +10,42 @@ class PublishedStory extends Component {
       authors: []
     }
   }
-
+  
+  componentDidMount() {
+    const foundAuthors = [];
+    ApiHelper.getData().then(authors => {
+      this.setState({
+        authors: [
+          "Greyson Elkins", 
+          "Carly Clift", 
+          "Nick Hart", 
+          "Aaron B.D."]
+        });
+        // this will be fleshed out when getData and 
+        // authors in the database are fleshed out
+      })
+    }
+    
   buildStory = (story = []) => {
-    return story.map(section => {
+    return story.map((section, i) => {
       return (
-        <p>{section}</p>
+        <p key={`paragraph${i}`}>{section}</p>
       )
     })
   }
 
-  componentDidMount() {
-    const foundAuthors = [];
-    ApiHelper.getData().then(authors => {
-      console.log(authors)
-      // this will be fleshed out when getData and 
-      // authors in the database are fleshed out
-    })
+  presentAuthors(authors) {
+    const authorCount = authors.length
+    return authors.reduce((list, author, i) => {
+      if (i + 1 === authorCount && authorCount !== 1) {
+        list += ` and ${author}`
+      } else if (i === 0) {
+        list += author
+      } else {
+        list += `, ${author}`
+      }
+      return list
+    }, 'By ')
   }
 
   render() {
@@ -38,7 +58,7 @@ class PublishedStory extends Component {
             <br /> 
             Prompt: {this.props.currentStory.prompt}
           </h4>
-          <h3>By {this.state.authors}</h3>
+          <h3>{this.presentAuthors(this.state.authors)}</h3>
         </header>
         <section>
           {this.buildStory(this.props.currentStory.story)}
