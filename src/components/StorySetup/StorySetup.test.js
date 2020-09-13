@@ -1,18 +1,28 @@
-import React from "react";
-import { render } from "@testing-library/react";
-import { MemoryRouter } from "react-router-dom";
-import "@testing-library/jest-dom";
-import StorySetup from "./StorySetup";
+import React from 'react';
+import { render, fireEvent } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
+import '@testing-library/jest-dom';
+import StorySetup from './StorySetup';
 
 describe('StorySetup', () => {
   
-  it('should have an input for authorname, and a button to submit', () => {
-    const { getByRole } = render(
+  it('should display the author\'s name', () => {
+    const getPrompts = jest.fn()
+    
+    const { getByText } = render(
       <MemoryRouter>
-        <StorySetup />
+        <StorySetup 
+          userName={'Bango Zango'}
+          getPrompts={getPrompts}
+          prompt={''}
+          error={false}
+        />
       </MemoryRouter>
     )
 
-    const authornameInput = getByRole()
+    const authorname = getByText(/bango zango/i)
+    expect(authorname).toBeInTheDocument()
   })
+
+  
 })
