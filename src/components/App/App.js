@@ -6,31 +6,31 @@ import WelcomePageView from '../WelcomePageView/WelcomePageView'
 import StorySetupView from '../StorySetupView/StorySetupView'
 import StoryEditView from '../StoryEditView/StoryEditView'
 import LibraryView from '../LibraryView/LibraryView'
-import PublishedStoryView from '../PublishedStoryView/PublishedStoryView'
+// import PublishedStoryView from '../PublishedStoryView/PublishedStoryView'
 
 class App extends Component {
   render() {
     return (
       <main>
         <Header />
-        {/* <Route 
+        <Route 
           exact path='/' 
           render={ () => {
             return <WelcomePageView /> 
           }}
-        />   */}
+        /> 
         <Route 
           exact path='/story-setup' 
           render={ () => {
             return <StorySetupView /> 
           }}
-        /> 
-        {/* <Route 
+        />
+        <Route 
           exact path='/story-edit' 
           render={ () => {
             return <StoryEditView /> 
           }}
-        />   */}
+        />  
         <Route 
           exact path='/library' 
           render={ () => {
@@ -42,7 +42,7 @@ class App extends Component {
           render={ () => {
             return <PublishedStoryView /> 
           }}
-        />   */}
+        />  */}
       </main>
     )
   }

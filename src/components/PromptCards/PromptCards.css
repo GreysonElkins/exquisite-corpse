@@ -1,0 +1,33 @@
+.PromptCards-sec {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  .PromptCards {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 150px;
+    background-color: lightgray;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 1em;
+  }
+  
+  .start-button {
+    width: 40%;
+  }
+
+  .text {
+    font-size: 30px;
+    color: rgb(70, 0, 128);
+    font-weight: 400;
+  }
+
+  .published-stories-text {
+    margin-left: 40%;
+    font-size: 30px;
+    color: rgb(70, 0, 128);
+    font-weight: 400;
+  }
