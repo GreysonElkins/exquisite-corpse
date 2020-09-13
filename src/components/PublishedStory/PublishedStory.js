@@ -35,6 +35,11 @@ class PublishedStory extends Component {
   }
 
   presentAuthors(authors) {
+    //this function will eventually need to account 
+    //for multiples because REPEATS MUST BE maintained 
+    //in state in order to coodernate between entries
+    //and their respective users
+    
     const authorCount = authors.length
     return authors.reduce((list, author, i) => {
       if (i + 1 === authorCount && authorCount !== 1) {
