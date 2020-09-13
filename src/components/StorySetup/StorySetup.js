@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import './StorySetup.css'
 
 class StorySetup extends Component {
@@ -15,7 +16,6 @@ class StorySetup extends Component {
     const target = event.target
     const value = target.type === 'checkbox' ? target.checked : target.value
     const name = target.name
-
     this.setState({
       [name]: value
     })
@@ -84,8 +84,9 @@ class StorySetup extends Component {
           {this.state.promptRequested && 
           <span>Your prompt will be displayed at the top if the view.<br/></span>
           }
-          The countdown will begin when you start typing,<br/>
-          and when the timer runs out you will no longer be able to type.<br/>
+          The countdown will begin when you start typing.<br/>
+          When the timer runs out you will no longer be able to type.<br/>
+          <br/>
           Have Fun!
         </p>
         <button>Start Story</button>
