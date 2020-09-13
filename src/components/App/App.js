@@ -25,12 +25,12 @@ function App() {
           return <StorySetupView /> 
         }}
       />
-      {/* <Route 
+      <Route 
         exact path='/story-edit' 
         render={ () => {
           return <StoryEditView /> 
         }}
-      />   */}
+      />  
       {/* <Route 
         exact path='/library' 
         render={ () => {
