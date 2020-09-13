@@ -8,13 +8,16 @@ jest.mock('../../ApiHelpers/ApiHelpers.js')
 
 describe('StoryEditView', () => {
   it('should display a header, a form, a timer and at least one button', () => {
+    const state = 'He asks, who watched over you?'
     render(
       <Router>
-        <StoryEditView />
+        <StoryEditView 
+          location={state}
+        />
       </Router>
     )
 
-    const promptHeader = screen.getByText(/Prompt placeholder/i)
+    const promptHeader = screen.getByRole('heading')
     const titleInput = screen.getByPlaceholderText(/Enter your title here/i)
     const storyInput = screen.getByPlaceholderText(/Type your story here/i)
     const timer = screen.getByText(/59/i)
