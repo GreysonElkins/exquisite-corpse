@@ -12,7 +12,7 @@ describe('StoryEditFields', () => {
       </Router>
     )
 
-    const header = screen.getByText(/prompt placeholder/i)
+    const header = screen.getByRole('heading')
     const titleInputField = screen.getByPlaceholderText(/enter your title here/i)
     const storyInputField = screen.getByPlaceholderText(/type your story here/i)
 
