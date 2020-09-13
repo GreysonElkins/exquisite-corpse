@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import './WelcomePageView.css'
 import ApiHelper from '../../ApiHelper/ApiHelper'
 import Instructions from '../Instructions/Instructions'
 import Bookshelf from "../Bookshelf/Bookshelf"
@@ -14,7 +13,7 @@ class WelcomePageView extends Component {
       stories: [],
       redirect: false,
       selectedStory: {},
-      currentPage: 'home'
+      popup: true
     }
   }
 
@@ -66,7 +65,7 @@ class WelcomePageView extends Component {
           <Bookshelf
             stories={this.state.stories}
             onClick={this.takeToWritingSection}
-            currentPage={this.state.currentPage}
+            popup={this.state.popup}
           />
       </section>
     )

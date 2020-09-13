@@ -2,11 +2,11 @@ import React from 'react'
 import Book from './Book'
 import './Bookshelf.scss'
 
-const Bookshelf = ({ stories, onClick, currentPage }) => {
+const Bookshelf = ({ stories, onClick, popup }) => {
 
   const booksSelection = stories.map((story, i) => {
     return (
-      <Book story={story} onClick={onClick} currentPage={currentPage} key={i}/>
+      <Book story={story} onClick={onClick} popup={popup} key={i}/>
     )
   })
     

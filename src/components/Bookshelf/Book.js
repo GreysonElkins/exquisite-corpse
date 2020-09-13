@@ -18,7 +18,7 @@ const getBookSpine = () => {
   return bookSpines[random];
 };
 
-const Book = ({ story, onClick, currentPage }) => {
+const Book = ({ story, onClick, popup }) => {
   const spine = getBookSpine()
   let prompt = story.story.slice(-1)
   return (
@@ -38,7 +38,7 @@ const Book = ({ story, onClick, currentPage }) => {
           {moment(story.updated_at).format("MMM YYYY")}
         </span>
       </div>
-      {currentPage === 'home' && 
+      {popup && 
         <ReactTooltip className="pop-up" place='top' effect='float' />
       }
     </>
