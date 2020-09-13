@@ -17,7 +17,7 @@ const getBookSpine = () => {
   return bookSpines[random];
 };
 
-const Book = ({ story, onClick}) => {
+const Book = ({ story, onClick }) => {
   const spine = getBookSpine();
   return (
     <div 

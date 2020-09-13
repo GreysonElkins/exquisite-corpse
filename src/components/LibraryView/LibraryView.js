@@ -23,14 +23,14 @@ class LibraryView extends Component {
       stories.forEach(story => {
         if(story.isComplete) {
           completedStories.push(story)
-          this.setState( {stories: completedStories})
+          this.setState({ stories: completedStories })
         }
       })
     })
   }
 
   selectStoryToRead = (story) => {
-    this.setState({ currentStory: story})
+    this.setState({ currentStory: story })
   }
 
   render() {
