@@ -1,20 +1,35 @@
 import React, { Component } from 'react'
 import StorySetup from '../StorySetup/StorySetup'
+import './StorySetupView.css'
 
 class StorySetupView extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
+    this.state = {
+      error: '420',
+      prompt: ''
+    }
   }
 
-  // method to get prompts based on genre
-
-  // method to select random prompt from returned genre
+  getPrompts(genre) {
+    apiHelper.getPrompts(genre)
+      .then(prompts => this.setState({
+        prompt: prompts[Math.floor(Math.random() * prompts.length)]
+      }))
+      .catch(error => this.setState({ error: error.status })
+    )
+  }
 
   render() {
     return (
-      <>
-        <StorySetup userName={false}/>
-      </>
+      <section className='StorySetupView'>
+        {this.state.error && 
+        <h2>
+          I'm sorry, we could not retrieve a prompt. Error Status: {this.state.error}
+        </h2>
+        }
+        <StorySetup userName={'Dr Robotnik'} whatGenre={null} />
+      </section>
     )
   }
 }
