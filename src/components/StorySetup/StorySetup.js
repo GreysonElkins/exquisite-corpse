@@ -51,7 +51,8 @@ class StorySetup extends Component {
         {this.props.userName && <p>Hello {this.props.userName},</p>}
         <br/>
         <label>
-          Would you like to start with a prompt?: 
+          Would you like to start with a prompt? <br/>
+          Check box for <b><i>"Yes"</i></b> - 
           <input
             name='promptRequested'
             type='checkbox'
