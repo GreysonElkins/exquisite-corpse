@@ -24,5 +24,23 @@ describe('StorySetup', () => {
     expect(authorname).toBeInTheDocument()
   })
 
+  it("should ask if a user would like a prompt", () => {
+    const getPrompts = jest.fn();
+
+    const { getByText } = render(
+      <MemoryRouter>
+        <StorySetup
+          userName={"Bango Zango"}
+          getPrompts={getPrompts}
+          prompt={""}
+          error={false}
+        />
+      </MemoryRouter>
+    );
+
+    const promptPrompt = getByText(/start with a prompt\?/i);
+    expect(promptPrompt).toBeInTheDocument();
+  });
+
   
 })
