@@ -67,5 +67,49 @@ describe('StorySetup', () => {
     expect(dropDownMenu).toBeInTheDocument();
   });
 
-  
+  it.skip("should fire handleChange when a genre is selected", () => {
+    const getPrompts = jest.fn();
+    const handleChange = jest.fn();
+
+    const { getByRole, getByText } = render(
+      <MemoryRouter>
+        <StorySetup
+          userName={"Bango Zango"}
+          getPrompts={getPrompts}
+          prompt={""}
+          error={false}
+        />
+      </MemoryRouter>
+    );
+
+    const checkbox = getByRole("checkbox", {
+      name: /would you like to start with a prompt\? check box for 'yes' \-/i,
+    });
+    fireEvent.click(checkbox);
+
+    const dropDownMenu = getByRole("combobox");
+    fireEvent.click(dropDownMenu);
+    fireEvent.keyDown(dropDownMenu, { key: "ArrowDown", code: "ArrowDown" });
+    fireEvent.keyDown(dropDownMenu, { key: "Enter", code: "Enter" });
+
+    expect(handleChange).toHaveBeenCalledTimes(1);
+  });
+
+  it("should display a button to start the story", () => {
+    const getPrompts = jest.fn();
+
+    const { getByRole } = render(
+      <MemoryRouter>
+        <StorySetup
+          userName={"Bango Zango"}
+          getPrompts={getPrompts}
+          prompt={""}
+          error={false}
+        />
+      </MemoryRouter>
+    );
+
+    const startStoryButton = getByRole("button", { name: /start story/i });
+    expect(startStoryButton).toBeInTheDocument();
+  });
 })
