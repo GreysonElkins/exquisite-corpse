@@ -29,7 +29,7 @@ class StorySetupView extends Component {
         </h2>
         }
         <StorySetup
-          userName={this.props.username}
+          userName={'Bango Zango' /*this.props.username*/}
           getPrompts={this.getPrompts}
           prompt={this.state.prompt}
           error={this.state.error}
