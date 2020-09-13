@@ -39,7 +39,7 @@ const Book = ({ story, onClick, currentPage }) => {
         </span>
       </div>
       {currentPage === 'home' && 
-        <ReactTooltip place='top' effect='float' />
+        <ReactTooltip className="pop-up" place='top' effect='float' />
       }
     </>
   );

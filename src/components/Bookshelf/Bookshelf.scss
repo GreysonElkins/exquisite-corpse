@@ -44,3 +44,15 @@
   bottom: 2em;
   // margin-left: 7em;
 }
+
+.pop-up {
+  font-size: 20px !important;
+  color: black !important;
+  pointer-events: auto !important;
+  background-color: white !important;
+  border: solid 1px black !important;
+    &:hover {
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+}
