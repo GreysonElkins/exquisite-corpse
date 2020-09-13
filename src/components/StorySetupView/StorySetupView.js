@@ -32,6 +32,7 @@ class StorySetupView extends Component {
           userName={this.props.username}
           getPrompts={this.getPrompts}
           prompt={this.state.prompt}
+          error={this.state.error}
         />
       </section>
     )
