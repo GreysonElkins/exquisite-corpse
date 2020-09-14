@@ -19,7 +19,7 @@ describe('StoryEditFields', () => {
     expect(storyInputField).toBeInTheDocument()
   })
 
-  it('should render a prompt if one is passed in', () => {
+  it('should render a header if a prompt is passed in', () => {
     render(
       <Router>
         <StoryEditFields prompt={{prompt: 'This is a prompt'}} />

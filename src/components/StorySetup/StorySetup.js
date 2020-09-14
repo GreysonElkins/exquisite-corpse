@@ -85,7 +85,7 @@ class StorySetup extends Component {
             onChange={this.handleChange}
           >
             <option value='any'>Any</option>
-            <option value='dystoptian'>Dystopian</option>
+            <option value='dystopian'>Dystopian</option>
             <option value='fantasy'>Fantasy</option>
             <option value='horror'>Horror</option>
             <option value='mystery'>Mystery</option>
