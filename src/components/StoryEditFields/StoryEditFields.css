@@ -1,9 +1,17 @@
-#title {
+.title-input-box {
   margin-top: 1em;
+  height: 30px;
 }
 
-#story {
+.story-input-box {
   margin: 1em 0;
-  height: 200px;
+  height: 300px;
   font-family: inherit;
+}
+
+.story-input-box,
+.title-input-box {
+  border: double;
+  opacity: 0.6;
+  border-radius: 5px;
 }
