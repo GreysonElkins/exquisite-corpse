@@ -18,9 +18,13 @@ const getBookSpine = () => {
   return bookSpines[random];
 };
 
+const findLastWords = (story) => {
+  const lastEntry = story.contributions[story.contributions.length - 1]
+  return `. . . ${lastEntry.substring(5)}`
+} 
+
 const Book = ({ story, onClick, popup, authorUpdater }) => {
   const spine = getBookSpine()
-  let prompt = story.contributions.slice(-1)
   return (
     <>
       <div 
@@ -39,20 +43,19 @@ const Book = ({ story, onClick, popup, authorUpdater }) => {
           {moment(story.updated_at).format("MMM YYYY")}
         </span>
       </div>
-      {popup && 
-        <ReactTooltip id='global' className="pop-up" place='top' effect='float' >
-          <p className='blurred-text'>This is the blurred prompt for the popup,<br></br>
-          the user will not be able to see this, <br></br>
-          They will only be able to see the very last part<br></br>
-          consectetur adipiscing elit, sed do eiusmod <br></br>
-          tempor incididunt ut labore et dolore magna <br></br>
-          aliqua. Ut enim ad minim veniam, quis nostrud<br></br>
-          exercitation ullamco laboris nisi ut aliquip ex <br></br>
-          ea commodo consequat. Duis aute irure dolor in <br></br>
-          reprehenderit in voluptate aboris nisi ut</p>
-          <p>{prompt}...</p>
+        <ReactTooltip 
+          id='global' 
+          className="pop-up" 
+          place='top' 
+          effect='float' 
+        >
+          <p>
+            TITLE: {story.title} <br />
+            LAST WORDS: {findLastWords(story)} <br />
+            {story.prompt && `GENRE: ${story.prompt.genre}`}
+          </p>
         </ReactTooltip>
-      }
+
     </>
   );
 }
