@@ -21,9 +21,8 @@ class WelcomePageView extends Component {
           "With a wave of the wand, the wizard cast a spell and suddenly...",
           "There is a suspicious trail of cheetos leading down this hall...",
           "For the first time in over 35 years, the vault doors groaned as they slowly creaked open..."
-       ]
-      })
-     }
+      ]})
+    }
 
     displayHistory = () => {
       this.setState(prevState => {
