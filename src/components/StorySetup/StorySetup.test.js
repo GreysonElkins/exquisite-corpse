@@ -69,8 +69,8 @@ describe('StorySetup', () => {
 
   it.skip('should fire handleChange when a genre is selected', () => {
     // This has been skipped because there is no way to assert that the handleChange method was called, and no other visible change that we could figure out to test.
-    const getPrompts = jest.fn();
-    const handleChange = jest.fn();
+    const getPrompts = jest.fn()
+    const handleChange = jest.fn()
 
     const { getByRole, getByText } = render(
       <MemoryRouter>
@@ -81,19 +81,19 @@ describe('StorySetup', () => {
           error={false}
         />
       </MemoryRouter>
-    );
+    )
 
     const checkbox = getByRole('checkbox', {
       name: /would you like to start with a prompt\? check box for "yes" \-/i,
-    });
-    fireEvent.click(checkbox);
+    })
+    fireEvent.click(checkbox)
 
-    const dropDownMenu = getByRole('combobox');
-    fireEvent.click(dropDownMenu);
-    fireEvent.keyDown(dropDownMenu, { key: 'ArrowDown', code: 'ArrowDown' });
-    fireEvent.keyDown(dropDownMenu, { key: 'Enter', code: 'Enter' });
+    const dropDownMenu = getByRole('combobox')
+    fireEvent.click(dropDownMenu)
+    fireEvent.keyDown(dropDownMenu, { key: 'ArrowDown', code: 'ArrowDown' })
+    fireEvent.keyDown(dropDownMenu, { key: 'Enter', code: 'Enter' })
 
-    expect(handleChange).toHaveBeenCalledTimes(1);
+    expect(handleChange).toHaveBeenCalledTimes(1)
   })
 
   it('should display a button to start the story', () => {
