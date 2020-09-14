@@ -18,10 +18,6 @@ class StorySetupView extends Component {
     };
   }
 
-  setGenre = (genre) => {
-    this.setState({ genre: genre });
-  };
-
   handleChange = (event) => {
     const target = event.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
