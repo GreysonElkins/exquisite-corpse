@@ -39,8 +39,8 @@ class App extends Component {
       })
   }
 
-  updateContributorData = (stories) => {
-    const updatedStories = stories.map(story => {
+  updateContributorData = (story) => {
+    
       story.contributors.forEach((contributor, i) => {
         const existingAuthor = this.state.authors
           .find(author => author.id === contributor)
@@ -55,21 +55,20 @@ class App extends Component {
             })
         }
       })
-    })
-    this.updateStoryData(updatedStories)
+    this.updateStoryData(story)
   }
 
-  // updateStoryData = (updatedStories) => {
-  //   const allStoriesCopy = this.state.stories
-  //   const updatedStories = allStoriesCopy.map(story => {
-  //     if (story.id === updatedStory.id) {
-  //       return updatedStory
-  //     } else {
-  //       return story
-  //     }
-  //   })
-  //   this.setState({stories: updatedStories})
-  // }
+  updateStoryData = (newStory) => {
+    const allStoriesCopy = this.state.stories
+    const withNewStory = allStoriesCopy.map(oldStory => {
+      if (newStory.id === oldStory.id) {
+        return newStory
+      } else {
+        return oldStory
+      }
+    })
+    this.setState({stories: withNewStory})
+  }
 
   incompleteStories = () => {
     return this.state.stories.filter(story => !story.is_complete)
@@ -83,11 +82,15 @@ class App extends Component {
     return (
       <main>
         <Header />
-        <Route
-          exact
-          path="/"
-          render={() => {
-            return <WelcomePageView />;
+        <Route 
+          exact path='/' 
+          render={ () => {
+            return (
+              <WelcomePageView 
+                stories={this.incompleteStories()}
+                authorUpdater={this.updateContributorData}
+              /> 
+            )
           }}
         />
         <Route
