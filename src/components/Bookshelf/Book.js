@@ -37,25 +37,20 @@ const Book = ({ story, onClick, popup, authorUpdater }) => {
           onClick(story)
         }}
       >
-        <span className="title">{story.title}</span>
-        <span className="prompt">{story.prompt && story.prompt.prompt}</span>
-        <span className="date-published">
-          {moment(story.updated_at).format("MMM YYYY")}
-        </span>
       </div>
         <ReactTooltip 
           id='global' 
           className="pop-up" 
           place='top' 
           effect='float' 
-        >
+          >
           <p>
             TITLE: {story.title} <br />
             LAST WORDS: {findLastWords(story)} <br />
-            {story.prompt && `GENRE: ${story.prompt.genre}`}
+            {story.prompt && `GENRE: ${story.prompt.genre}`} <br />
+            LAST UPDATED: {moment(story.updated_at).format("MMMM DD, YYYY")}
           </p>
         </ReactTooltip>
-
     </>
   );
 }
