@@ -1,8 +1,13 @@
-import testData from '../assets/testData/testData'
+const apiHead = 'http://localhost:3005/api/v1'
 
 class ApiHelper {
-  static getData = () => {
-    return Promise.resolve(testData.stories)
+  static getData = (type, id) => {
+    return fetch(`${apiHead}/${type}/${id ? id : ''}`)
+      .then(response => response.json())
+  }
+
+  static determineGetPath(type, id) {
+
   }
 }
 
