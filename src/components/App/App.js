@@ -6,7 +6,6 @@ import WelcomePageView from '../WelcomePageView/WelcomePageView'
 import StorySetupView from '../StorySetupView/StorySetupView'
 import StoryEditView from '../StoryEditView/StoryEditView'
 import LibraryView from '../LibraryView/LibraryView'
-// import PublishedStoryView from '../PublishedStoryView/PublishedStoryView'
 
 class App extends Component {
   render() {
