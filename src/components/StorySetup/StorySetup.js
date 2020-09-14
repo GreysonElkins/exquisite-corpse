@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
+import ApiHelper from '../../ApiHelper/ApiHelper'
 import './StorySetup.css'
 
 class StorySetup extends Component {
@@ -25,7 +26,14 @@ class StorySetup extends Component {
 
   handleSubmit = async (event) => {
     event.preventDefault()
-    // const prompt = await this.props.getPrompts(this.state.genre)
+    const genre = this.state.genre
+
+    if (genre === '') {
+      const prompt = await ApiHelper.getRandomPromptFromAll() 
+    } else {
+      
+    }
+
     if(!this.props.error) {
       this.setState({
         prompt: 'one time',

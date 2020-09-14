@@ -11,15 +11,6 @@ class StorySetupView extends Component {
     }
   }
 
-  // getPrompts = genre => {
-  //   apiHelper.getPrompts(genre)
-  //     .then(prompts => this.setState({
-  //       prompt: prompts[Math.floor(Math.random() * prompts.length)]
-  //     }))
-  //     .catch(error => this.setState({ error: error.status })
-  //   )
-  // }
-
   render() {
     return (
       <section className='StorySetupView'>
