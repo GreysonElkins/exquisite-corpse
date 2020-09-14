@@ -5,13 +5,14 @@ import './Bookshelf.scss'
 class Bookshelf extends Component {
 
   componentDidMount = () => {
+    // this.props.authorUpdater(this.props.stories)
   }
 
   booksSelection = () => {
     return this.props.stories.map((story, i) => {
-      this.props.authorUpdater(story)
       return (
         <Book 
+          authorUpdater={this.props.authorUpdater}
           story={story} 
           onClick={() => this.props.onClick(story)} 
           popup={this.props.popup} key={i}/>

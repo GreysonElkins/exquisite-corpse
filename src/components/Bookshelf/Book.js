@@ -18,7 +18,7 @@ const getBookSpine = () => {
   return bookSpines[random];
 };
 
-const Book = ({ story, onClick, popup }) => {
+const Book = ({ story, onClick, popup, authorUpdater }) => {
   const spine = getBookSpine()
   let prompt = story.contributions.slice(-1)
   return (
@@ -29,6 +29,7 @@ const Book = ({ story, onClick, popup }) => {
         style={{ backgroundImage: `url(${spine})` }}
         role="button"
         onClick={() => {
+          authorUpdater(story)
           onClick(story)
         }}
       >

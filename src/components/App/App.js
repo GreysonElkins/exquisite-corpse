@@ -39,8 +39,8 @@ class App extends Component {
       })
   }
 
-  updateContributorData = (stories) => {
-    const updatedStories = stories.map(story => {
+  updateContributorData = (story) => {
+    
       story.contributors.forEach((contributor, i) => {
         const existingAuthor = this.state.authors
           .find(author => author.id === contributor)
@@ -55,20 +55,20 @@ class App extends Component {
             })
         }
       })
-    })
-    this.updateStoryData(updatedStories)
+    this.updateStoryData(story)
   }
 
-  updateStoryData = (updatedStories) => {
+  updateStoryData = (newStory) => {
+    debugger
     const allStoriesCopy = this.state.stories
-    const updatedStories = allStoriesCopy.map(story => {
-      if (story.id === updatedStory.id) {
-        return updatedStory
+    const withNewStory = allStoriesCopy.map(oldStory => {
+      if (newStory.id === oldStory.id) {
+        return newStory
       } else {
-        return story
+        return oldStory
       }
     })
-    this.setState({stories: updatedStories})
+    this.setState({stories: withNewStory})
   }
 
   incompleteStories = () => {
