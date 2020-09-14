@@ -6,21 +6,24 @@ const Header = () => {
   return (
     <header className='header'>
       <Link to='/'>
-        <h1 className='title'><span className='first-letter'>E</span>xquisite <span className='first-letter'>C</span>orpse</h1>
+        <h1 className='title'>
+          <span className='first-letter'>E</span>xquisite{' '}
+          <span className='first-letter'>C</span>orpse
+        </h1>
       </Link>
       <nav className='navbar'>
-        <NavLink to='/story-setup' activeClassName='selected'>
-          <button className='nav-button'>New Story</button>
+        <NavLink to='/story-setup' className='nav' activeClassName='selected'>
+         /  New Story /
         </NavLink>
-        <NavLink to='/library' activeClassName='selected'>
-          <button className='nav-button'>Library</button>
+        <NavLink to='/library' className='nav' activeClassName='selected'>
+          / Library /
         </NavLink>
-        <NavLink to='/login' activeClassName='selected'>
-          <button className='nav-button'>Sign In</button>
+        <NavLink to='/login' className='nav' activeClassName='selected'>
+         / Sign In /
         </NavLink>
       </nav>
     </header>
-  )
+  );
 }
 
 export default Header
