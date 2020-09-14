@@ -9,6 +9,7 @@ class LibraryView extends Component {
     super()
     this.state = {
       stories: [],
+      currentAuthors: [],
       currentStory: {
         contributions: [],
         title: '',
@@ -40,7 +41,13 @@ class LibraryView extends Component {
   }
 
   findAuthors = (ids) => {
-    ApiHelper.getData('authors', id)
+    const foundAuthors = []
+    ids.forEach(async author => {
+      await ApiHelper.getData('authors', author).then((foundAuthor) => {
+        foundAuthors.push(foundAuthor)
+        this.setState({ currentAuthors: foundAuthors })
+      })
+    })
   }
 
   render() {
@@ -54,6 +61,7 @@ class LibraryView extends Component {
       {this.state.currentStory.contributions.length > 0 
         && <PublishedStory 
           currentStory={this.state.currentStory}
+          currentAuthors={this.state.currentAuthors}
           />
       }
       </>
