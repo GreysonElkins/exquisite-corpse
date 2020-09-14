@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import StorySetup from '../StorySetup/StorySetup'
 import ApiHelper from '../../ApiHelper/ApiHelper'
+import StoryEditView from '../StoryEditView/StoryEditView'
 import './StorySetupView.css'
 
 class StorySetupView extends Component {
@@ -47,7 +48,7 @@ class StorySetupView extends Component {
       this.setState({
         genre: genre,
         prompt: prompt,
-        submitOk: true,
+        submitOk: true
       });
     }
   };
@@ -61,6 +62,9 @@ class StorySetupView extends Component {
             {this.state.error}
           </h2>
         )}
+        {this.state.submitOk && 
+          <StoryEditView prompt={this.state.prompt} />
+        }
         <StorySetup
           userName={"Bango Zango" /*this.props.username*/}
           setPrompt={this.setPrompt}

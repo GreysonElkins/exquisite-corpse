@@ -4,13 +4,6 @@ import ApiHelper from '../../ApiHelper/ApiHelper'
 import './StorySetup.css'
 
 const StorySetup = (props) => {
-  if (props.submitOk) {
-    return <Redirect to={{
-        pathname: '/story-edit',
-        state: { prompt: props.prompt }
-      }}
-    />
-  }
   return (
     <form className='StorySetup' onSubmit={props.handleSubmit}>
       {!props.userName && 
