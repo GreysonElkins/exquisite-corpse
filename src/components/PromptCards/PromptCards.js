@@ -1,5 +1,5 @@
 import React from 'react'
-import './PromptCards.css'
+import './PromptCards.scss'
 import { Link } from 'react-router-dom'
 
 const PromptCards = ( { inProgressStories } ) => {
@@ -13,11 +13,11 @@ const PromptCards = ( { inProgressStories } ) => {
   })
   
   return (
-    <div className="library-sec">
-      <div className="PromptCards-sec">
+    <div className='library-sec'>
+      <div className='PromptCards-sec'>
           {stories}
       </div>
-      <h3 className="published-stories-text" >View Published Stories</h3>
+      <h3 className='published-stories-text' >View Published Stories</h3>
     </div>
   )
 }

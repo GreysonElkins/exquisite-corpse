@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import TimerDisplay from "../TimerDisplay/TimerDisplay";
-import "../StoryEditFooter/StoryEditFooter.css";
+import "../StoryEditFooter/StoryEditFooter.scss";
 
 const StoryEditFooter = ({ disableStoryInput, isPublishable }) => {
   return (

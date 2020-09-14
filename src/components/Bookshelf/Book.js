@@ -19,6 +19,7 @@ const getBookSpine = () => {
 };
 
 const findLastWords = (story) => {
+  debugger
   const lastEntry = story.contributions[story.contributions.length - 1]
   return `. . . ${lastEntry.substring(5)}`
 } 
@@ -46,7 +47,7 @@ const Book = ({ story, onClick, popup, authorUpdater }) => {
           >
           <p>
             TITLE: {story.title} <br />
-            LAST WORDS: {findLastWords(story)} <br />
+            {story.contributions[0] !== null && `LAST WORDS: ${findLastWords(story)}`} <br />
             {story.prompt && `GENRE: ${story.prompt.genre}`} <br />
             LAST UPDATED: {moment(story.updated_at).format("MMMM DD, YYYY")}
           </p>

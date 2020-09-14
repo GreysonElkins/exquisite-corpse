@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import StoryEditFields from '../StoryEditFields/StoryEditFields'
 import StoryEditFooter from '../StoryEditFooter/StoryEditFooter'
-import './StoryEditView.css'
+import './StoryEditView.scss'
 
 class StoryEditView extends Component {
   constructor(props) {
@@ -18,10 +18,11 @@ class StoryEditView extends Component {
   }
 
   render() {
+    // console.log(this.props.location.state)
     return (
       <main id="story-edit-container">
         <StoryEditFields 
-          prompt={ this.props.location.state.prompt }
+          oldStory={ this.props.location.state }
           updateText={ this.updateText } 
           disabled={ this.state.disabled }
         />

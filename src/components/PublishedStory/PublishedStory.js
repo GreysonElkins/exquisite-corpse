@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import moment from 'moment'
 import ApiHelper from '../../ApiHelper/ApiHelper'
-import './PublishedStory.css'
+import './PublishedStory.scss'
 
 const PublishedStory = ({ currentStory, currentAuthors }) => {  
     

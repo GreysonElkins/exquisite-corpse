@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.scss';
 import { Route } from 'react-router-dom'
 import Header from '../Header/Header'
 import WelcomePageView from '../WelcomePageView/WelcomePageView'
@@ -7,6 +7,7 @@ import StorySetupView from '../StorySetupView/StorySetupView'
 import StoryEditView from '../StoryEditView/StoryEditView'
 import LibraryView from '../LibraryView/LibraryView'
 import ApiHelper from '../../ApiHelper/ApiHelper';
+import mainBackground from '../../assets/backgrounds/mainBackground.jpg'
 
 class App extends Component {
   constructor() {
@@ -80,7 +81,8 @@ class App extends Component {
 
   render() {
     return (
-      <main>
+      <main className='App'>
+        <img className='background' src={mainBackground} alt='Parchment Manuscript paper' />
         <Header />
         <Route 
           exact path='/' 

@@ -1,23 +1,25 @@
 import React, { Fragment } from 'react'
-import "../StoryEditFields/StoryEditFields.css";
+import '../StoryEditFields/StoryEditFields.scss';
 
-const StoryEditFields = ({ updateText, disabled, prompt }) => {
+const StoryEditFields = ({ updateText, disabled, oldStory }) => {
+  // console.log(oldStory)
   return (
     <Fragment>
-      {prompt && 
-        <h1 id="prompt">{ prompt.prompt }</h1>
+      {oldStory.prompt !== null &&
+        <h1 id="prompt">PROMPT: { oldStory.prompt.prompt }</h1>
       }
+      LAST WORDS: . . .{'testing for now'}
       <input
-        id="title"
-        type="text"
+        id='title'
+        type='text'
         onChange={updateText}
-        placeholder="Enter your title here" // we can change the value of this to be whatever's passed in - same for line 25
+        placeholder='Enter your title here' // we can change the value of this to be whatever's passed in - same for line 25
       />
       <textarea
-        id="story"
+        id='story'
         onChange={updateText}
-        placeholder="Type your story here"
-        disabled={disabled ? "disabled" : false}
+        placeholder='Type your story here'
+        disabled={disabled ? 'disabled' : false}
       />
     </Fragment>
   );
