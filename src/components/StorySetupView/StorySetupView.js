@@ -8,7 +8,8 @@ class StorySetupView extends Component {
     this.state = {
       error: "",
       prompt: "",
-      genre: ""
+      genre: "",
+      submitOk: false
     };
   }
 
@@ -21,8 +22,12 @@ class StorySetupView extends Component {
     let prompt;
 
     if (this.state.promptRequested) {
-      const genre = this.state.genre;
-      prompt = await ApiHelper.getRandomPrompt(genre);
+      try {
+        const genre = this.state.genre;
+        prompt = await ApiHelper.getRandomPrompt(genre);
+      } catch (error) {
+        this.setState({ error: error.message })
+      }
     }
 
     if (!this.props.error) {
