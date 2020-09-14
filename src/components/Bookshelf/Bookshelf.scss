@@ -48,6 +48,10 @@
 .pop-up {
   font-size: 20px !important;
   color: black !important;
+  // filter: blur;
+  // text-shadow: 0 0 32px white !important;
+  // color: transparent !important;
+  // text-shadow: 0 0 5px rgba(0,0,0,0.5) !important;
   pointer-events: auto !important;
   background-color: white !important;
   border: solid 1px black !important;
@@ -55,4 +59,9 @@
     visibility: visible !important;
     opacity: 1 !important;
   }
+}
+
+.blurred-text {
+  color: transparent !important;
+  text-shadow: 0 0 5px rgba(0,0,0,0.5) !important;
 }

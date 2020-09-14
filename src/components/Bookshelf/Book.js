@@ -24,7 +24,7 @@ const Book = ({ story, onClick, popup }) => {
   return (
     <>
       <div 
-        data-tip={prompt}
+        data-tip data-for='global'
         className="book" 
         style={{ backgroundImage: `url(${spine})` }}
         role="button"
@@ -39,7 +39,18 @@ const Book = ({ story, onClick, popup }) => {
         </span>
       </div>
       {popup && 
-        <ReactTooltip className="pop-up" place='top' effect='float' />
+        <ReactTooltip id='global' className="pop-up" place='top' effect='float' >
+          <p className='blurred-text'>This is the blurred prompt for the popup,<br></br>
+          the user will not be able to see this, <br></br>
+          They will only be able to see the very last part<br></br>
+          consectetur adipiscing elit, sed do eiusmod <br></br>
+          tempor incididunt ut labore et dolore magna <br></br>
+          aliqua. Ut enim ad minim veniam, quis nostrud<br></br>
+          exercitation ullamco laboris nisi ut aliquip ex <br></br>
+          ea commodo consequat. Duis aute irure dolor in <br></br>
+          reprehenderit in voluptate aboris nisi ut</p>
+          <p>{prompt}...</p>
+        </ReactTooltip>
       }
     </>
   );
