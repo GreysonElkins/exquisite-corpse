@@ -66,7 +66,7 @@ class PublishedStory extends Component {
           <h3>{this.presentAuthors(this.state.authors)}</h3>
         </header>
         <section>
-          {this.buildStory(this.props.currentStory.story)}
+          {this.buildStory(this.props.currentStory.contributions)}
         </section>
       </article>
 

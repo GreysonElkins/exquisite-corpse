@@ -20,7 +20,7 @@ const getBookSpine = () => {
 
 const Book = ({ story, onClick, popup }) => {
   const spine = getBookSpine()
-  let prompt = story.story.slice(-1)
+  let prompt = story.contributions.slice(-1)
   return (
     <>
       <div 

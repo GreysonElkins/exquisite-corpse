@@ -8,9 +8,8 @@ class LibraryView extends Component {
     super()
     this.state = {
       stories: [],
-      popup: false,
       currentStory: {
-        story: [],
+        contributions: [],
         title: '',
         updated_at: '',
         prompt: ''
@@ -20,9 +19,9 @@ class LibraryView extends Component {
 
   componentDidMount() {
     const completedStories = []
-    ApiHelper.getData().then(stories => {
+    ApiHelper.getData('stories').then(stories => {
       stories.forEach(story => {
-        if(story.isComplete) {
+        if(story.is_complete) {
           completedStories.push(story)
           this.setState({ stories: completedStories })
         }
@@ -40,9 +39,9 @@ class LibraryView extends Component {
         <Bookshelf
           stories={this.state.stories}
           onClick={this.selectStoryToRead}
-          popup={this.state.popup}
+          popup={false}
         />
-      {this.state.currentStory.story.length > 0 
+      {this.state.currentStory.contributions.length > 0 
         && <PublishedStory 
           currentStory={this.state.currentStory}
           />
