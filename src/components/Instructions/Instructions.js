@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom'
 
 const Instructions = ( { displayHistory, showHistory } ) => {
   return (
-    <section className="Instructions-sec">
-    <h2 className="Instructions-header-text">Rules of Play</h2>
-      <div className="game-instructions">
+    <section className='Instructions-sec'>
+    <h2 className='Instructions-header-text'>Rules of Play</h2>
+      <div className='game-instructions'>
         <ul>
           <li>Exquisite Corpse is a collaborative creative writing game where users start or continue shared stories, 
               only being able to read the last line of the previous author's submission. The result is a fun collection of writing styles all making up one story.</li>
@@ -18,11 +18,11 @@ const Instructions = ( { displayHistory, showHistory } ) => {
           </ol>
         </ul>
       </div>
-      <button className="show-history-button" onClick={displayHistory}>History of Exquisite Corpse</button>
+      <button className='show-history-button' onClick={displayHistory}>History of Exquisite Corpse</button>
       {showHistory ? <GameHistory displayHistory={displayHistory} /> : null}
-      <Link to='/story-setup' style={{ fontSize: 30 }}className="start-new-story-link">Start a new story</Link>
+      <Link to='/story-setup' style={{ fontSize: 30 }}className='start-new-story-link'>Start a new story</Link>
       <h2>OR</h2>
-      <h3 className="text">Continue a story:</h3>
+      <h3 className='text'>Continue a story:</h3>
     </section>
   )
 }
