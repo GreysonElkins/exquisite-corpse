@@ -75,23 +75,23 @@ describe('StorySetup', () => {
     const { getByRole, getByText } = render(
       <MemoryRouter>
         <StorySetup
-          userName={"Bango Zango"}
+          userName={'Bango Zango'}
           getPrompts={getPrompts}
-          prompt={""}
+          prompt={''}
           error={false}
         />
       </MemoryRouter>
     );
 
-    const checkbox = getByRole("checkbox", {
+    const checkbox = getByRole('checkbox', {
       name: /would you like to start with a prompt\? check box for "yes" \-/i,
     });
     fireEvent.click(checkbox);
 
-    const dropDownMenu = getByRole("combobox");
+    const dropDownMenu = getByRole('combobox');
     fireEvent.click(dropDownMenu);
-    fireEvent.keyDown(dropDownMenu, { key: "ArrowDown", code: "ArrowDown" });
-    fireEvent.keyDown(dropDownMenu, { key: "Enter", code: "Enter" });
+    fireEvent.keyDown(dropDownMenu, { key: 'ArrowDown', code: 'ArrowDown' });
+    fireEvent.keyDown(dropDownMenu, { key: 'Enter', code: 'Enter' });
 
     expect(handleChange).toHaveBeenCalledTimes(1);
   })
