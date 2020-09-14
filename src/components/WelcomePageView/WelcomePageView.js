@@ -45,13 +45,13 @@ class WelcomePageView extends Component {
   render() {
     const { redirect } = this.state
 
-     if (redirect) {
-       return <Redirect to={{
-          pathname: '/story-edit',
-          state: this.state.selectedPrompt
-        }}
-       />
-     }
+    if (redirect) {
+      return <Redirect to={{
+        pathname: '/story-edit',
+        state: this.state.selectedPrompt
+      }}
+      />
+    }
 
     return (
       <section className="WelcomePage">

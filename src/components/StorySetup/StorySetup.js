@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
+import ApiHelper from '../../ApiHelper/ApiHelper'
 import './StorySetup.css'
 
 class StorySetup extends Component {
@@ -8,7 +9,7 @@ class StorySetup extends Component {
     this.state = {
       authorName: '',
       promptRequested: false,
-      genre: '',
+      genre: 'any',
       submitOk: false,
       prompt: ''
     }
@@ -25,10 +26,16 @@ class StorySetup extends Component {
 
   handleSubmit = async (event) => {
     event.preventDefault()
-    // const prompt = await this.props.getPrompts(this.state.genre)
+    let prompt
+
+    if (this.state.promptRequested) {
+      const genre = this.state.genre
+      prompt = await ApiHelper.getRandomPrompt(genre)
+    }
+
     if(!this.props.error) {
       this.setState({
-        prompt: 'one time',
+        prompt: prompt,
         submitOk: true
       })
     }
@@ -78,9 +85,8 @@ class StorySetup extends Component {
             onChange={this.handleChange}
           >
             <option value='any'>Any</option>
-            <option value='dystoptian'>Dystopian</option>
+            <option value='dystopian'>Dystopian</option>
             <option value='fantasy'>Fantasy</option>
-            <option value='horror'>Horror</option>
             <option value='mystery'>Mystery</option>
             <option value='romance'>Romance</option>
             <option value='science fiction'>Science Fiction</option>
