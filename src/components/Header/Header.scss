@@ -1,8 +1,28 @@
+@import '../../styles/fonts.scss';
+
 .header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border-bottom: 1px solid grey;
+  // border-bottom: 1px solid grey;
+  // font-family: $fancy-letter-2;
+}
+
+.title {
+  font-family: $main-font;
+  font-size: 3em;
+  color: black;
+  margin: 10px 0;
+  transition: all ease-in-out .4s;
+
+  &:hover {
+    text-shadow: -3px 3px 5px rgba(0, 0, 0, 0.63);
+  }
+}
+
+.first-letter {
+  font-family: $fancy-letter;
+  font-size: 1.5em;
 }
 
 .header a {
