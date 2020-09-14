@@ -23,23 +23,6 @@ class StorySetup extends Component {
       [name]: value
     })
   }
-
-  handleSubmit = async (event) => {
-    event.preventDefault()
-    let prompt
-
-    if (this.state.promptRequested) {
-      const genre = this.state.genre
-      prompt = await ApiHelper.getRandomPrompt(genre)
-    }
-
-    if(!this.props.error) {
-      this.setState({
-        prompt: prompt,
-        submitOk: true
-      })
-    }
-  }
   
   render() {
     if (this.state.submitOk) {
@@ -50,7 +33,7 @@ class StorySetup extends Component {
       />
     }
     return (
-      <form className='StorySetup' onSubmit={this.handleSubmit}>
+      <form className='StorySetup' onSubmit={this.props.handleSubmit}>
         {!this.props.userName && 
         <label>
           Who Are You?<br/>
