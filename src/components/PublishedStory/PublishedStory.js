@@ -12,19 +12,16 @@ class PublishedStory extends Component {
   }
   
   componentDidMount() {
-    const foundAuthors = [];
-    ApiHelper.getData().then(authors => {
-      this.setState({
-        authors: [
-          "Greyson Elkins", 
-          "Carly Clift", 
-          "Nick Hart", 
-          "Aaron B.D."]
-        });
-        // this will be fleshed out when getData and 
-        // authors in the database are fleshed out
+    this.setState( { authors: [] })
+    this.props.currentStory.contributors.map(async author => {
+      const foundAuthors = this.state.authors
+      await ApiHelper.getData('authors', author).then((foundAuthor) => {
+        console.log(foundAuthor)
+        foundAuthors.push(foundAuthor[0])
+        this.setState({ authors: foundAuthors })
       })
-    }
+    })
+  }
     
   buildStory = (story = []) => {
     return story.map((section, i) => {
@@ -63,7 +60,9 @@ class PublishedStory extends Component {
             <br /> 
             Prompt: {this.props.currentStory.prompt}
           </h4>
-          <h3>{this.presentAuthors(this.state.authors)}</h3>
+          <h3>{
+          // this.presentAuthors(this.state.authors)
+          }</h3>
         </header>
         <section>
           {this.buildStory(this.props.currentStory.contributions)}
