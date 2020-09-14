@@ -29,13 +29,54 @@ class App extends Component {
           const updatedStories = []
           allStories.forEach(story => {
             if (story.prompt) {
-              story.prompt = this.state.prompts.find(prompt => prompt.id === story.prompt)
+              story.prompt = this.state.prompts
+                .find(prompt => prompt.id === story.prompt)
             }
             updatedStories.push(story)
           })
           this.setState({ stories: updatedStories })
         })
       })
+  }
+
+  updateContributorData = (stories) => {
+    const updatedStories = stories.map(story => {
+      story.contributors.forEach((contributor, i) => {
+        const existingAuthor = this.state.authors
+          .find(author => author.id === contributor)
+        if (existingAuthor) {
+          story.contributors[i] = existingAuthor
+        } else {
+          ApiHelper.getData('authors', contributor)
+            .then(author => {
+              const allAuthors = this.state.authors.concat(author)
+              story.contributors[i] = author
+              this.setState({ authors: allAuthors })
+            })
+        }
+      })
+    })
+    this.updateStoryData(updatedStories)
+  }
+
+  updateStoryData = (updatedStories) => {
+    const allStoriesCopy = this.state.stories
+    const updatedStories = allStoriesCopy.map(story => {
+      if (story.id === updatedStory.id) {
+        return updatedStory
+      } else {
+        return story
+      }
+    })
+    this.setState({stories: updatedStories})
+  }
+
+  incompleteStories = () => {
+    return this.state.stories.filter(story => !story.is_complete)
+  }
+  
+  completedStories = () => {    
+    return this.state.stories.filter(story => story.is_complete)
   }
 
   render() {
@@ -63,15 +104,14 @@ class App extends Component {
         <Route 
           exact path='/library' 
           render={ () => {
-            return <LibraryView /> 
+            return (
+              <LibraryView 
+                stories={this.completedStories()}
+                authorUpdater={this.updateContributorData} 
+              />
+            ) 
           }}
         />
-        {/* <Route 
-          exact path='/published-story/:id' 
-          render={ () => {
-            return <PublishedStoryView /> 
-          }}
-        />  */}
       </main>
     )
   }

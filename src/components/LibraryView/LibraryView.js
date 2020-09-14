@@ -8,7 +8,6 @@ class LibraryView extends Component {
   constructor() {
     super()
     this.state = {
-      stories: [],
       currentStory: {
         contributions: [],
         title: '',
@@ -20,26 +19,26 @@ class LibraryView extends Component {
     }
   }
 
-  async componentDidMount() {
-    const completedStories = []
-    ApiHelper.getData('stories')
-    .then(stories => {
+  // async componentDidMount() {
+  //   const completedStories = []
+  //   ApiHelper.getData('stories')
+  //   .then(stories => {
 
-      stories.forEach(async (story) => {
-        if(story.is_complete) {
-          await story.prompt 
-            && ApiHelper.getData('prompts', story.prompt)
-              .then(prompt => story.prompt = prompt[0])
-          await story.contributors.forEach((author, i) => {
-            ApiHelper.getData('authors', author)
-              .then(foundAuthor => story.contributors[i] = foundAuthor)
-          })
-          completedStories.push(story)
-          this.setState({ stories: completedStories })
-        }
-      }) 
-    })
-  }
+  //     stories.forEach(async (story) => {
+  //       if(story.is_complete) {
+  //         await story.prompt 
+  //           && ApiHelper.getData('prompts', story.prompt)
+  //             .then(prompt => story.prompt = prompt[0])
+  //         await story.contributors.forEach((author, i) => {
+  //           ApiHelper.getData('authors', author)
+  //             .then(foundAuthor => story.contributors[i] = foundAuthor)
+  //         })
+  //         completedStories.push(story)
+  //         this.setState({ stories: completedStories })
+  //       }
+  //     }) 
+  //   })
+  // }
 
   selectStoryToRead = (story) => {
     this.setState({ currentStory: story })
@@ -49,14 +48,14 @@ class LibraryView extends Component {
     return (
       <>
         <Bookshelf
-          stories={this.state.stories}
+          stories={this.props.stories}
+          authorUpdater={this.props.authorUpdater}
           onClick={this.selectStoryToRead}
           popup={false}
         />
-      {this.state.currentStory.contributions.length > 0 
+      {this.state.currentStory.title !== '' 
         && <PublishedStory 
           currentStory={this.state.currentStory}
-          currentAuthors={['Bowza']}
           />
       }
       </>

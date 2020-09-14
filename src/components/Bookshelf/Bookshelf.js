@@ -3,14 +3,13 @@ import Book from './Book'
 import './Bookshelf.scss'
 
 class Bookshelf extends Component {
-  constructor(props) {
-    super(props) 
-    this.state = {
-    }
+
+  componentDidMount = () => {
   }
 
   booksSelection = () => {
     return this.props.stories.map((story, i) => {
+      this.props.authorUpdater(story)
       return (
         <Book 
           story={story} 
@@ -22,7 +21,7 @@ class Bookshelf extends Component {
   render() {
     return (
       <section className="bookContainer">
-        {this.booksSelection}
+        {this.booksSelection()}
       </section>
     )
   }
