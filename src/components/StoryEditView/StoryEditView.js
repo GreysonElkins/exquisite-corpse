@@ -21,7 +21,11 @@ class StoryEditView extends Component {
     return (
       <main id="story-edit-container">
         <StoryEditFields 
+<<<<<<< HEAD
           prompt={ this.props.location.state.prompt }
+=======
+          prompt={ this.props.location.state }
+>>>>>>> f0b4526adbc124e62b466b1bb6503e72bbd98bb7
           updateText={ this.updateText } 
           disabled={ this.state.disabled }
         />

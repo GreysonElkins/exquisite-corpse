@@ -8,6 +8,7 @@ class LibraryView extends Component {
     super()
     this.state = {
       stories: [],
+      popup: false,
       currentStory: {
         story: [],
         title: '',
@@ -23,14 +24,14 @@ class LibraryView extends Component {
       stories.forEach(story => {
         if(story.isComplete) {
           completedStories.push(story)
-          this.setState( {stories: completedStories})
+          this.setState({ stories: completedStories })
         }
       })
     })
   }
 
   selectStoryToRead = (story) => {
-    this.setState({ currentStory: story})
+    this.setState({ currentStory: story })
   }
 
   render() {
@@ -39,6 +40,7 @@ class LibraryView extends Component {
         <Bookshelf
           stories={this.state.stories}
           onClick={this.selectStoryToRead}
+          popup={this.state.popup}
         />
       {this.state.currentStory.story.length > 0 
         && <PublishedStory 
