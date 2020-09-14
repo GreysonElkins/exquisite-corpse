@@ -1,10 +1,12 @@
 import React, { Fragment } from 'react'
 import '../StoryEditFields/StoryEditFields.scss';
 
-const StoryEditFields = ({ updateText, disabled }) => {
+const StoryEditFields = ({ updateText, disabled, prompt }) => {
   return (
     <Fragment>
-      <h1 id='prompt'>Prompt placeholder</h1>
+      {prompt && 
+        <h1 id="prompt">{ prompt.prompt }</h1>
+      }
       <input
         id='title'
         type='text'

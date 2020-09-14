@@ -28,8 +28,8 @@ class App extends Component {
         />
         <Route 
           exact path='/story-edit' 
-          render={ () => {
-            return <StoryEditView /> 
+          render={ (props) => {
+            return <StoryEditView {...props} /> 
           }}
         />  
         <Route 
@@ -38,12 +38,6 @@ class App extends Component {
             return <LibraryView /> 
           }}
         />
-        {/* <Route 
-          exact path='/published-story/:id' 
-          render={ () => {
-            return <PublishedStoryView /> 
-          }}
-        />  */}
       </main>
     )
   }
