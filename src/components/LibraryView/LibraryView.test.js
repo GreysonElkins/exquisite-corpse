@@ -10,11 +10,11 @@ describe('LibraryView component', () => {
   beforeEach(() => {
     ApiHelper.getData.mockResolvedValueOnce(testData.stories)
     render(<LibraryView />)
-    // ApiHelper.getData.mockResolvedValueOnce(testData.stories)
   })
   
-  it('should fetch stories on render', () => {
-    expect(ApiHelper.getData).toHaveBeenCalledTimes(1)
+  it('should fetch stories, authors, and prompts on render', () => {
+    ApiHelper.getData.mockResolvedValue(testData)
+    expect(ApiHelper.getData).toHaveBeenCalledTimes(4)
   })
   
   it('should render a book button for every COMPLETED story', () => {
@@ -32,7 +32,7 @@ describe('LibraryView component', () => {
     expect(title).toBeInTheDocument()
   })
   
-  it.skip(`should display a different story 
+  it(`should display a different story 
   when a different button is clicked`, () => {
     const button1 = screen.getByText('Birdhouse in Your Soul')
     const button2 = screen.getByText('Greyson has a good morning')

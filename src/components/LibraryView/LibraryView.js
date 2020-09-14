@@ -9,7 +9,6 @@ class LibraryView extends Component {
     super()
     this.state = {
       stories: [],
-      currentAuthors: [],
       currentStory: {
         contributions: [],
         title: '',
