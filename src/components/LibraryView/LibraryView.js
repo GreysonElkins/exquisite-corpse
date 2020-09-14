@@ -1,3 +1,4 @@
+import { findAllByAltText } from '@testing-library/react'
 import React, { Component } from 'react'
 import ApiHelper from '../../ApiHelper/ApiHelper'
 import Bookshelf from '../Bookshelf/Bookshelf'
@@ -7,28 +8,37 @@ class LibraryView extends Component {
   constructor() {
     super()
     this.state = {
-      stories: [],
-      popup: false,
       currentStory: {
-        story: [],
+        contributions: [],
         title: '',
         updated_at: '',
-        prompt: ''
+        prompt: null,
+        is_complete: true,
+        contributors: []
       }
     }
   }
 
-  componentDidMount() {
-    const completedStories = []
-    ApiHelper.getData().then(stories => {
-      stories.forEach(story => {
-        if(story.isComplete) {
-          completedStories.push(story)
-          this.setState({ stories: completedStories })
-        }
-      })
-    })
-  }
+  // async componentDidMount() {
+  //   const completedStories = []
+  //   ApiHelper.getData('stories')
+  //   .then(stories => {
+
+  //     stories.forEach(async (story) => {
+  //       if(story.is_complete) {
+  //         await story.prompt 
+  //           && ApiHelper.getData('prompts', story.prompt)
+  //             .then(prompt => story.prompt = prompt[0])
+  //         await story.contributors.forEach((author, i) => {
+  //           ApiHelper.getData('authors', author)
+  //             .then(foundAuthor => story.contributors[i] = foundAuthor)
+  //         })
+  //         completedStories.push(story)
+  //         this.setState({ stories: completedStories })
+  //       }
+  //     }) 
+  //   })
+  // }
 
   selectStoryToRead = (story) => {
     this.setState({ currentStory: story })
@@ -38,11 +48,12 @@ class LibraryView extends Component {
     return (
       <>
         <Bookshelf
-          stories={this.state.stories}
+          stories={this.props.stories}
+          authorUpdater={this.props.authorUpdater}
           onClick={this.selectStoryToRead}
-          popup={this.state.popup}
+          popup={false}
         />
-      {this.state.currentStory.story.length > 0 
+      {this.state.currentStory.title !== '' 
         && <PublishedStory 
           currentStory={this.state.currentStory}
           />

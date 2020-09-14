@@ -20,7 +20,7 @@ const getBookSpine = () => {
 
 const Book = ({ story, onClick, popup }) => {
   const spine = getBookSpine()
-  let prompt = story.story.slice(-1)
+  let prompt = story.contributions.slice(-1)
   return (
     <>
       <div 
@@ -33,7 +33,7 @@ const Book = ({ story, onClick, popup }) => {
         }}
       >
         <span className="title">{story.title}</span>
-        <span className="prompt">{story.prompt}</span>
+        <span className="prompt">{story.prompt && story.prompt.prompt}</span>
         <span className="date-published">
           {moment(story.updated_at).format("MMM YYYY")}
         </span>
