@@ -5,19 +5,29 @@ import StoryEditFields from './StoryEditFields'
 import '@testing-library/jest-dom'
 
 describe('StoryEditFields', () => {
-  it('should render a header and two input fields', () => {
+  it('should render at least two input fields', () => {
     render(
       <Router>
         <StoryEditFields />
       </Router>
     )
 
-    const header = screen.getByText(/prompt placeholder/i)
     const titleInputField = screen.getByPlaceholderText(/enter your title here/i)
     const storyInputField = screen.getByPlaceholderText(/type your story here/i)
-
-    expect(header).toBeInTheDocument()
+    
     expect(titleInputField).toBeInTheDocument()
     expect(storyInputField).toBeInTheDocument()
+  })
+
+  it('should render a prompt if one is passed in', () => {
+    render(
+      <Router>
+        <StoryEditFields prompt={{prompt: 'This is a prompt'}} />
+      </Router>
+    )
+    
+    const header = screen.getByText(/this is a prompt/i)
+
+    expect(header).toBeInTheDocument()
   })
 })
