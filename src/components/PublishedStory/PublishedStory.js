@@ -17,7 +17,7 @@ class PublishedStory extends Component {
       const foundAuthors = this.state.authors
       await ApiHelper.getData('authors', author).then((foundAuthor) => {
         console.log(foundAuthor)
-        foundAuthors.push(foundAuthor[0])
+        foundAuthors.push(foundAuthor)
         this.setState({ authors: foundAuthors })
       })
     })
@@ -38,14 +38,17 @@ class PublishedStory extends Component {
     //and their respective users
     
     const authorCount = authors.length
+    const accountedAuthors = []
     return authors.reduce((list, author, i) => {
+      if(accountedAuthors.includes(author.name)) return list
       if (i + 1 === authorCount && authorCount !== 1) {
-        list += ` and ${author}`
+        list += ` and ${author.name}`
       } else if (i === 0) {
-        list += author
+        list += author.name
       } else {
-        list += `, ${author}`
+        list += `, ${author.name}`
       }
+      accountedAuthors.push(author.name)
       return list
     }, 'By ')
   }
@@ -61,7 +64,7 @@ class PublishedStory extends Component {
             Prompt: {this.props.currentStory.prompt}
           </h4>
           <h3>{
-          // this.presentAuthors(this.state.authors)
+          this.presentAuthors(this.state.authors)
           }</h3>
         </header>
         <section>
