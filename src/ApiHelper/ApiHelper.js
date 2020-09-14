@@ -7,9 +7,6 @@ class ApiHelper {
       .then(response => response.json())
   }
 
-  
-
-
   static getRandomPrompt = async genre => {
     let response
 

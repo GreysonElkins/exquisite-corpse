@@ -8,6 +8,7 @@ class StorySetupView extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      allPrompts: this.props.prompts,
       error: "",
       prompt: "",
       genre: "",
@@ -31,6 +32,14 @@ class StorySetupView extends Component {
     });
   };
 
+  getPrompt = async genre => {
+    if (genre === 'any') {
+      return await ApiHelper.getData('prompts', 'any')
+    } else {
+      return await ApiHelper.getData('prompts', genre)
+    }
+  }
+
   handleSubmit = async (event) => {
     event.preventDefault();
     const genre = this.state.genre;
@@ -38,7 +47,7 @@ class StorySetupView extends Component {
 
     if (this.state.promptRequested) {
       try {
-        prompt = await ApiHelper.getRandomPrompt(genre);
+        prompt = await this.getPrompt(genre)
       } catch (error) {
         this.setState({ error: error.message });
       }
@@ -59,7 +68,7 @@ class StorySetupView extends Component {
         <Redirect
           to={{
             pathname: "/story-edit",
-            state: { prompt: this.state.prompt, genre: this.state.genre },
+            state: { prompt: this.state.prompt, genre: this.state.genre }
           }}
         />
       )

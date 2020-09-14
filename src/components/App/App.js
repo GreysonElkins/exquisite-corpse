@@ -59,17 +59,17 @@ class App extends Component {
     this.updateStoryData(updatedStories)
   }
 
-  updateStoryData = (updatedStories) => {
-    const allStoriesCopy = this.state.stories
-    const updatedStories = allStoriesCopy.map(story => {
-      if (story.id === updatedStory.id) {
-        return updatedStory
-      } else {
-        return story
-      }
-    })
-    this.setState({stories: updatedStories})
-  }
+  // updateStoryData = (updatedStories) => {
+  //   const allStoriesCopy = this.state.stories
+  //   const updatedStories = allStoriesCopy.map(story => {
+  //     if (story.id === updatedStory.id) {
+  //       return updatedStory
+  //     } else {
+  //       return story
+  //     }
+  //   })
+  //   this.setState({stories: updatedStories})
+  // }
 
   incompleteStories = () => {
     return this.state.stories.filter(story => !story.is_complete)
@@ -83,37 +83,41 @@ class App extends Component {
     return (
       <main>
         <Header />
-        <Route 
-          exact path='/' 
-          render={ () => {
-            return <WelcomePageView /> 
-          }}
-        /> 
-        <Route 
-          exact path='/story-setup' 
-          render={ () => {
-            return <StorySetupView /> 
+        <Route
+          exact
+          path="/"
+          render={() => {
+            return <WelcomePageView />;
           }}
         />
-        <Route 
-          exact path='/story-edit' 
-          render={ (props) => {
-            return <StoryEditView {...props} /> 
+        <Route
+          exact
+          path="/story-setup"
+          render={() => {
+            return <StorySetupView />;
           }}
-        />  
-        <Route 
-          exact path='/library' 
-          render={ () => {
+        />
+        <Route
+          exact
+          path="/story-edit"
+          render={(props) => {
+            return <StoryEditView {...props} />;
+          }}
+        />
+        <Route
+          exact
+          path="/library"
+          render={() => {
             return (
-              <LibraryView 
+              <LibraryView
                 stories={this.completedStories()}
-                authorUpdater={this.updateContributorData} 
+                authorUpdater={this.updateContributorData}
               />
-            ) 
+            );
           }}
         />
       </main>
-    )
+    );
   }
 }
 
