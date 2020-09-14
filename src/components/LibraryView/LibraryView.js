@@ -18,7 +18,7 @@ class LibraryView extends Component {
       }
     }
   }
-  
+
   selectStoryToRead = (story) => {
     this.setState({ currentStory: story })
   }
@@ -30,7 +30,6 @@ class LibraryView extends Component {
           stories={this.props.stories}
           authorUpdater={this.props.authorUpdater}
           onClick={this.selectStoryToRead}
-          popup={false}
         />
       {this.state.currentStory.title !== '' 
         && <PublishedStory 

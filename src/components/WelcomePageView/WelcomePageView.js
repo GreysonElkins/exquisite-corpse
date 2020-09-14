@@ -5,28 +5,13 @@ import Bookshelf from "../Bookshelf/Bookshelf"
 import { Redirect } from 'react-router-dom'
 
 class WelcomePageView extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       showHistory: false,
-      inProgressStories: [],
-      stories: [],
       redirect: false,
-      selectedStory: {},
-      popup: true
+      selectedStory: {}
     }
-  }
-
-  componentDidMount() {
-    const unCompletedStories = []
-    ApiHelper.getData().then(stories => {
-      stories.forEach(story => {
-        if(!story.isComplete) {
-          unCompletedStories.push(story)
-          this.setState({ stories: unCompletedStories })
-        }
-      })
-    })
   }
 
   displayHistory = () => {
@@ -38,8 +23,7 @@ class WelcomePageView extends Component {
   }
 
   takeToWritingSection = (story) => {
-    let prompt = story.story.slice(-1)
-    this.setState({ redirect: true, selectedPrompt: prompt })
+    this.setState({ redirect: true, selectedStory: story })
   }
 
   render() {
@@ -48,7 +32,7 @@ class WelcomePageView extends Component {
     if (redirect) {
       return <Redirect to={{
         pathname: '/story-edit',
-        state: this.state.selectedPrompt
+        state: this.state.selectedStory.prompt.prompt
       }}
       />
     }
@@ -62,9 +46,9 @@ class WelcomePageView extends Component {
             />
           </div>
           <Bookshelf
-            stories={this.state.stories}
+            stories={this.props.stories}
+            authorUpdater={this.props.authorUpdater}
             onClick={this.takeToWritingSection}
-            popup={this.state.popup}
           />
       </section>
     )
