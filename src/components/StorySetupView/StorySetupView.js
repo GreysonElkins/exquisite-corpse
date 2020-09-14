@@ -8,6 +8,7 @@ class StorySetupView extends Component {
     this.state = {
       error: "",
       prompt: "",
+      genre: ""
     };
   }
 
