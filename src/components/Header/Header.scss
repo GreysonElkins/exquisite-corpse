@@ -13,10 +13,10 @@
   font-size: 3em;
   color: black;
   margin: 10px 0;
-  transition: all ease-in-out .4s;
+  transition: $shadow-transition;
 
   &:hover {
-    text-shadow: -3px 3px 5px rgba(0, 0, 0, 0.63);
+    text-shadow: $font-shadow;
   }
 }
 
