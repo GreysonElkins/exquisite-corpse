@@ -1,5 +1,5 @@
 import React from 'react'
-import './Instructions.css'
+import './Instructions.scss'
 import GameHistory from '../GameHistory/GameHistory'
 import { Link } from 'react-router-dom'
 

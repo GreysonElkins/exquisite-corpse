@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import './WelcomePageView.css'
 import Instructions from '../Instructions/Instructions'
 import LibraryView from '../LibraryView/LibraryView'
 import PromptCards from '../PromptCards/PromptCards'

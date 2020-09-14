@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import StorySetup from '../StorySetup/StorySetup'
-import './StorySetupView.css'
+import './StorySetupView.scss'
 
 class StorySetupView extends Component {
   constructor(props) {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
-import './StorySetup.css'
+import './StorySetup.scss'
 
 class StorySetup extends Component {
   constructor(props) {
