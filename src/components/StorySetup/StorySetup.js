@@ -87,7 +87,6 @@ class StorySetup extends Component {
             <option value='any'>Any</option>
             <option value='dystopian'>Dystopian</option>
             <option value='fantasy'>Fantasy</option>
-            <option value='horror'>Horror</option>
             <option value='mystery'>Mystery</option>
             <option value='romance'>Romance</option>
             <option value='science fiction'>Science Fiction</option>
