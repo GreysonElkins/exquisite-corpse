@@ -18,28 +18,7 @@ class LibraryView extends Component {
       }
     }
   }
-
-  // async componentDidMount() {
-  //   const completedStories = []
-  //   ApiHelper.getData('stories')
-  //   .then(stories => {
-
-  //     stories.forEach(async (story) => {
-  //       if(story.is_complete) {
-  //         await story.prompt 
-  //           && ApiHelper.getData('prompts', story.prompt)
-  //             .then(prompt => story.prompt = prompt[0])
-  //         await story.contributors.forEach((author, i) => {
-  //           ApiHelper.getData('authors', author)
-  //             .then(foundAuthor => story.contributors[i] = foundAuthor)
-  //         })
-  //         completedStories.push(story)
-  //         this.setState({ stories: completedStories })
-  //       }
-  //     }) 
-  //   })
-  // }
-
+  
   selectStoryToRead = (story) => {
     this.setState({ currentStory: story })
   }

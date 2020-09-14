@@ -59,7 +59,6 @@ class App extends Component {
   }
 
   updateStoryData = (newStory) => {
-    debugger
     const allStoriesCopy = this.state.stories
     const withNewStory = allStoriesCopy.map(oldStory => {
       if (newStory.id === oldStory.id) {
@@ -86,7 +85,12 @@ class App extends Component {
         <Route 
           exact path='/' 
           render={ () => {
-            return <WelcomePageView /> 
+            return (
+              <WelcomePageView 
+                stories={this.incompleteStories()}
+                authorUpdater={this.updateContributorData}
+              /> 
+            )
           }}
         /> 
         <Route 
