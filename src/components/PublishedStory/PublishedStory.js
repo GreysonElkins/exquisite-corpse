@@ -39,9 +39,7 @@ const PublishedStory = ({ currentStory, currentAuthors }) => {
           <br /> 
           Prompt: {currentStory.prompt}
         </h4>
-        <h3>{
-        presentAuthors(currentAuthors)
-        }</h3>
+        <h3>{presentAuthors(currentAuthors)}</h3>
       </header>
       <section>
         {buildStory(currentStory.contributions)}

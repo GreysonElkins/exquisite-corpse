@@ -37,6 +37,7 @@ const testData = {
         "Not to put to fine a point on it.",
         "Say I'm the only bee in your bonnet.",
       ],
+      contributors: [1, 2, 3, 1, 2],
       prompt: "sci-fi",
       created_at: "2020-10-10T22:37:51.103Z",
       updated_at: "2020-10-10T22:37:51.103Z",
@@ -69,6 +70,28 @@ const testData = {
       is_complete: false,
     },
   ],
+  authors: [{
+    "id": 1,
+    "name": "Bubs",
+    "email": "veepOfTheCorpses@eatyourheartout.org",
+    "bio": "the best kept secret of Scottsdale's literary community",
+    "created_at": "2020-01-11T00:25:34.315Z",
+    "updated_at": "2020-04-11T00:25:34.315Z"
+  },  {
+      "id": 2,
+      "name": "Sauchy LaHavas",
+      "email": "firstNunInTheChurch@hownow.net",
+      "bio": "🎶I'm sauchy, I'm sauchy, I'm the first nun in the church\n              I'm the one that drives the hearse, I'm sauchy🎶",
+      "created_at": "2020-01-11T00:25:34.315Z",
+      "updated_at": "2020-06-11T00:25:34.315Z"
+  }, {
+      "id": 3,
+      "name": "There's a bird in here",
+      "email": "birdbirdbird@theword.net",
+      "bio": "Give me some buffalo wings this keyboard is too clean!",
+      "created_at": "2020-05-11T00:25:34.315Z",
+      "updated_at": "2020-06-11T00:25:34.315Z"
+    },]
 };
 
 export default testData
