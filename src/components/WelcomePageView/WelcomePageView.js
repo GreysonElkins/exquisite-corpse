@@ -39,7 +39,6 @@ class WelcomePageView extends Component {
 
   takeToWritingSection = (story) => {
     let prompt = story.story.slice(-1)
-    console.log(story.id)
     this.setState({ redirect: true, selectedPrompt: prompt })
   }
 
