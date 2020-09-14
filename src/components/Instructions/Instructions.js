@@ -20,7 +20,7 @@ const Instructions = ( { displayHistory, showHistory } ) => {
       </div>
       <button className='show-history-button' onClick={displayHistory}>History of Exquisite Corpse</button>
       {showHistory ? <GameHistory displayHistory={displayHistory} /> : null}
-      <Link to='/story-setup' style={{ fontSize: 30 }}className='start-new-story-link'>Start a new story</Link>
+      <Link to='/story-setup' className='start-new-story-link'>Start a new story</Link>
       <h2>OR</h2>
       <h3 className='text'>Continue a story:</h3>
     </section>
