@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import StorySetup from '../StorySetup/StorySetup'
+import ApiHelper from '../../ApiHelper/ApiHelper'
 import './StorySetupView.css'
 
 class StorySetupView extends Component {
@@ -9,7 +10,9 @@ class StorySetupView extends Component {
       error: "",
       prompt: "",
       genre: "",
-      submitOk: false
+      submitOk: false,
+      promptRequested: false,
+      authorName: ""
     };
   }
 
@@ -17,21 +20,32 @@ class StorySetupView extends Component {
     this.setState({ genre: genre });
   };
 
+  handleChange = (event) => {
+    const target = event.target;
+    const value = target.type === "checkbox" ? target.checked : target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value,
+    });
+  };
+
   handleSubmit = async (event) => {
     event.preventDefault();
+    const genre = this.state.genre;
     let prompt;
 
     if (this.state.promptRequested) {
       try {
-        const genre = this.state.genre;
         prompt = await ApiHelper.getRandomPrompt(genre);
       } catch (error) {
-        this.setState({ error: error.message })
+        this.setState({ error: error.message });
       }
     }
 
     if (!this.props.error) {
       this.setState({
+        genre: genre,
         prompt: prompt,
         submitOk: true,
       });
@@ -50,8 +64,10 @@ class StorySetupView extends Component {
         <StorySetup
           userName={"Bango Zango" /*this.props.username*/}
           setPrompt={this.setPrompt}
-          setGenre={this.setGenre}
           handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange}
+          genre={this.state.genre}
+          promptRequested={this.state.promptRequested}
           prompt={this.state.prompt}
           error={this.state.error}
         />
