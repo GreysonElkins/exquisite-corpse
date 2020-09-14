@@ -21,33 +21,29 @@ class LibraryView extends Component {
     }
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const completedStories = []
     ApiHelper.getData('stories')
     .then(stories => {
-      stories.forEach(story => {
+
+      stories.forEach(async (story) => {
         if(story.is_complete) {
+          await story.prompt 
+            && ApiHelper.getData('prompts', story.prompt)
+              .then(prompt => story.prompt = prompt[0])
+          await story.contributors.forEach((author, i) => {
+            ApiHelper.getData('authors', author)
+              .then(foundAuthor => story.contributors[i] = foundAuthor)
+          })
           completedStories.push(story)
           this.setState({ stories: completedStories })
         }
-      })
-      
+      }) 
     })
   }
 
   selectStoryToRead = (story) => {
     this.setState({ currentStory: story })
-    this.findAuthors(story.contributors)
-  }
-
-  findAuthors = (ids) => {
-    const foundAuthors = []
-    ids.forEach(async author => {
-      await ApiHelper.getData('authors', author).then((foundAuthor) => {
-        foundAuthors.push(foundAuthor)
-        this.setState({ currentAuthors: foundAuthors })
-      })
-    })
   }
 
   render() {
@@ -61,7 +57,7 @@ class LibraryView extends Component {
       {this.state.currentStory.contributions.length > 0 
         && <PublishedStory 
           currentStory={this.state.currentStory}
-          currentAuthors={this.state.currentAuthors}
+          currentAuthors={['Bowza']}
           />
       }
       </>

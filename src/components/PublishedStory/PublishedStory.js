@@ -37,9 +37,9 @@ const PublishedStory = ({ currentStory, currentAuthors }) => {
         <h4>
           {moment(currentStory.updated_at).format('MMMM DD, YYYY')} 
           <br /> 
-          Prompt: {currentStory.prompt}
+          Genre: {currentStory.prompt ? currentStory.prompt.genre : 'n/a'}
         </h4>
-        <h3>{presentAuthors(currentAuthors)}</h3>
+        <h3>{presentAuthors(currentStory.contributors)}</h3>
       </header>
       <section>
         {buildStory(currentStory.contributions)}
