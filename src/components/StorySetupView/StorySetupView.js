@@ -11,7 +11,7 @@ class StorySetupView extends Component {
       allPrompts: this.props.prompts,
       error: "",
       prompt: "",
-      genre: "",
+      genre: "any",
       submitOk: false,
       promptRequested: false,
       authorName: ""
@@ -33,11 +33,7 @@ class StorySetupView extends Component {
   };
 
   getPrompt = async genre => {
-    if (genre === 'any') {
-      return await ApiHelper.getData('prompts', 'any')
-    } else {
-      return await ApiHelper.getData('prompts', genre)
-    }
+    return await ApiHelper.getData("prompts", genre);
   }
 
   handleSubmit = async (event) => {
@@ -46,11 +42,7 @@ class StorySetupView extends Component {
     let prompt;
 
     if (this.state.promptRequested) {
-      try {
-        prompt = await this.getPrompt(genre)
-      } catch (error) {
-        this.setState({ error: error.message });
-      }
+      prompt = await this.getPrompt(genre)
     }
 
     if (!this.props.error) {
