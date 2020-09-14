@@ -8,16 +8,19 @@ const StoryEditFields = ({ updateText, disabled, prompt }) => {
         <h1 id="prompt">{ prompt.prompt }</h1>
       }
       <input
-        id='title'
-        type='text'
+        id="title"
+        type="text"
+        className="title-input-box"
         onChange={updateText}
-        placeholder='Enter your title here' // we can change the value of this to be whatever's passed in - same for line 25
+        placeholder="Enter your title here"
       />
       <textarea
-        id='story'
+        id="story"
+        className="story-input-box"
         onChange={updateText}
-        placeholder='Type your story here'
-        disabled={disabled ? 'disabled' : false}
+        maxLength="400"
+        placeholder="Type your story here"
+        disabled={disabled ? "disabled" : false}
       />
     </Fragment>
   );

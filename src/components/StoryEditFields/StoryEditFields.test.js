@@ -11,11 +11,6 @@ describe('StoryEditFields', () => {
         <StoryEditFields />
       </Router>
     )
-
-<<<<<<< HEAD
-=======
-    const header = screen.getByRole('heading')
->>>>>>> f0b4526adbc124e62b466b1bb6503e72bbd98bb7
     const titleInputField = screen.getByPlaceholderText(/enter your title here/i)
     const storyInputField = screen.getByPlaceholderText(/type your story here/i)
     
