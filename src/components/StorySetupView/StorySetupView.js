@@ -41,7 +41,7 @@ class StorySetupView extends Component {
       prompt = await this.getPrompt(genre)
     }
 
-    if (!this.props.error) {
+    if (!this.state.error) {
       this.setState({
         genre: genre,
         prompt: prompt,

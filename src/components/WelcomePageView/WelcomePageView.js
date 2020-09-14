@@ -19,7 +19,7 @@ class WelcomePageView extends Component {
 
   componentDidMount() {
     const unCompletedStories = []
-    ApiHelper.getData().then(stories => {
+    ApiHelper.getData('stories').then(stories => {
       stories.forEach(story => {
         if(!story.isComplete) {
           unCompletedStories.push(story)
