@@ -4,15 +4,13 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  // border-bottom: 1px solid grey;
-  // font-family: $fancy-letter-2;
 }
 
 .title {
   font-family: $main-font;
   font-size: 3em;
   color: black;
-  margin: 10px 0;
+  margin: 13px 0;
   transition: $shadow-transition;
 
   &:hover {
@@ -28,17 +26,22 @@
 .header a {
   margin: 10px 0 10px 35px;
   text-decoration: none;
+  color:black;
 }
 
 .navbar {
   margin: 0px 35px 0 0;
 }
 
-.nav-button {
+.nav {
   margin: 0;
-  height: 2.5em;
-  font-size: 1em;
+  font-size: 2.4em;
   cursor: pointer;
+  transition: $shadow-transition;
+
+  &:hover {
+    text-shadow: $font-shadow;
+  }
 }
 
 @media screen and (max-width: 654px) {

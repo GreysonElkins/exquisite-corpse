@@ -10,17 +10,18 @@ const Instructions = ( { displayHistory, showHistory } ) => {
         <span className='first-letter'>R</span>ules of Play
       </h2>
       <div className='game-instructions'>
+        <p>
+          <b><span className='first-letter'>☞</span> <span className='first-letter'>E</span>xquisite Corpse is a
+          collaborative creative writing game. Participants take turns writing shared stories, 
+          while only being able to read the last line of the
+          previous author's contribution. The result is a fun and unpredictable
+          collection of ideas and writing styles that form very unique bodies of text.</b>
+        </p>
         <ul>
-          <li>
-            Exquisite Corpse is a collaborative creative writing game where
-            users start or continue shared stories, only being able to read the
-            last line of the previous author's submission. The result is a fun
-            collection of writing styles all making up one story.
-          </li>
           <ol>
-            <li>Select a new prompt or continue one of the stories below</li>
+            <li>Begin a new story or continue one of the stories below</li>
             <li>
-              Start your section of the story from the prompt or the last line
+              Start your section of the story from a prompt or the last line
               of the previous author
             </li>
             <li>
@@ -30,11 +31,11 @@ const Instructions = ( { displayHistory, showHistory } ) => {
         </ul>
       </div>
       <button className='show-history-button' onClick={displayHistory}>
-        History of Exquisite Corpse
+        <span className='first-letter'>☞</span> History of Exquisite Corpse
       </button>
       {showHistory ? <GameHistory displayHistory={displayHistory} /> : null}
       <Link to='/story-setup' className='start-new-story-link'>
-        Start a new story
+        <span className='first-letter'>☞</span> Start a new story
       </Link>
       <h2>OR</h2>
       <h3 className='text'>Continue a story:</h3>
