@@ -17,16 +17,19 @@
   border: none;
   color: rgb(70, 0, 128);
   margin-bottom: 2em;
+  cursor: pointer;
+  font-size: 1.5em;
 }
 
 .start-new-story-link {
-  font-size: 400px;
+  font-size: 2em;
 }
 
 button:hover {
   background-color: white;
 }
 
-a {
+.Instructions-sec a {
   margin: 0;
+  text-decoration: none;
 }
