@@ -39,7 +39,7 @@ const Instructions = ( { displayHistory, showHistory } ) => {
       <h2>OR</h2>
       <h3 className='text'>Continue a story:</h3>
     </section>
-  );
+  )
 }
   
   export default Instructions
