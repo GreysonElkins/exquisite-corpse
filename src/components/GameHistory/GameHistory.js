@@ -1,5 +1,5 @@
 import React from 'react'
-import './GameHistory.css'
+import './GameHistory.scss'
 import drawing1 from "../../assets/drawing1.png";
 import drawing2 from "../../assets/drawing2.png";
 import drawing3 from "../../assets/drawing3.png";

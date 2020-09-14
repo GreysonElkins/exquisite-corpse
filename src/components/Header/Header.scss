@@ -1,0 +1,73 @@
+@import '../../styles/fonts.scss';
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.title {
+  font-family: $main-font;
+  font-size: 3em;
+  color: black;
+  margin: 13px 0;
+  transition: $shadow-transition;
+
+  &:hover {
+    text-shadow: $font-shadow;
+  }
+}
+
+.first-letter {
+  font-family: $fancy-letter;
+  font-size: 1.5em;
+}
+
+.header a {
+  margin: 10px 0 10px 35px;
+  text-decoration: none;
+  color:black;
+}
+
+.navbar {
+  margin: 0px 35px 0 0;
+}
+
+.nav {
+  margin: 0;
+  font-size: 2.4em;
+  cursor: pointer;
+  transition: $shadow-transition;
+
+  &:hover {
+    text-shadow: $font-shadow;
+  }
+}
+
+.selected {
+  text-shadow: $font-shadow;
+}
+
+@media screen and (max-width: 654px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header a {
+    margin: 10px 0 10px 0;
+    text-decoration: none;
+  }
+  
+  .title {
+    margin: 5px 0 3px 0;
+  }
+
+  .navbar {
+    margin: 5px 0 15px 0;
+  }
+
+  .nav-button {
+    margin: 0 7px 0 7px;
+  }
+}
