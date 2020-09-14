@@ -4,8 +4,8 @@ const baseUrl = 'http://localhost:3005/api/v1'
 class ApiHelper {
   static getRandomPrompt = async genre => {
     let response
-    
-    if (genre === '') {
+
+    if (genre === 'any') {
       response = await fetch(baseUrl + '/prompts/any')
     } else {
       response = await fetch(baseUrl + `/prompts/${genre}`)

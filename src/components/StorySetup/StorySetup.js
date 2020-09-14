@@ -9,7 +9,7 @@ class StorySetup extends Component {
     this.state = {
       authorName: '',
       promptRequested: false,
-      genre: '',
+      genre: 'any',
       submitOk: false,
       prompt: ''
     }
@@ -26,8 +26,12 @@ class StorySetup extends Component {
 
   handleSubmit = async (event) => {
     event.preventDefault()
-    const genre = this.state.genre
-    const prompt = await ApiHelper.getRandomPrompt(genre)
+    let prompt
+
+    if (this.state.promptRequested) {
+      const genre = this.state.genre
+      prompt = await ApiHelper.getRandomPrompt(genre)
+    }
 
     if(!this.props.error) {
       this.setState({
