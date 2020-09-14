@@ -1,5 +1,6 @@
 .header {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   border-bottom: 1px solid grey;
 }
@@ -10,10 +11,11 @@
 }
 
 .navbar {
-  margin: 35px 35px 0 0;
+  margin: 0px 35px 0 0;
 }
 
 .nav-button {
+  margin: 0;
   height: 2.5em;
   font-size: 1em;
   cursor: pointer;
