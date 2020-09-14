@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <header className='header'>
       <Link to='/'>
-        <h1 className='title'>Exquisite Corpse</h1>
+        <h1 className='title'><span className='first-letter'>E</span>xquisite <span className='first-letter'>C</span>orpse</h1>
       </Link>
       <nav className='navbar'>
         <NavLink to='/story-setup' activeClassName='selected'>
