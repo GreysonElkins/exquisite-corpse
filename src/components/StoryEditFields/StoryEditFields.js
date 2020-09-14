@@ -4,13 +4,9 @@ import "../StoryEditFields/StoryEditFields.css";
 const StoryEditFields = ({ updateText, disabled, prompt }) => {
   return (
     <Fragment>
-<<<<<<< HEAD
       {prompt && 
         <h1 id="prompt">{ prompt.prompt }</h1>
       }
-=======
-      <h1 id="prompt">{prompt}</h1>
->>>>>>> f0b4526adbc124e62b466b1bb6503e72bbd98bb7
       <input
         id="title"
         type="text"
