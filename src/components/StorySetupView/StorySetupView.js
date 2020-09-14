@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import StorySetup from '../StorySetup/StorySetup'
 import ApiHelper from '../../ApiHelper/ApiHelper'
-import StoryEditView from '../StoryEditView/StoryEditView'
 import './StorySetupView.css'
 
 class StorySetupView extends Component {
@@ -54,6 +54,16 @@ class StorySetupView extends Component {
   };
 
   render() {
+    if (this.state.submitOk) {
+      return (
+        <Redirect
+          to={{
+            pathname: "/story-edit",
+            state: { prompt: this.state.prompt, genre: this.state.genre },
+          }}
+        />
+      )
+    }
     return (
       <section className="StorySetupView">
         {this.state.error && (
@@ -62,9 +72,6 @@ class StorySetupView extends Component {
             {this.state.error}
           </h2>
         )}
-        {this.state.submitOk && 
-          <StoryEditView prompt={this.state.prompt} />
-        }
         <StorySetup
           userName={"Bango Zango" /*this.props.username*/}
           setPrompt={this.setPrompt}
