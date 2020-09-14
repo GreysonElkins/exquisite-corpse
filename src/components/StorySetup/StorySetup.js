@@ -27,16 +27,11 @@ class StorySetup extends Component {
   handleSubmit = async (event) => {
     event.preventDefault()
     const genre = this.state.genre
-
-    if (genre === '') {
-      const prompt = await ApiHelper.getRandomPromptFromAll() 
-    } else {
-      
-    }
+    const prompt = await ApiHelper.getRandomPrompt(genre)
 
     if(!this.props.error) {
       this.setState({
-        prompt: 'one time',
+        prompt: prompt,
         submitOk: true
       })
     }

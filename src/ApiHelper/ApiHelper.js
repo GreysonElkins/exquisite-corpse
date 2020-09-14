@@ -2,10 +2,15 @@ import testData from '../assets/testData/testData'
 const baseUrl = 'http://localhost:3005/api/v1'
 
 class ApiHelper {
-  static getRandomPromptFromAll = async () => {
-    const response = await fetch(baseUrl + '/prompts/any')
+  static getRandomPrompt = async genre => {
+    let response
+    
+    if (genre === '') {
+      response = await fetch(baseUrl + '/prompts/any')
+    } else {
+      response = await fetch(baseUrl + `/prompts/${genre}`)
+    }
     const prompt = await response.json()
-
     return prompt
   }
 
