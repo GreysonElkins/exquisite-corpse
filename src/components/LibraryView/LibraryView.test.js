@@ -1,7 +1,7 @@
-import React from "react";
-import { screen, render, fireEvent } from "@testing-library/react";
-import LibraryView from "./LibraryView";
-import testData from "../../assets/testData/testData";
+import React from "react"
+import { screen, render, fireEvent } from "@testing-library/react"
+import LibraryView from "./LibraryView"
+import testData from "../../assets/testData/testData"
 import ApiHelper from '../../ApiHelper/ApiHelper'
 jest.mock('../../ApiHelper/ApiHelper.js')
 

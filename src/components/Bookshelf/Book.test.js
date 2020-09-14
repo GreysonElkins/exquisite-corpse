@@ -11,7 +11,7 @@ describe('Book button', () => {
   beforeEach(() => {
     story = testData.stories[0]
     mockClick = jest.fn()
-    render(<Book story={story} onClick={mockClick}/>)
+    render(<Book story={story} onClick={mockClick} popup={true}/>)
     book = screen.getByRole('button')
   })
 
