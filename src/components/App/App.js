@@ -14,11 +14,12 @@ class App extends Component {
     super()
       this.state = {
         isLoggedIn: false,
+        currentUser: {}
       }
   }
 
-  login = () => {
-    this.setState({ isLoggedIn: true })
+  login = (user) => {
+    this.setState({ isLoggedIn: true, currentUser: user})
   }
 
   render() {

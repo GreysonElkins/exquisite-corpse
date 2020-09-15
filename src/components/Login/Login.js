@@ -30,9 +30,9 @@ class Login extends Component {
         "username": this.state.username, 
         "password": this.state.password
       }
-      const response = await ApiHelper.postUser(loginInfo)
-      if (response.status === 201) {
-        this.props.login()
+      const response = await ApiHelper.postLogin(loginInfo)
+      if (response.status === 200) {
+        this.props.login(response)
         this.setState({ redirect: true })
       } else {
         this.setState({ error: 'Incorrect login credentials'})

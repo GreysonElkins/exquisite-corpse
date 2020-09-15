@@ -18,7 +18,7 @@ class ApiHelper {
     return Promise.resolve(testData.stories)
   }
 
-  static postUser = async (loginInfo) => {
+  static postLogin = async (loginInfo) => {
     try {
     const response = await fetch(baseUrl + '/authors/login', {
       method: "POST",
