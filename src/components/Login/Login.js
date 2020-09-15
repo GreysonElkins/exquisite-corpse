@@ -17,7 +17,11 @@ class Login extends Component {
   }
 
   updateInputs = (event) => {
-    this.setState({ [event.target.id]: event.target.value })
+    this.setState({ 
+      [event.target.id]: event.target.value,
+      error: '' 
+    })
+
   }
 
   verifyLogin = async (event) => {
@@ -30,28 +34,33 @@ class Login extends Component {
         "username": this.state.username, 
         "password": this.state.password
       }
-      const response = await ApiHelper.postLogin(loginInfo)
-      if (response.status === 200) {
-        this.props.login(response)
-        this.setState({ redirect: true })
-      } else {
-        this.setState({ error: 'Incorrect login credentials'})
-      }
+      let response
+      ApiHelper.postLogin(loginInfo)
+        .then(res => {
+          response = res
+          return res.json()
+        })
+        .then(user => {
+          if (response.status === 200) {
+            this.props.login(user)
+            this.setState({ redirect: true })
+          } else {
+            this.setState({ error: 'Incorrect login credentials'})
+          }
+        })
     }
   }
 
   render() {
     const { redirect } = this.state;
 
-     if (redirect) {
-       return <Redirect to='/'/>;
-     }
-
-     console.log(this.state)
+    if (redirect) {
+      return <Redirect to='/'/>;
+    }
 
     return (
       <div className="Login-container">
-        <form className="Login-form">
+        <form className="Login-form" onSubmit={this.verifyLogin}>
           <h3 className="Login-header">Login</h3>
           {this.state.submitEmptyLogin === true 
             && <p className="Login-warning-text" >
@@ -78,12 +87,7 @@ class Login extends Component {
             id='password'
             onChange={this.updateInputs}
           />
-          <button 
-            className="login-button" 
-            onClick={this.verifyLogin}
-          >
-            /Submit/
-          </button>
+          <button className="login-button">/Submit/</button>
         </form>
       </div>
     )

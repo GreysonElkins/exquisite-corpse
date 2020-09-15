@@ -46,13 +46,11 @@ const Instructions = ( { displayHistory, showHistory, stories, onClick, authorUp
         </Link>
         <h2 className="or">OR</h2>
         <h3 className="text">Continue a story:</h3>
-        <div className="continue">
           <Bookshelf
             stories={stories}
             onClick={onClick}
             authorUpdater={authorUpdater}
           />
-        </div>
       </div>
     </section>
   );

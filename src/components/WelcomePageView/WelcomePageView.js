@@ -31,7 +31,9 @@ class WelcomePageView extends Component {
       console.log(this.state)
       return <Redirect to={{
         pathname: '/story-edit',
-        state: {story: this.state.selectedStory}
+        state: {
+          story: this.state.selectedStory,
+        }
       }}
       />
     }
