@@ -9,10 +9,10 @@ class ApiHelper {
 
   static postLogin = async (loginInfo) => {
     try {
-      return await fetch(apiHead + '/authors/login', {
-        method: 'POST',
+      return await fetch(apiHead + "/authors/login", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(loginInfo),
       })
@@ -21,29 +21,15 @@ class ApiHelper {
     }
   }
 
-  static postStory = async (story) => {
+  static postStory = async (story, id) => {
     try {
-      return await fetch(`${apiHead}/stories`, {
-        method: 'POST',
+      return await fetch(`${apiHead}/stories/${id? id : ''}`, {
+        method: `${id? 'PATCH' : 'POST'}`,
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(story)
-      })
-    } catch (error) {
-      return error
-    }
-  }
-  
-  static editStory = async (story) => {
-    try {
-      return await fetch(`${apiHead}/stories/${story.id}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(story)
-      })
+      }).then(response => response.json())
     } catch (error) {
       return error
     }
