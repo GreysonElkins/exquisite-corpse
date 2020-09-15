@@ -3,6 +3,7 @@ import './Instructions.scss'
 import GameHistory from '../GameHistory/GameHistory'
 import Bookshelf from '../Bookshelf/Bookshelf'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 const Instructions = ( { displayHistory, showHistory, stories, onClick, authorUpdater, toggleHover } ) => {
   return (
@@ -55,6 +56,15 @@ const Instructions = ( { displayHistory, showHistory, stories, onClick, authorUp
       </div>
     </section>
   );
+}
+
+Instructions.propTypes = {
+  displayHistory: PropTypes.func,
+  showHistory: PropTypes.bool,
+  authorUpdater: PropTypes.func,
+  onClick: PropTypes.func,
+  stories: PropTypes.array,
+  toggleHover: PropTypes.func
 }
   
   export default Instructions

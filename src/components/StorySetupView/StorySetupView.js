@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import StorySetup from '../StorySetup/StorySetup'
 import './StorySetupView.scss'
+import PropTypes from 'prop-types'
 
 class StorySetupView extends Component {
   constructor(props) {
@@ -69,6 +70,13 @@ class StorySetupView extends Component {
       </section>
     );
   }
+}
+
+StorySetup.propTypes = {
+  addStory: PropTypes.func,
+  author: PropTypes.object,
+  prompts: PropTypes.array,
+  updateStoryData: PropTypes.func,
 }
 
 export default StorySetupView;

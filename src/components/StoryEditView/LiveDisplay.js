@@ -1,5 +1,6 @@
 import React from 'react'
 import './StoryEditView.scss'
+import PropTypes from 'prop-types'
 
 const LiveDisplay = ({ textInputs }) => {
     return (
@@ -8,6 +9,10 @@ const LiveDisplay = ({ textInputs }) => {
           <p>{textInputs.story}</p>
       </div>
     );
+  }
+
+  LiveDisplay.propTypes = {
+    textInputs: PropTypes.object
   }
   
   export default LiveDisplay

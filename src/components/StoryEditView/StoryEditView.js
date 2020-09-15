@@ -3,6 +3,7 @@ import StoryEditFields from '../StoryEditFields/StoryEditFields'
 import StoryEditFooter from '../StoryEditFooter/StoryEditFooter'
 import './StoryEditView.scss'
 import LiveDisplay from './LiveDisplay'
+import PropTypes from 'prop-types'
 
 class StoryEditView extends Component {
   constructor(props) {
@@ -42,6 +43,15 @@ class StoryEditView extends Component {
       </main>
     );
   }
+}
+
+StoryEditView.propTypes = {
+  addStory: PropTypes.func,
+  author: PropTypes.object,
+  history: PropTypes.object,
+  location: PropTypes.object,
+  match: PropTypes.object,
+  updateStoryData: PropTypes.func,
 }
 
 export default StoryEditView;
