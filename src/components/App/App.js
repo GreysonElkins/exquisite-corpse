@@ -13,9 +13,14 @@ class App extends Component {
   constructor() {
     super()
       this.state = {
-        loggedIn: false,
+        isLoggedIn: false,
       }
   }
+
+  login = () => {
+    this.setState({ isLoggedIn: true })
+  }
+
   render() {
     return (
       <main className='App'>
@@ -48,7 +53,9 @@ class App extends Component {
         <Route 
           exact path='/login' 
           render={ () => {
-            return <Login /> 
+            return <Login 
+              login={this.login}
+            /> 
           }}
         /> 
       </main>
