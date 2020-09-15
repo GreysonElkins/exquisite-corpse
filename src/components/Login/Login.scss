@@ -1,0 +1,63 @@
+@import '../../styles/fonts.scss';
+
+.Login-container {
+    height: 100vh;
+    margin: 3%;
+    width: 100wh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .Login-form {
+    border-radius: 15px;
+    height: 50vh;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../../assets/login-paper.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    flex-direction: column;
+    color:white;
+  }
+  
+  #username-input,
+  #password-input {
+    margin: 10px;
+    height: 30px;
+    width: 250px;
+    background-color: rgba(255, 253, 253, 0.329);
+    border: none;
+    font: inherit
+  }
+
+  .login-button {
+    font-family: $main-font;
+    height: 20px;
+    background: none;
+    border: none;
+    outline: none;
+    color: black;
+    margin: 0 0 2em;
+    cursor: pointer;
+    font-size: 2em;
+    transition: $shadow-transition;
+    
+    &:hover {
+      text-shadow: $font-shadow;
+    }
+  }
+  
+  .Login-header {
+    color: black
+  }
+  
+  .Login-warning-text {
+    color: red;
+    padding: 0;
+    margin: 0;
+    font-size: 20px;
+  }
