@@ -162,26 +162,29 @@ class App extends Component {
           }}
         />
         <Route exact path="/story-setup">
-          {Object.keys(this.state.currentUser).length === 0 ? 
-          <Redirect to="login" /> :
-          <StorySetupView
-            prompts={this.state.prompts}
-            author={this.state.currentUser}
-            addStory={this.addStory}
-            updateStoryData={this.updateStoryData}
-          />
-        });
+          {Object.keys(this.state.currentUser).length === 0 ? (
+            <Redirect to="login" />
+          ) : (
+            <StorySetupView
+              prompts={this.state.prompts}
+              author={this.state.currentUser}
+              addStory={this.addStory}
+              updateStoryData={this.updateStoryData}
+            />
+          )}
+          );
         </Route>
-        <Route
-          exact
-          path="/story-edit"
-          render={(props) => {
-            props.updateStoryData = this.updateStoryData;
-            props.addStory = this.addStory;
-            props.author = this.state.currentUser;
-            return <StoryEditView {...props} />;
-          }}
-        />
+        <Route exact path="/story-edit">
+          {Object.keys(this.state.currentUser).length === 0 ? (
+            <Redirect to="login" />
+          ) : (
+            <StoryEditView
+              updateStoryData={this.updateStoryData}
+              addStory={this.addStory}
+              author={this.state.currentUser}
+            />
+          )}
+        </Route>
         <Route
           exact
           path="/library"
