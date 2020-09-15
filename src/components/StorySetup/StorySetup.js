@@ -93,7 +93,7 @@ class StorySetup extends Component {
           <br />
           <span className="last-line">Have Fun!</span>
         </p>
-        <button>Start Story</button>
+        <button className="start-story">/ Start Story /</button>
       </>
     );
   }
