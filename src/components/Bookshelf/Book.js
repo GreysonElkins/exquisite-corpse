@@ -1,7 +1,6 @@
 import React from "react"
 import moment from "moment"
 import "./Bookshelf.scss"
-import ReactTooltip from 'react-tooltip';
 
 import book1 from "../../assets/bookspine1.png";
 import book2 from "../../assets/bookspine2.png";
@@ -18,35 +17,32 @@ const getBookSpine = () => {
   return bookSpines[random];
 };
 
-const Book = ({ story, onClick, popup, authorUpdater }) => {
+
+const Book = ({ story, onClick, popup, authorUpdater, toggleHover }) => {
+  const hoverObject = {
+    show: true,
+    title: story.title,
+    prompt: story.prompt,
+    lastWords: story.lastWords,
+    lastUpdate: moment(story.updated_at).format("MMMM DD, YYYY")
+  }
   const spine = getBookSpine()
   return (
-    <>
-      <div 
-        data-tip data-for='global'
-        className="book" 
-        style={{ backgroundImage: `url(${spine})` }}
-        role="button"
-        onClick={() => {
-          authorUpdater(story)
-          onClick(story)
-        }}
-      >
-      </div>
-        <ReactTooltip 
-          id='global' 
-          className="pop-up" 
-          place='top' 
-          effect='float' 
-        >
-          <p>
-            TITLE: {story.title} <br />
-            {story.lastWords && `LAST WORDS: ${story.lastWords}`} <br />
-            {story.prompt && `GENRE: ${story.prompt.genre}`} <br />
-            LAST UPDATED: {moment(story.updated_at).format("MMMM DD, YYYY")}
-          </p>
-        </ReactTooltip>
-    </>
+    <div 
+      data-tip data-for='global'
+      className="book" 
+      style={{ backgroundImage: `url(${spine})` }}
+      role="button"
+      onMouseEnter={(event) => {
+        toggleHover(event, hoverObject)
+      }}
+      onMouseLeave={toggleHover}
+      onClick={() => {
+        authorUpdater(story)
+        onClick(story)
+      }}
+    >
+    </div>
   );
 }
 

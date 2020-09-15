@@ -1,7 +1,5 @@
 import React, { Component } from "react"
-import ApiHelper from '../../ApiHelper/ApiHelper'
 import Instructions from '../Instructions/Instructions'
-import Bookshelf from "../Bookshelf/Bookshelf"
 import { Redirect } from 'react-router-dom'
 
 class WelcomePageView extends Component {
@@ -41,7 +39,7 @@ class WelcomePageView extends Component {
     }
 
     return (
-     <section className="WelcomePage">
+      <section className="WelcomePage">
         <div>
           <Instructions
             showHistory={this.state.showHistory}
@@ -49,6 +47,7 @@ class WelcomePageView extends Component {
             stories={this.props.stories}
             onClick={this.takeToWritingSection}
             authorUpdater={this.props.authorUpdater}
+            toggleHover={this.props.toggleHover}
           />
         </div>
       </section>

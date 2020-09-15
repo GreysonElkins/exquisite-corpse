@@ -13,19 +13,14 @@ class StorySetupView extends Component {
     }
   }
 
-  startWriting = async (event, desiredGenre) => {
+  startWriting = async (event) => {
     event.preventDefault()
-    let prompt = null;
-    if(desiredGenre) {
-      prompt = this.getRandomPrompt(desiredGenre)
-    }
     this.setState({
-      randomPrompt: prompt,
       submitOk: true
     });
   }
 
-  getRandomPrompt(genre) {
+  getRandomPrompt = (genre) => {
     let prompts
     let qty
     if (genre === 'any') {
@@ -35,7 +30,13 @@ class StorySetupView extends Component {
     }
     qty = prompts.length
     const randomIndex = Math.floor(Math.random() * (qty - 1))
-    return prompts[randomIndex]
+    this.setState({ randomPrompt: prompts[randomIndex] })
+    console.log('found a prompt', this.state.randomPrompt)
+  }
+  
+  removePrompt = () => {
+    this.setState({ randomPrompt: null })
+    console.log(`it's gone now`)
   }
 
   render = () => {
@@ -60,6 +61,9 @@ class StorySetupView extends Component {
           prompts={this.props.prompts}
           userName={"Bango Zango" /*this.props.username*/}
           startWriting={this.startWriting}
+          getRandomPrompt={this.getRandomPrompt}
+          removePrompt={this.removePrompt}
+          randomPrompt={this.state.randomPrompt}
           error={this.state.error}
         />
       </section>

@@ -4,7 +4,7 @@ import GameHistory from '../GameHistory/GameHistory'
 import Bookshelf from '../Bookshelf/Bookshelf'
 import { Link } from 'react-router-dom'
 
-const Instructions = ( { displayHistory, showHistory, stories, onClick, authorUpdater } ) => {
+const Instructions = ( { displayHistory, showHistory, stories, onClick, authorUpdater, toggleHover } ) => {
   return (
     <section className="Instructions-sec">
       <div className="game-instructions">
@@ -46,11 +46,12 @@ const Instructions = ( { displayHistory, showHistory, stories, onClick, authorUp
         </Link>
         <h2 className="or">OR</h2>
         <h3 className="text">Continue a story:</h3>
-          <Bookshelf
-            stories={stories}
-            onClick={onClick}
-            authorUpdater={authorUpdater}
-          />
+        <Bookshelf
+          stories={stories}
+          onClick={onClick}
+          authorUpdater={authorUpdater}
+          toggleHover={toggleHover}
+        />
       </div>
     </section>
   );
