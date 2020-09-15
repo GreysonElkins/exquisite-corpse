@@ -2,7 +2,6 @@
 
 
 .StorySetup {
-  margin-top: 2em;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,6 +12,7 @@
 
 .first-line {
   font-size: 2em;
+  margin-top: 2em;
   margin-bottom: .25em;
 }
 
