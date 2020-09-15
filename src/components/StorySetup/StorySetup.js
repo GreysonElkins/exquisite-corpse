@@ -83,51 +83,53 @@ class StorySetup extends Component {
           When the timer runs out you will no longer be able to type.
           <br />
           <br />
-          Have Fun!
+          <span className="last-line">Have Fun!</span>
         </p>
         <button>Start Story</button>
-        {this.props.randomPrompt 
-          && <span class="prompt">
-            PROMPT: {this.props.randomPrompt.prompt}
-            <br />
-          </span>
-        }
       </>
     );
   }
 
   render() {
     return (
-      <form 
-        className='StorySetup' 
+      <form
+        className="StorySetup"
         onSubmit={(event) => {
-          this.props.startWriting(event, this.state.desiredGenre)
+          this.props.startWriting(event, this.state.desiredGenre);
         }}
       >
-        {this.props.userName && 
-          <><p>Hello {this.props.userName},</p><br/></>}
+        {this.props.userName && (
+          <>
+            <p className='first-line'><span className='first-letter'>H</span>ello {this.props.userName},</p>
+          </>
+        )}
         {this.promptCheckBox(this.state.promptRequested)}
-        {this.state.promptRequested &&
+        {this.state.promptRequested && (
           <>
             <label>
               Please select a genre:
               {this.genreDropDown(this.props.prompts)}
             </label>
+            {this.props.randomPrompt && (
+              <span className="prompt">
+                PROMPT: {this.props.randomPrompt.prompt}
+                <br />
+              </span>
+            )}
             <button
               className="refresh-genre"
               type="button"
               onClick={() => {
-                this.props.getRandomPrompt(this.state.desiredGenre)
+                this.props.getRandomPrompt(this.state.desiredGenre);
               }}
             >
               Refresh "{this.state.desiredGenre}" Prompt
             </button>
-            <br/>
           </>
-        }
+        )}
         {this.rulesOfTheGame()}
       </form>
-    )
+    );
   }
 }
 
