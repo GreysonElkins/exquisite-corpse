@@ -62,7 +62,17 @@ class Login extends Component {
       <div className="Login-container">
         <form className="Login-form" onSubmit={this.verifyLogin}>
           <h3 className="Login-header">Login</h3>
-          {this.state.submitEmptyLogin === true && <p className="Login-warning-text" >One or more fields are empty</p>}
+          {this.state.submitEmptyLogin === true 
+            && <p className="Login-warning-text" >
+              One or more fields are empty
+            </p>
+          }
+          {this.state.error === 'Incorrect login credentials'
+            && <p className="Login-warning-text"> 
+              We were unable to find a user with those credentials,
+              <br /> please try again!
+            </p>
+          }
           <input
             type='text'
             placeholder='Username or Email'
