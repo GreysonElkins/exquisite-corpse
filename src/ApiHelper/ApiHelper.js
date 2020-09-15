@@ -6,6 +6,21 @@ class ApiHelper {
       .then(response => response.json())
       .catch(error => error.message)
   }
+
+  static postLogin = async (loginInfo) => {
+    try {
+    const response = await fetch(apiHead + '/authors/login', {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(loginInfo),
+    })
+    return response
+    } catch (error) {
+      return error
+    }
+  }
 }
 
 export default ApiHelper

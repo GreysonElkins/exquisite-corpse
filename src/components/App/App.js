@@ -6,7 +6,8 @@ import WelcomePageView from '../WelcomePageView/WelcomePageView'
 import StorySetupView from '../StorySetupView/StorySetupView'
 import StoryEditView from '../StoryEditView/StoryEditView'
 import LibraryView from '../LibraryView/LibraryView'
-import ApiHelper from '../../ApiHelper/ApiHelper';
+import Login from '../Login/Login'
+import ApiHelper from '../../ApiHelper/ApiHelper'
 import mainBackground from '../../assets/backgrounds/mainBackground.jpg'
 
 class App extends Component {
@@ -14,6 +15,7 @@ class App extends Component {
     super() 
     this.state = {
       error: '',
+      currentUser: {},
       stories: [],
       prompts: [],
       authors: []
@@ -47,9 +49,12 @@ class App extends Component {
       this.setState({error: error})
     }
   }
+  
+  login = (user) => {
+    this.setState({ currentUser: user})
+  }
 
   updateContributorData = (story) => {
-    
       story.contributors.forEach((contributor, i) => {
         const existingAuthor = this.state.authors
           .find(author => author.id === contributor)
@@ -140,6 +145,14 @@ class App extends Component {
             );
           }}
         />
+        <Route 
+          exact path='/login' 
+          render={ () => {
+            return <Login 
+              login={this.login}
+            /> 
+          }}
+        /> 
       </main>
     );
   }

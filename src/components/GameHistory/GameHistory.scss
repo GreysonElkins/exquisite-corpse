@@ -1,21 +1,24 @@
+@import '../../styles/fonts.scss';
+
 .game-history-box {
-  position: fixed;
+  position: relative;
   z-index: 1;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.25);
 }
   
 .game-history-content {
-  background-color: white;
+  background-color: rgb(252, 246, 214);
   position: absolute;
-  top: 20%;
-  left: 30%;
-  width: 40%;
-  padding: 20px;
+  top: 1.5em;
+  left: -7.7em;
+  width: 33em;
+  height: 22em;
+  padding: 20px 20px 30px;
   border-radius: 5px;
   border: 2px solid black;
   overflow: auto;
+  box-shadow: -5px 5px 20px  $graphite;
 }
 
 .drawing {
@@ -31,6 +34,7 @@
   height: 50px;
   width: 100%;
 }
+
 .close {
   color: Black;
   float: right;
