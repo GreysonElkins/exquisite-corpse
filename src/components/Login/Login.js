@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './Login.css';
+import './Login.scss';
 import { Redirect } from 'react-router-dom';
 
 class Login extends Component {
@@ -79,7 +79,7 @@ class Login extends Component {
             id='password-input'
           />
           {this.state.correctPassword === false && <p className="Login-warning-text" >* Incorrect password!</p>}
-          <button onClick={this.verifyLogin}>Submit</button>
+          <button className="login-button" onClick={this.verifyLogin}>/Submit/</button>
         </form>
       </div>
     )
