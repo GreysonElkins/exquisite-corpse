@@ -4,7 +4,7 @@ import Timer from 'react-compound-timer'
 const TimerDisplay = (props) => {
   return(
     <Timer 
-      initialTime={59000} 
+      initialTime={119000} 
       direction="backward"
       checkpoints={[
         {
