@@ -10,13 +10,9 @@ jest.mock('../../ApiHelper/ApiHelper.js')
 describe('PublishedStory component', () => {
 
   beforeEach(() => {
-    ApiHelper.getData.mockResolvedValueOnce([
-      'Greyson Elkins', 
-      'Carly Clift', 
-      'Nick Hart', 
-      'Aaron B.D.'
-    ])
-    render(<PublishedStory currentStory={testData.stories[2]}/>)
+    render(<PublishedStory 
+      currentStory={testData.stories[2]} 
+      currentAuthors={testData.authors}/>)
   })
 
   it('should render details about the story', () => {
@@ -33,7 +29,7 @@ describe('PublishedStory component', () => {
       "Say I'm the only bee in your bonnet."
     )
     const authors = screen.getByText(
-      /By Greyson Elkins, Carly Clift, Nick Hart and Aaron B.D./i
+      /By Bubs, Sauchy LaHavas and There's a bird in here/i
     )
     
     expect(title).toBeInTheDocument()

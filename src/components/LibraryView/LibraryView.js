@@ -1,3 +1,4 @@
+import { findAllByAltText } from '@testing-library/react'
 import React, { Component } from 'react'
 import ApiHelper from '../../ApiHelper/ApiHelper'
 import Bookshelf from '../Bookshelf/Bookshelf'
@@ -7,27 +8,15 @@ class LibraryView extends Component {
   constructor() {
     super()
     this.state = {
-      stories: [],
-      popup: false,
       currentStory: {
-        story: [],
+        contributions: [],
         title: '',
         updated_at: '',
-        prompt: ''
+        prompt: null,
+        is_complete: true,
+        contributors: []
       }
     }
-  }
-
-  componentDidMount() {
-    const completedStories = []
-    ApiHelper.getData().then(stories => {
-      stories.forEach(story => {
-        if(story.isComplete) {
-          completedStories.push(story)
-          this.setState({ stories: completedStories })
-        }
-      })
-    })
   }
 
   selectStoryToRead = (story) => {
@@ -38,11 +27,11 @@ class LibraryView extends Component {
     return (
       <>
         <Bookshelf
-          stories={this.state.stories}
+          stories={this.props.stories}
+          authorUpdater={this.props.authorUpdater}
           onClick={this.selectStoryToRead}
-          popup={this.state.popup}
         />
-      {this.state.currentStory.story.length > 0 
+      {this.state.currentStory.title !== '' 
         && <PublishedStory 
           currentStory={this.state.currentStory}
           />

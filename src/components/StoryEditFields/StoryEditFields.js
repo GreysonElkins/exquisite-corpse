@@ -1,11 +1,15 @@
 import React, { Fragment } from 'react'
 import '../StoryEditFields/StoryEditFields.scss';
 
-const StoryEditFields = ({ updateText, disabled, prompt }) => {
+const StoryEditFields = ({ updateText, disabled, story }) => {
+
   return (
     <Fragment>
-      {prompt && 
-        <h1 id="prompt">{ prompt.prompt }</h1>
+      {story.prompt && 
+        <h1 id="prompt">PROMPT: {story.prompt.prompt}</h1>
+      }
+      {story.lastWords && 
+        <h1 id="lastWords">LAST WORDS: {story.lastWords}</h1>
       }
       <input
         id="title"

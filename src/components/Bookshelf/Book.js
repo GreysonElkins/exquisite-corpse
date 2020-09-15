@@ -18,29 +18,34 @@ const getBookSpine = () => {
   return bookSpines[random];
 };
 
-const Book = ({ story, onClick, popup }) => {
+const Book = ({ story, onClick, popup, authorUpdater }) => {
   const spine = getBookSpine()
-  let prompt = story.story.slice(-1)
   return (
     <>
       <div 
-        data-tip={prompt}
+        data-tip data-for='global'
         className="book" 
         style={{ backgroundImage: `url(${spine})` }}
         role="button"
         onClick={() => {
+          authorUpdater(story)
           onClick(story)
         }}
       >
-        <span className="title">{story.title}</span>
-        <span className="prompt">{story.prompt}</span>
-        <span className="date-published">
-          {moment(story.updated_at).format("MMM YYYY")}
-        </span>
       </div>
-      {popup && 
-        <ReactTooltip className="pop-up" place='top' effect='float' />
-      }
+        <ReactTooltip 
+          id='global' 
+          className="pop-up" 
+          place='top' 
+          effect='float' 
+        >
+          <p>
+            TITLE: {story.title} <br />
+            {story.lastWords && `LAST WORDS: ${story.lastWords}`} <br />
+            {story.prompt && `GENRE: ${story.prompt.genre}`} <br />
+            LAST UPDATED: {moment(story.updated_at).format("MMMM DD, YYYY")}
+          </p>
+        </ReactTooltip>
     </>
   );
 }
