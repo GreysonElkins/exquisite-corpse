@@ -73,8 +73,7 @@ class App extends Component {
   }
 
   updateStoryData = (newStory) => {
-    const allStoriesCopy = this.state.stories
-    const withNewStory = allStoriesCopy.map(oldStory => {
+    const withNewStory = this.state.stories.map(oldStory => {
       if (newStory.id === oldStory.id) {
         return newStory
       } else {
@@ -147,6 +146,9 @@ class App extends Component {
           exact
           path="/story-edit"
           render={(props) => {
+            props.updateStoryData = this.updateStoryData
+            props.addStory = this.addStory
+            props.author = this.state.currentUser
             return <StoryEditView {...props} />;
           }}
         />
