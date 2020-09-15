@@ -12,37 +12,42 @@ import mainBackground from '../../assets/backgrounds/mainBackground.jpg'
 
 class App extends Component {
   constructor() {
-    super()
-      this.state = {
-        currentUser: {},
-        stories: [],
-        prompts: [],
-        authors: []
-      }
+    super() 
+    this.state = {
+      error: '',
+      currentUser: {},
+      stories: [],
+      prompts: [],
+      authors: []
+    }
   }
 
   componentDidMount() {
-    ApiHelper.getData('prompts')
-      .then(allPrompts => {
-        this.setState({prompts: allPrompts})
-      })
-      .then(() => {
-        ApiHelper.getData('stories').then(allStories => {
-          const updatedStories = []
-          allStories.forEach(story => {
-            if (story.prompt) {
-              story.prompt = this.state.prompts
-                .find(prompt => prompt.id === story.prompt)
-            }
-            if (story.contributions[0] !== null) {
-              const lastEntry = story.contributions[story.contributions.length - 1];
-              story.lastWords = `. . . ${lastEntry.substring(15)}`;
-            }
-            updatedStories.push(story)
-          })
-          this.setState({ stories: updatedStories })
+    try {
+      ApiHelper.getData('prompts')
+        .then(allPrompts => {
+          this.setState({prompts: allPrompts})
         })
-      })
+        .then(() => {
+          ApiHelper.getData('stories').then(allStories => {
+            const updatedStories = []
+            allStories.forEach(story => {
+              if (story.prompt) {
+                story.prompt = this.state.prompts
+                  .find(prompt => prompt.id === story.prompt)
+              }
+              if (story.contributions[0] !== null) {
+                const lastEntry = story.contributions[story.contributions.length - 1];
+                story.lastWords = `. . . ${lastEntry.substring(15)}`;
+              }
+              updatedStories.push(story)
+            })
+            this.setState({ stories: updatedStories })
+          })
+        })
+    } catch (error) {
+      this.setState({error: error})
+    }
   }
   
   login = (user) => {
@@ -89,29 +94,36 @@ class App extends Component {
 
   render() {
     return (
-      <main className='App'>
-        <img className='background' src={mainBackground} alt='Parchment Manuscript paper' />
+      <main className="App">
+        <img
+          className="background"
+          src={mainBackground}
+          alt="Parchment Manuscript paper"
+        />
         <Header />
-        <Route 
-          exact path='/' 
-          render={ () => {
+        {this.state.error && (
+          <h2>
+            I'm sorry, we are having some trouble. <br />
+            Error Status: {this.state.error.status}
+          </h2>
+        )}
+        <Route
+          exact
+          path="/"
+          render={() => {
             return (
-              <WelcomePageView 
+              <WelcomePageView
                 stories={this.incompleteStories()}
                 authorUpdater={this.updateContributorData}
-              /> 
-            )
+              />
+            );
           }}
         />
         <Route
           exact
           path="/story-setup"
           render={() => {
-            return (
-              <StorySetupView 
-                prompts={this.state.prompts}
-              />
-            )
+            return <StorySetupView prompts={this.state.prompts} />;
           }}
         />
         <Route

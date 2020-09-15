@@ -10,7 +10,7 @@ class ApiHelper {
 
   static postLogin = async (loginInfo) => {
     try {
-    const response = await fetch(baseUrl + '/authors/login', {
+    const response = await fetch(apiHead + '/authors/login', {
       method: "POST",
       headers: {
         'Content-Type': 'application/json',

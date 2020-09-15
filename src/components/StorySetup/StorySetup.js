@@ -36,7 +36,6 @@ class StorySetup extends Component {
   }
 
   genreDropDown = (prompts) => {
-    debugger
     const options = prompts.reduce((genreList, prompt) => {
       if (genreList.includes(prompt.genre) === false) {
         genreList.push(prompt.genre)
