@@ -40,7 +40,7 @@ class App extends Component {
               }
               if (story.contributions[0] !== null) {
                 const lastEntry = story.contributions[story.contributions.length - 1];
-                story.lastWords = `. . . ${lastEntry.substring(15)}`;
+                story.lastWords = `. . . ${lastEntry.slice(-150)}`;
               }
               updatedStories.push(story)
             })
@@ -123,7 +123,7 @@ class App extends Component {
             <br />
           </span>
           <span>
-            LAST UPDATED: {this.state.lastUpdate}
+            LAST UPDATED: {this.state.hover.lastUpdate}
           </span>
         </p>
       </div>
