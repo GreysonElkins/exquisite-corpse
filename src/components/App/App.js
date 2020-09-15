@@ -223,6 +223,9 @@ class App extends Component {
             pageId={match.params.id}
             authors={this.state.authors}
             addAuthor={this.addAuthor}
+            toggleHover={this.toggleHover}
+            authorUpdater={this.authorUpdater}
+            stories={this.state.stories}
             />
           }}
           />
