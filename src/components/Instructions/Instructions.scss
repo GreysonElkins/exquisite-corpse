@@ -2,21 +2,30 @@
 
 .Instructions-sec {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-left: 10em;
-  margin-right: 10em;
+  justify-content: space-between;
+  margin-left: 5em;
+  background-color: rgba(255, 255, 255, 0.178);
+  border-radius: 2em;
+  box-shadow: 0 0 40px 40px rgba(255, 255, 255, 0.178);
 }
 
 .Instructions-header-text {
   display: block;
-  font-size: 3.24em;
+  font-size: 2.6em;
 }
 
 .game-instructions {
-  width: 80%;
+  width: 50%;
   font-size: 1.5em;
+}
+
+.sidenav {
+  margin-top: 3em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 500px;
+
 }
 
 .show-history-button {
@@ -25,8 +34,9 @@
   background: none;
   border: none;
   outline: none;
-  color: black;
-  margin: 0 0 2em;
+  color: $graphite;
+  margin: 0 0 1em 0;
+  padding: 0;
   cursor: pointer;
   font-size: 2em;
   transition: $shadow-transition;
@@ -38,12 +48,17 @@
 
 .start-new-story-link {
   font-size: 2em;
-  color: black;
+  color: $graphite;
   transition: $shadow-transition;
 
   &:hover {
     text-shadow: $font-shadow;
   }
+}
+
+.or {
+  margin-left: 4em;
+  font-size: 2em;
 }
 
 .Instructions-sec a {
@@ -52,7 +67,8 @@
 }
 
 .text {
-  font-size: 30px;
+  font-size: 2em;
   font-weight: 400;
+  margin-left: 1.75em;
 }
 
