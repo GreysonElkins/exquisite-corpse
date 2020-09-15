@@ -18,11 +18,6 @@ const getBookSpine = () => {
   return bookSpines[random];
 };
 
-const findLastWords = (story) => {
-  const lastEntry = story.contributions[story.contributions.length - 1]
-  return `. . . ${lastEntry.substring(5)}`
-} 
-
 const Book = ({ story, onClick, popup, authorUpdater }) => {
   const spine = getBookSpine()
   return (
@@ -46,7 +41,7 @@ const Book = ({ story, onClick, popup, authorUpdater }) => {
         >
           <p>
             TITLE: {story.title} <br />
-            {story.contributions[0] !== null && `LAST WORDS: ${findLastWords(story)}`} <br />
+            {story.lastWords && `LAST WORDS: ${story.lastWords}`} <br />
             {story.prompt && `GENRE: ${story.prompt.genre}`} <br />
             LAST UPDATED: {moment(story.updated_at).format("MMMM DD, YYYY")}
           </p>

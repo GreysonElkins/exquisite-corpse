@@ -8,7 +8,9 @@ const StoryEditFields = ({ updateText, disabled, story }) => {
       {story.prompt && 
         <h1 id="prompt">PROMPT: {story.prompt.prompt}</h1>
       }
-      LAST WORDS: . . .{"testing for now"}
+      {story.lastWords && 
+        <h1 id="lastWords">LAST WORDS: {story.lastWords}</h1>
+      }
       <input
         id="title"
         type="text"

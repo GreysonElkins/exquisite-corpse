@@ -33,6 +33,10 @@ class App extends Component {
               story.prompt = this.state.prompts
                 .find(prompt => prompt.id === story.prompt)
             }
+            if (story.contributions[0] !== null) {
+              const lastEntry = story.contributions[story.contributions.length - 1];
+              story.lastWords = `. . . ${lastEntry.substring(15)}`;
+            }
             updatedStories.push(story)
           })
           this.setState({ stories: updatedStories })
