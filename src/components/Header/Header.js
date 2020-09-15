@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import './Header.scss'
 
-const Header = () => {
+const Header = (props) => {
   return (
     <header className='header'>
       <Link to='/'>
@@ -21,6 +21,15 @@ const Header = () => {
         <NavLink to='/library' className='nav' activeClassName='selected'>
           / Library /
         </NavLink>
+        {props.currentUser.id
+          && <NavLink 
+              to={`/user/${props.currentUser.id}`} 
+              className='nav' 
+              activeClassName='selected'
+            >
+              / {props.currentUser.name} /
+          </NavLink>
+        }
         <NavLink to='/login' className='nav' activeClassName='selected'>
          / Sign In /
         </NavLink>
