@@ -45,11 +45,10 @@ class StorySetupView extends Component {
           to={{
             pathname: "/story-edit",
             state: {story: {
+              id: undefined,
               prompt: this.state.randomPrompt,
               title: undefined,
-              author: this.props.author,
-              addStory: this.addStory,
-              updateStoryData: this.props.updateStoryData
+              // author: this.props.author,
             }}
           }}
         />
