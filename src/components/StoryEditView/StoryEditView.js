@@ -19,27 +19,26 @@ class StoryEditView extends Component {
   }
 
   render() {
-    // console.log(this.props.location.state)
     return (
       <main id="story-edit-section">
         <div id="story-edit-container">
-          <StoryEditFields 
-            story={ this.props.location.state.story }
-            updateText={ this.updateText } 
-            disabled={ this.state.disabled }
+          <StoryEditFields
+            story={this.props.location.state.story}
+            updateText={this.updateText}
+            disabled={this.state.disabled}
           />
-          <StoryEditFooter 
-            disableStoryInput={ this.disableStoryInput }
+          <StoryEditFooter
+            disableStoryInput={this.disableStoryInput}
+            story={this.props.location.state.story}
+            textInputs={this.state}
+            author={this.props.location.state.author}
           />
         </div>
         <div id="live-display-container">
-          <LiveDisplay 
-            props={this.state}
-          />
+          <LiveDisplay textInputs={this.state} />
         </div>
       </main>
-
-    );
+    )
   }
 }
 

@@ -47,7 +47,8 @@ class StorySetupView extends Component {
             pathname: "/story-edit",
             state: {story: {
               prompt: this.state.randomPrompt,
-              title: undefined
+              title: undefined,
+              author: this.props.author
             }}
           }}
         />
