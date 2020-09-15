@@ -45,7 +45,10 @@ class StorySetupView extends Component {
         <Redirect
           to={{
             pathname: "/story-edit",
-            state: {story: {prompt: this.state.randomPrompt}}
+            state: {story: {
+              prompt: this.state.randomPrompt,
+              title: undefined
+            }}
           }}
         />
       )
