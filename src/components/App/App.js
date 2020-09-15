@@ -140,6 +140,10 @@ class App extends Component {
           </span>
           <span>
             LAST UPDATED: {this.state.hover.lastUpdate}
+            <br />
+          </span>
+          <span>
+            COMPLETED?: {this.state.hover.is_complete}
           </span>
         </p>
       </div>
@@ -226,6 +230,7 @@ class App extends Component {
             toggleHover={this.toggleHover}
             authorUpdater={this.authorUpdater}
             stories={this.state.stories}
+            login={this.login}
             />
           }}
           />
