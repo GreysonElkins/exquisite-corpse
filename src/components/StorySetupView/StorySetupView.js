@@ -58,6 +58,7 @@ class StorySetupView extends Component {
           startWriting={this.startWriting}
           getRandomPrompt={this.getRandomPrompt}
           removePrompt={this.removePrompt}
+          randomPrompt={this.state.randomPrompt}
           error={this.state.error}
         />
       </section>
