@@ -114,6 +114,7 @@ class StorySetup extends Component {
               {this.genreDropDown(this.props.prompts)}
             </label>
             <button
+              className="refresh-genre"
               type="button"
               onClick={() => {
                 this.props.getRandomPrompt(this.state.desiredGenre)
