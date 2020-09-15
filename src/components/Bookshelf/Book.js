@@ -37,9 +37,10 @@ const Book = ({ story, onClick, popup, authorUpdater, toggleHover }) => {
         toggleHover(event, hoverObject)
       }}
       onMouseLeave={toggleHover}
-      onClick={() => {
+      onClick={(event) => {
         authorUpdater(story)
         onClick(story)
+        toggleHover(event)
       }}
     >
     </div>

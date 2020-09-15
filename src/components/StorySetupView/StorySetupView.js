@@ -50,7 +50,6 @@ class StorySetupView extends Component {
               id: undefined,
               prompt: this.state.randomPrompt,
               title: undefined,
-              // author: this.props.author,
             }}
           }}
         />
