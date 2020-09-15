@@ -16,7 +16,14 @@ class App extends Component {
     super() 
     this.state = {
       error: '',
-      currentUser: {},
+      currentUser: {
+        id: null,
+        name: '',
+        email: '',
+        bio: null,
+        created_at: '',
+        updated_at: ''
+      },
       stories: [],
       prompts: [],
       authors: [],
