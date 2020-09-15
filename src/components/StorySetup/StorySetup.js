@@ -1,99 +1,72 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
-import ApiHelper from '../../ApiHelper/ApiHelper'
+// import { Redirect } from 'react-router-dom'
+// import ApiHelper from '../../ApiHelper/ApiHelper'
 import './StorySetup.scss'
 
 class StorySetup extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      authorName: '',
       promptRequested: false,
-      genre: 'any',
-      submitOk: false,
-      prompt: ''
+      desiredGenre: ''
     }
   }
-  
-  handleChange = (event) => {
+
+  updateForm = (event) => {
     const target = event.target
-    const value = target.type === 'checkbox' ? target.checked : target.value
+    const value = target.type === "checkbox" ? target.checked : target.value
     const name = target.name
-    this.setState({
-      [name]: value
-    })
+
+    this.setState({ [name]: value })
   }
 
-  handleSubmit = async (event) => {
-    event.preventDefault()
-    let prompt
-
-    if (this.state.promptRequested) {
-      const genre = this.state.genre
-      prompt = await ApiHelper.getRandomPrompt(genre)
-    }
-
-    if(!this.props.error) {
-      this.setState({
-        prompt: prompt,
-        submitOk: true
-      })
-    }
-  }
-  
-  render() {
-    if (this.state.submitOk) {
-      return <Redirect to={{
-          pathname: '/story-edit',
-          state: { prompt: this.state.prompt }
-        }}
-      />
-    }
+  promptCheckBox = (isChecked) => {
     return (
-      <form className='StorySetup' onSubmit={this.handleSubmit}>
-        {!this.props.userName && 
-        <label>
-          Who Are You?<br/>
-          <input
-            name='authorName'
-            type='text'
-            placeholder='create your pen name'
-            value={this.state.authorname}
-            onChange={this.handleChange}
-          />
-        </label>
-        }
-        {this.props.userName && <p>Hello {this.props.userName},</p>}
-        <br/>
-        <label>
-          Would you like to start with a prompt? <br/>
-          Check box for <b><i>"Yes"</i></b> - 
-          <input
-            name='promptRequested'
-            type='checkbox'
-            checked={this.state.promptRequested}
-            onChange={this.handleChange}
-          />
-        </label>
-        <br/>
-        {this.state.promptRequested &&
-        <label>
-          Please select a genre:
-          <select
-            name='genre'
-            value={this.state.genre}
-            onChange={this.handleChange}
-          >
-            <option value='any'>Any</option>
-            <option value='dystopian'>Dystopian</option>
-            <option value='fantasy'>Fantasy</option>
-            <option value='mystery'>Mystery</option>
-            <option value='romance'>Romance</option>
-            <option value='science fiction'>Science Fiction</option>
-            <option value='superhero'>Superhero</option>
-          </select>
-        </label>
-        }
+      <label>
+        Would you like to start with a prompt? <br/>
+        Check box for <b><i>"Yes"</i></b> - 
+        <input
+          name='promptRequested'
+          type='checkbox'
+          checked={isChecked}
+          onChange={this.updateForm}
+        />
+      </label>
+    )
+  }
+
+  genreDropDown = (prompts) => {
+    debugger
+    const options = prompts.reduce((genreList, prompt) => {
+      if (genreList.includes(prompt.genre) === false) {
+        genreList.push(prompt.genre)
+      }
+      return genreList
+    }, [])
+    
+    const dropDown = options.reduce((selectOptions, genre) => {
+      selectOptions.push(
+        <option value={genre}>
+          {genre}
+        </option>
+      )
+      return selectOptions
+    }, [<option value='any'>any</option>])
+
+    return (
+      <select
+        name='desiredGenre'
+        value={this.state.desiredGenre}
+        onChange={this.updateForm}
+      >
+        {dropDown}
+      </select>
+    )
+  }
+
+  rulesOfTheGame = () => {
+    return (
+      <>
         <p>
           You will have 60 seconds to free-write on the next screen.<br/>
           {this.state.promptRequested && 
@@ -105,6 +78,31 @@ class StorySetup extends Component {
           Have Fun!
         </p>
         <button>Start Story</button>
+      </>
+    )
+  }
+
+  render() {
+    return (
+      <form 
+        className='StorySetup' 
+        onSubmit={(event) => {
+          this.props.startWriting(event, this.state.desiredGenre)
+        }}
+      >
+        {this.props.userName && 
+          <><p>Hello {this.props.userName},</p><br/></>}
+        {this.promptCheckBox(this.state.promptRequested)}
+        {this.state.promptRequested &&
+          <>
+            <label>
+              Please select a genre:
+              {this.genreDropDown(this.props.prompts)}
+            </label>
+            <br/>
+          </>
+        }
+        {this.rulesOfTheGame()}
       </form>
     )
   }
