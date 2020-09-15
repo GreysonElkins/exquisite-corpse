@@ -44,7 +44,7 @@ const Book = ({ story, onClick, popup, authorUpdater }) => {
           className="pop-up" 
           place='top' 
           effect='float' 
-          >
+        >
           <p>
             TITLE: {story.title} <br />
             {story.contributions[0] !== null && `LAST WORDS: ${findLastWords(story)}`} <br />
