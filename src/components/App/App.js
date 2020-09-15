@@ -7,6 +7,7 @@ import WelcomePageView from '../WelcomePageView/WelcomePageView'
 import StorySetupView from '../StorySetupView/StorySetupView'
 import StoryEditView from '../StoryEditView/StoryEditView'
 import LibraryView from '../LibraryView/LibraryView'
+import UserPage from '../UserPage/UserPage'
 import Login from '../Login/Login'
 import ApiHelper from '../../ApiHelper/ApiHelper'
 import mainBackground from '../../assets/backgrounds/mainBackground.jpg'
@@ -58,9 +59,17 @@ class App extends Component {
       this.setState({error: error})
     }
   }
+
+  addAuthor = (author) => {
+    if (!this.state.authors.includes(author)) {
+      const update = this.state.authors.concat(author)
+      this.setState({ authors: update})
+    }
+  }
   
   login = (user) => {
     this.setState({ currentUser: user})
+    this.addAuthor(user)
   }
 
   updateContributorData = (story) => {
@@ -207,8 +216,19 @@ class App extends Component {
           }}
         />
         <Route 
+          exact path='/user/:id'
+          render={({ match }) => {
+            return <UserPage 
+            currentUser={this.state.currentUser}
+            pageId={match.params.id}
+            authors={this.state.authors}
+            addAuthor={this.addAuthor}
+            />
+          }}
+          />
+        <Route 
           exact path='/login' 
-          render={ () => {
+          render={() => {
             return <Login 
               login={this.login}
             /> 
