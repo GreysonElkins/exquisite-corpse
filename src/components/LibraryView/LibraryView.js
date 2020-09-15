@@ -1,6 +1,4 @@
-import { findAllByAltText } from '@testing-library/react'
 import React, { Component } from 'react'
-import ApiHelper from '../../ApiHelper/ApiHelper'
 import Bookshelf from '../Bookshelf/Bookshelf'
 import PublishedStory from '../PublishedStory/PublishedStory'
 
@@ -30,12 +28,11 @@ class LibraryView extends Component {
           stories={this.props.stories}
           authorUpdater={this.props.authorUpdater}
           onClick={this.selectStoryToRead}
+          toggleHover={this.props.toggleHover}
         />
-      {this.state.currentStory.title !== '' 
-        && <PublishedStory 
-          currentStory={this.state.currentStory}
-          />
-      }
+        {this.state.currentStory.title !== "" && (
+          <PublishedStory currentStory={this.state.currentStory} />
+        )}
       </>
     );
   }

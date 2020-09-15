@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-// import { Redirect } from 'react-router-dom'
-// import ApiHelper from '../../ApiHelper/ApiHelper'
 import './StorySetup.scss'
 
 class StorySetup extends Component {
@@ -8,7 +6,7 @@ class StorySetup extends Component {
     super(props)
     this.state = {
       promptRequested: false,
-      desiredGenre: ''
+      desiredGenre: 'any'
     }
   }
 
@@ -29,7 +27,15 @@ class StorySetup extends Component {
           name='promptRequested'
           type='checkbox'
           checked={isChecked}
-          onChange={this.updateForm}
+          onChange={(event) => {
+            this.updateForm(event)
+            if(!event.target.checked) {
+              this.setState({desiredGenre: ''})
+              this.props.removePrompt()
+            } else {
+              this.props.getRandomPrompt('any')
+            }
+          }}
         />
       </label>
     )
@@ -43,20 +49,23 @@ class StorySetup extends Component {
       return genreList
     }, [])
     
-    const dropDown = options.reduce((selectOptions, genre) => {
+    const dropDown = options.reduce((selectOptions, genre, i) => {
       selectOptions.push(
-        <option value={genre}>
+        <option value={genre} key={`genre${i}`}>
           {genre}
         </option>
       )
       return selectOptions
-    }, [<option value='any'>any</option>])
+    }, [<option value='any' key='any'>any</option>])
 
     return (
       <select
         name='desiredGenre'
         value={this.state.desiredGenre}
-        onChange={this.updateForm}
+        onChange={(event) => {
+          this.updateForm(event)
+          this.props.getRandomPrompt(event.target.value);
+        }}
       >
         {dropDown}
       </select>
@@ -67,18 +76,24 @@ class StorySetup extends Component {
     return (
       <>
         <p>
-          You will have 60 seconds to free-write on the next screen.<br/>
-          {this.state.promptRequested && 
-          <span>Your prompt will be displayed at the top of the view.<br/></span>
-          }
-          The countdown will begin when you start typing.<br/>
-          When the timer runs out you will no longer be able to type.<br/>
-          <br/>
+          You will have 60 seconds to free-write on the next screen.
+          <br />
+          The countdown will begin when you start typing.
+          <br />
+          When the timer runs out you will no longer be able to type.
+          <br />
+          <br />
           Have Fun!
         </p>
         <button>Start Story</button>
+        {this.props.randomPrompt 
+          && <span class="prompt">
+            PROMPT: {this.props.randomPrompt.prompt}
+            <br />
+          </span>
+        }
       </>
-    )
+    );
   }
 
   render() {
@@ -98,6 +113,14 @@ class StorySetup extends Component {
               Please select a genre:
               {this.genreDropDown(this.props.prompts)}
             </label>
+            <button
+              type="button"
+              onClick={() => {
+                this.props.getRandomPrompt(this.state.desiredGenre)
+              }}
+            >
+              Refresh "{this.state.desiredGenre}" Prompt
+            </button>
             <br/>
           </>
         }
