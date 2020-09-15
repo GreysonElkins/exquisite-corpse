@@ -25,11 +25,11 @@
   flex-direction: column;
   align-items: flex-start;
   width: 400px;
-
 }
 
 .show-history-button {
   font-family: $main-font;
+  text-shadow: 0px 0px 1.5px $graphite;
   height: 20px;
   background: none;
   border: none;
