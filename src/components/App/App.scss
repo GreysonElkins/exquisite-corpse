@@ -3,11 +3,13 @@
 
 .App {
   font-family: $main-font;
+  color: $graphite;
 }
 
 .background {
   width: 100%;
   position: fixed;
+  filter: contrast(90%);
   z-index: -2;
 }
 
