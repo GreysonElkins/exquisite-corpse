@@ -8,7 +8,6 @@ class StorySetupView extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      error: "",
       submitOk: false,
       promptRequested: false,
       randomPrompt: null
@@ -21,12 +20,10 @@ class StorySetupView extends Component {
     if(desiredGenre) {
       prompt = this.getRandomPrompt(desiredGenre)
     }
-    if (!this.state.error) {
-      this.setState({
-        randomPrompt: prompt,
-        submitOk: true
-      });
-    }
+    this.setState({
+      randomPrompt: prompt,
+      submitOk: true
+    });
   }
 
   getRandomPrompt(genre) {
@@ -44,7 +41,6 @@ class StorySetupView extends Component {
 
   render = () => {
     if (this.state.submitOk) {
-      console.log('PASSED ON REDIRECT:', this.state.randomPrompt)
       return (
         <Redirect
           to={{
@@ -56,12 +52,6 @@ class StorySetupView extends Component {
     }
     return (
       <section className="StorySetupView">
-        {this.state.error && (
-          <h2>
-            I'm sorry, we could not retrieve a prompt. Error Status:{" "}
-            {this.state.error}
-          </h2>
-        )}
         <StorySetup
           prompts={this.props.prompts}
           userName={"Bango Zango" /*this.props.username*/}
