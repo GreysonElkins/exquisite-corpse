@@ -122,8 +122,6 @@ class App extends Component {
                 author={this.state.currentUser}
                 stories={this.incompleteStories()}
                 authorUpdater={this.updateContributorData}
-                addStory={this.addStory}
-                updateStoryData={this.updateStoryData}
               />
             );
           }}
@@ -136,8 +134,6 @@ class App extends Component {
               <StorySetupView
                 prompts={this.state.prompts}
                 author={this.state.currentUser}
-                addStory={this.addStory}
-                updateStoryData={this.updateStoryData}
               />
             );
           }}
