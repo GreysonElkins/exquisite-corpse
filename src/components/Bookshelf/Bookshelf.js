@@ -11,7 +11,10 @@ const Bookshelf = (props) => {
           authorUpdater={props.authorUpdater}
           story={story} 
           onClick={() => props.onClick(story)} 
-          popup={props.popup} key={i}/>
+          popup={props.popup} 
+          toggleHover={props.toggleHover}
+          key={i}
+        />
       )
     })
   }

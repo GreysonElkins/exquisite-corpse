@@ -28,12 +28,11 @@ class LibraryView extends Component {
           stories={this.props.stories}
           authorUpdater={this.props.authorUpdater}
           onClick={this.selectStoryToRead}
+          toggleHover={this.props.toggleHover}
         />
-      {this.state.currentStory.title !== '' 
-        && <PublishedStory 
-          currentStory={this.state.currentStory}
-          />
-      }
+        {this.state.currentStory.title !== "" && (
+          <PublishedStory currentStory={this.state.currentStory} />
+        )}
       </>
     );
   }
