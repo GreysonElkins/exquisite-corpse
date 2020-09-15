@@ -3,20 +3,28 @@ import { Link } from "react-router-dom";
 import TimerDisplay from "../TimerDisplay/TimerDisplay";
 import ApiHelper from '../../ApiHelper/ApiHelper'
 import "../StoryEditFooter/StoryEditFooter.scss";
-import ApiHelper from "../../ApiHelper/ApiHelper";
 
 const StoryEditFooter = ({ disableStoryInput, textInputs, story, author, addStory, updateStoryData }) => {
 
-  const bodyBuilder = () => {
+  const bodyBuilder = isFinished => {
     const body = {
       contributions: textInputs.story,
       contributors: author.id
     }
     if (!story.id) {
-      body.title = textInputs.story
+      body.title = textInputs.title
       body.prompt = story.prompt.id
     }
+    if (isFinished) body.is_complete = true
     return body
+  }
+
+  const postStory = (event, isFinished) => {
+    // event.preventDefault()
+    const body = bodyBuilder(isFinished)
+    ApiHelper.postStory(body, story.id).then((publishedStory) => {
+      story.id ? updateStoryData(publishedStory[0]) : addStory(publishedStory[0])
+    })
   }
 
   return (
@@ -26,16 +34,7 @@ const StoryEditFooter = ({ disableStoryInput, textInputs, story, author, addStor
         <button 
           type="button" 
           id="post-button" 
-          onClick={() => {
-            const body = bodyBuilder()
-            if (!story.id) {
-              ApiHelper.postStory(body)  
-                .then(story => addStory(story))
-            } else {
-              ApiHelper.editStory(body)
-                .then(story => updateStoryData(story))
-            }
-          }}
+          onClick={postStory}
         >
           {!story.id ? "Continue Story" : "Start Story"}
         </button>
@@ -45,11 +44,8 @@ const StoryEditFooter = ({ disableStoryInput, textInputs, story, author, addStor
           <button
             type="button" 
             id="publish-button"
-            onClick={() => {
-              const body = bodyBuilder()
-              body.is_complete = true
-              ApiHelper.editStory(body)
-                .then(story => updateStoryData(story))
+            onClick={(event) => {
+              postStory(event, true)
             }}
           >
             Finish Story
