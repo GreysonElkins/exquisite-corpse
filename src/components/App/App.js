@@ -94,32 +94,35 @@ class App extends Component {
               /> 
             )
           }}
-        /> 
-        <Route 
-          exact path='/story-setup' 
-          render={ () => {
-            return <StorySetupView /> 
+        />
+        <Route
+          exact
+          path="/story-setup"
+          render={() => {
+            return <StorySetupView />;
           }}
         />
-        <Route 
-          exact path='/story-edit' 
-          render={ (props) => {
-            return <StoryEditView {...props} /> 
+        <Route
+          exact
+          path="/story-edit"
+          render={(props) => {
+            return <StoryEditView {...props} />;
           }}
-        />  
-        <Route 
-          exact path='/library' 
-          render={ () => {
+        />
+        <Route
+          exact
+          path="/library"
+          render={() => {
             return (
-              <LibraryView 
+              <LibraryView
                 stories={this.completedStories()}
-                authorUpdater={this.updateContributorData} 
+                authorUpdater={this.updateContributorData}
               />
-            ) 
+            );
           }}
         />
       </main>
-    )
+    );
   }
 }
 
