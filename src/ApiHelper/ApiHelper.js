@@ -17,6 +17,21 @@ class ApiHelper {
   static getData = () => {
     return Promise.resolve(testData.stories)
   }
+
+  static postUser = async (loginInfo) => {
+    try {
+    const response = await fetch(baseUrl + '/authors/login', {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(loginInfo),
+    })
+    return response
+    } catch (error) {
+      return error
+    }
+  }
 }
 
 export default ApiHelper
