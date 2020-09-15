@@ -154,8 +154,6 @@ class App extends Component {
                 author={this.state.currentUser}
                 stories={this.incompleteStories()}
                 authorUpdater={this.updateContributorData}
-                addStory={this.addStory}
-                updateStoryData={this.updateStoryData}
                 toggleHover={this.toggleHover}
               />
             );
