@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './Login.scss';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import ApiHelper from '../../ApiHelper/ApiHelper';
 
 class Login extends Component {
@@ -87,6 +87,11 @@ class Login extends Component {
             id='password'
             onChange={this.updateInputs}
           />
+          <span className="sign-up-link">
+            <Link to='/sign-up'>
+              Create an Account
+            </Link>
+          </span>
           <button className="login-button">/Submit/</button>
         </form>
       </div>
