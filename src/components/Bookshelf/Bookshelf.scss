@@ -1,22 +1,18 @@
 .bookContainer {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   overflow: scroll;
-  width: 80%;
-  margin: auto
+  width: 75%;
+  margin: 1em 0;
 }
 
 .book {
   border: none;
   background-size: 2em;
   background-repeat: no-repeat;
-  color: white;
-  display: flex; 
-  flex-direction: column;
   height: 10em;
   padding: .01em;
-  text-decoration: none;
-  width: 2em;
+  min-width: 2em;
   cursor: pointer;
 }
 
