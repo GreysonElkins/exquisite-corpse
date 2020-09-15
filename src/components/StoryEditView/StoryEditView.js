@@ -31,9 +31,9 @@ class StoryEditView extends Component {
             disableStoryInput={this.disableStoryInput}
             textInputs={this.state}
             story={this.props.location.state.story}
-            author={this.props.location.state.author}
-            updateStoryData={this.props.location.state.updateStoryData}
-            addStory={this.props.location.state.addStory}
+            author={this.props.author}
+            updateStoryData={this.props.updateStoryData}
+            addStory={this.props.addStory}
           />
         </div>
         <div id="live-display-container">
