@@ -12,7 +12,7 @@ const Header = () => {
         </h1>
       </Link>
       <nav className='navbar'>
-        <NavLink to='/' className='nav' activeClassName='selected'>
+        <NavLink exact to='/' className='nav' activeClassName='selected'>
           / Home / 
         </NavLink>
         <NavLink to='/story-setup' className='nav' activeClassName='selected'>
