@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import StoryEditFields from '../StoryEditFields/StoryEditFields'
 import StoryEditFooter from '../StoryEditFooter/StoryEditFooter'
 import './StoryEditView.scss'
+import LiveDisplay from './LiveDisplay'
 
 class StoryEditView extends Component {
   constructor(props) {
@@ -11,6 +12,7 @@ class StoryEditView extends Component {
 
   updateText = e => {
     this.setState({ [e.target.id]: e.target.value })
+    console.log(this.state)
   }
 
   disableStoryInput = () => {
@@ -18,17 +20,26 @@ class StoryEditView extends Component {
   }
 
   render() {
+    // console.log(this.props.location.state)
     return (
-      <main id="story-edit-container">
-        <StoryEditFields 
-          prompt={ this.props.location.state.prompt }
-          updateText={ this.updateText } 
-          disabled={ this.state.disabled }
-        />
-        <StoryEditFooter 
-          disableStoryInput={ this.disableStoryInput }
-        />
+      <main id="story-edit-section">
+        <div id="story-edit-container">
+          <StoryEditFields 
+            story={ this.props.location.state.story }
+            updateText={ this.updateText } 
+            disabled={ this.state.disabled }
+          />
+          <StoryEditFooter 
+            disableStoryInput={ this.disableStoryInput }
+          />
+        </div>
+        <div id="live-display-container">
+          <LiveDisplay 
+            props={this.state}
+          />
+        </div>
       </main>
+
     );
   }
 }

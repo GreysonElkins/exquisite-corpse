@@ -2,19 +2,26 @@ import React from 'react'
 import Book from './Book'
 import './Bookshelf.scss'
 
-const Bookshelf = ({ stories, onClick, popup }) => {
+const Bookshelf = (props) => {
 
-  const booksSelection = stories.map((story, i) => {
+  const booksSelection = (props) => {
+    return props.stories.map((story, i) => {
+      return (
+        <Book 
+          authorUpdater={props.authorUpdater}
+          story={story} 
+          onClick={() => props.onClick(story)} 
+          popup={props.popup} key={i}/>
+      )
+    })
+  }
+
     return (
-      <Book story={story} onClick={onClick} popup={popup} key={i}/>
+      <section className="bookContainer">
+        {booksSelection(props)}
+      </section>
     )
-  })
-    
-  return (
-    <section className="bookContainer">
-      {booksSelection}
-    </section>
-  )
+
 }
 
 export default Bookshelf

@@ -18,9 +18,8 @@ const getBookSpine = () => {
   return bookSpines[random];
 };
 
-const Book = ({ story, onClick, popup }) => {
+const Book = ({ story, onClick, popup, authorUpdater }) => {
   const spine = getBookSpine()
-  let prompt = story.story.slice(-1)
   return (
     <>
       <div 
@@ -29,29 +28,24 @@ const Book = ({ story, onClick, popup }) => {
         style={{ backgroundImage: `url(${spine})` }}
         role="button"
         onClick={() => {
+          authorUpdater(story)
           onClick(story)
         }}
       >
-        <span className="title">{story.title}</span>
-        <span className="prompt">{story.prompt}</span>
-        <span className="date-published">
-          {moment(story.updated_at).format("MMM YYYY")}
-        </span>
       </div>
-      {popup && 
-        <ReactTooltip id='global' className="pop-up" place='top' effect='float' >
-          <p className='blurred-text'>This is the blurred prompt for the popup,<br></br>
-          the user will not be able to see this, <br></br>
-          They will only be able to see the very last part<br></br>
-          consectetur adipiscing elit, sed do eiusmod <br></br>
-          tempor incididunt ut labore et dolore magna <br></br>
-          aliqua. Ut enim ad minim veniam, quis nostrud<br></br>
-          exercitation ullamco laboris nisi ut aliquip ex <br></br>
-          ea commodo consequat. Duis aute irure dolor in <br></br>
-          reprehenderit in voluptate aboris nisi ut</p>
-          <p>{prompt}...</p>
+        <ReactTooltip 
+          id='global' 
+          className="pop-up" 
+          place='top' 
+          effect='float' 
+        >
+          <p>
+            TITLE: {story.title} <br />
+            {story.lastWords && `LAST WORDS: ${story.lastWords}`} <br />
+            {story.prompt && `GENRE: ${story.prompt.genre}`} <br />
+            LAST UPDATED: {moment(story.updated_at).format("MMMM DD, YYYY")}
+          </p>
         </ReactTooltip>
-      }
     </>
   );
 }
