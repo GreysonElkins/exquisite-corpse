@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './Login.scss';
 import { Redirect } from 'react-router-dom';
+import ApiHelper from '../../ApiHelper/ApiHelper';
 
 class Login extends Component {
   constructor() {
@@ -9,48 +10,34 @@ class Login extends Component {
       this.state = {
         username: '',
         password: '',
-        correctUsername: true,
-        correctPassword: true,
         submitEmptyLogin: false,
-        redirect: false
+        redirect: false,
+        error: ''
     }
+  }
+
+  updateInputs = (event) => {
+    this.setState({ [event.target.id]: event.target.value })
   }
 
   verifyLogin = async (event) => {
     event.preventDefault()
-    const userName = document.getElementById('username-input').value
-    const password = document.getElementById('password-input').value
-
-    if(userName.includes('@turing.io') && password === 'abc123') {
-      const user = await this.submitLogin()
-      this.props.login(user)
-      .then(() => this.setState({ redirect: true }));
-    } else if (userName === '' || password === '') {
+    
+    if(this.state.username === '' || this.state.password === '') {
       this.setState({ submitEmptyLogin: true })
-    } else if (password !== 'abc123' && !userName.includes('@turing.io')) {
-      this.setState({ correctUsername: false, correctPassword: false })
-    }else if (!userName.includes('@turing.io')) {
-      this.setState({ correctUsername: false, submitEmptyLogin: false, correctPassword: true})
-    } else if (password !== 'abc123') {
-      this.setState({ correctPassword: false, submitEmptyLogin: false, correctUsername: true})
-    } 
-  }
-
-  submitLogin = async () => {
-  const response = await fetch(
-    "https://rancid-tomatillos.herokuapp.com/api/v2/login", {
-      method: "POST",
-      headers: {
-          "content-type": "application/json"
-      },
-      body: JSON.stringify({
-        email: document.getElementById('username-input').value,
-        password: document.getElementById('password-input').value
-      })
+    } else {
+      const loginInfo = {
+        "username": this.state.username, 
+        "password": this.state.password
+      }
+      const response = await ApiHelper.postUser(loginInfo)
+      if (response.status === 201) {
+        this.props.login()
+        this.setState({ redirect: true })
+      } else {
+        this.setState({ error: 'Incorrect login credentials'})
+      }
     }
-  )
-    const message = await response.json();
-    return message;
   }
 
   render() {
@@ -60,6 +47,8 @@ class Login extends Component {
        return <Redirect to='/'/>;
      }
 
+     console.log(this.state)
+
     return (
       <div className="Login-container">
         <form className="Login-form">
@@ -67,18 +56,18 @@ class Login extends Component {
           {this.state.submitEmptyLogin === true && <p className="Login-warning-text" >One or more fields are empty</p>}
           <input
             type='text'
-            placeholder='Email'
+            placeholder='Username or Email'
             name='username'
-            id='username-input'
+            id='username'
+            onChange={this.updateInputs}
           />
-          {this.state.correctUsername === false && <p className="Login-warning-text" >* Incorrect username!</p>}
           <input
             type='password'
             placeholder='Password'
             name='password'
-            id='password-input'
+            id='password'
+            onChange={this.updateInputs}
           />
-          {this.state.correctPassword === false && <p className="Login-warning-text" >* Incorrect password!</p>}
           <button className="login-button" onClick={this.verifyLogin}>/Submit/</button>
         </form>
       </div>
@@ -87,7 +76,7 @@ class Login extends Component {
 }
 
 Login.propTypes = {
-  submitLogin: PropTypes.func
+  login: PropTypes.func
 }
 
 export default Login
