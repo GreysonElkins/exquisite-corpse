@@ -113,6 +113,7 @@ class App extends Component {
           render={() => {
             return (
               <WelcomePageView
+                author={this.state.currentUser}
                 stories={this.incompleteStories()}
                 authorUpdater={this.updateContributorData}
               />
@@ -123,7 +124,12 @@ class App extends Component {
           exact
           path="/story-setup"
           render={() => {
-            return <StorySetupView prompts={this.state.prompts} />;
+            return (
+              <StorySetupView
+                prompts={this.state.prompts}
+                author={this.state.currentUser}
+              />
+            );
           }}
         />
         <Route
