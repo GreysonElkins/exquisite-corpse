@@ -35,7 +35,7 @@ const StoryEditFooter = ({ disableStoryInput, textInputs, story, author, addStor
           id="post-button" 
           onClick={postStory}
         >
-          {!story.id ? "Continue Story" : "Start Story"}
+          {!story.id ? "Start Story" : "Continue Story"}
         </button>
       </Link>
       {story.id && (
