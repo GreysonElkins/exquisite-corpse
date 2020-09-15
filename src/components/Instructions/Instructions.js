@@ -4,7 +4,7 @@ import GameHistory from '../GameHistory/GameHistory'
 import Bookshelf from '../Bookshelf/Bookshelf'
 import { Link } from 'react-router-dom'
 
-const Instructions = ( { displayHistory, showHistory, stories, onClick, popup } ) => {
+const Instructions = ( { displayHistory, showHistory, stories, onClick, authorUpdater } ) => {
   return (
     <section className="Instructions-sec">
       <div className="game-instructions">
@@ -22,21 +22,19 @@ const Instructions = ( { displayHistory, showHistory, stories, onClick, popup } 
             unique bodies of text.
           </b>
         </p>
-        <ul>
-          <ol>
-            <li>
-              Begin a new story or continue one of the stories to the right{" "}
-              <span className="first-letter">☞</span>
-            </li>
-            <li>
-              Start your section of the story from a prompt or the last line of
-              the previous author
-            </li>
-            <li>
-              Be creative and write fast (you'll have a limited amount of time!)
-            </li>
-          </ol>
-        </ul>
+        <ol>
+          <li>
+            Begin a new story or continue one of the stories to the right{" "}
+            <span className="first-letter">☞</span>
+          </li>
+          <li>
+            Start your section of the story from a prompt or the last line of
+            the previous author
+          </li>
+          <li>
+            Be creative and write fast (you'll have a limited amount of time!)
+          </li>
+        </ol>
       </div>
       <div className="sidenav">
         <button className="show-history-button" onClick={displayHistory}>
@@ -52,7 +50,7 @@ const Instructions = ( { displayHistory, showHistory, stories, onClick, popup } 
           <Bookshelf
             stories={stories}
             onClick={onClick}
-            popup={popup}
+            authorUpdater={authorUpdater}
           />
         </div>
       </div>
