@@ -2,7 +2,7 @@
 
 .Instructions-sec {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-left: 5em;
   background-color: rgba(255, 255, 255, 0.178);
   border-radius: 2em;
@@ -20,11 +20,11 @@
 }
 
 .sidenav {
-  margin-top: 3em;
+  margin: 3em 1em 0 3em;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 500px;
+  width: 400px;
 
 }
 
@@ -69,6 +69,10 @@
 .text {
   font-size: 2em;
   font-weight: 400;
-  margin-left: 1.75em;
+  margin-left: 1.5em;
 }
 
+.continue {
+  margin: 2em 0 0 6.25em;
+  width: 6em
+}
