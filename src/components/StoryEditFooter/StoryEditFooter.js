@@ -19,8 +19,6 @@ const StoryEditFooter = ({ disableStoryInput, textInputs, story, author }) => {
     return body
   }
 
-
-
   return (
     <section id="story-edit-footer">
       <TimerDisplay disableStoryInput={disableStoryInput} />
