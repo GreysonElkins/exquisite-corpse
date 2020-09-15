@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import StorySetup from '../StorySetup/StorySetup'
 import './StorySetupView.scss'
-import ApiHelper from '../../ApiHelper/ApiHelper'
 
 class StorySetupView extends Component {
   constructor(props) {

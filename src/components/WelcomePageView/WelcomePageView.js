@@ -1,7 +1,5 @@
 import React, { Component } from "react"
-import ApiHelper from '../../ApiHelper/ApiHelper'
 import Instructions from '../Instructions/Instructions'
-import Bookshelf from "../Bookshelf/Bookshelf"
 import { Redirect } from 'react-router-dom'
 
 class WelcomePageView extends Component {
