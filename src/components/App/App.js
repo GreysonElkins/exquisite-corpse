@@ -100,6 +100,10 @@ class App extends Component {
     })
   }
 
+  signOut = () => {
+    this.setState({ currentUser: {} })
+  }
+
   toggleHover = (event, info) => {
     info ? this.setState({ hover: info }) : this.setState({ hover: {show: false} })
   }
