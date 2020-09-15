@@ -207,6 +207,14 @@ class App extends Component {
             /> 
           }}
         /> 
+        <Route 
+          exact path='/sign-up'
+          render={() => {
+            return <Login
+              signup={true}
+            />
+          }}
+        />
         <span>
           {this.state.hover.show && this.makeHover()}
         </span>
