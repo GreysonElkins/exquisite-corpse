@@ -31,7 +31,21 @@ class ApiHelper {
         body: JSON.stringify(story)
       })
     } catch (error) {
-      
+      return error
+    }
+  }
+  
+  static editStory = async (story) => {
+    try {
+      return await fetch(`${apiHead}/stories/${story.id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(story)
+      })
+    } catch (error) {
+      return error
     }
   }
 }
