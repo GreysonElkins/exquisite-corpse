@@ -20,7 +20,6 @@ const StoryEditFooter = ({ disableStoryInput, textInputs, story, author, addStor
   }
 
   const postStory = (event, isFinished) => {
-    // event.preventDefault()
     const body = bodyBuilder(isFinished)
     ApiHelper.postStory(body, story.id).then((publishedStory) => {
       story.id ? updateStoryData(publishedStory[0]) : addStory(publishedStory[0])
