@@ -15,7 +15,7 @@ class WelcomePageView extends Component {
   displayHistory = () => {
     this.setState(prevState => {
       return {
-          showHistory: !prevState.showHistory
+        showHistory: !prevState.showHistory
       }
     })
   }
@@ -28,7 +28,6 @@ class WelcomePageView extends Component {
     const { redirect } = this.state
 
     if (redirect) {
-      console.log(this.state)
       return <Redirect to={{
         pathname: '/story-edit',
         state: {

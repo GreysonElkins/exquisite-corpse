@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.scss';
 import '../GameHistory/GameHistory.scss'
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import Header from '../Header/Header'
 import WelcomePageView from '../WelcomePageView/WelcomePageView'
 import StorySetupView from '../StorySetupView/StorySetupView'
@@ -132,7 +132,6 @@ class App extends Component {
 
   render() {
     return (
-    
       <main className="App">
         <img
           className="background"
@@ -160,28 +159,30 @@ class App extends Component {
             );
           }}
         />
-        <Route
-          exact
-          path="/story-setup"
-          render={() => {
-            return (
-              <StorySetupView
-                prompts={this.state.prompts}
-                author={this.state.currentUser}
-              />
-            );
-          }}
-        />
-        <Route
-          exact
-          path="/story-edit"
-          render={(props) => {
-            props.updateStoryData = this.updateStoryData
-            props.addStory = this.addStory
-            props.author = this.state.currentUser
-            return <StoryEditView {...props} />;
-          }}
-        />
+        <Route exact path="/story-setup">
+          {!this.state.currentUser.name ? (
+            <Redirect to="login" />
+          ) : (
+            <StorySetupView
+              prompts={this.state.prompts}
+              author={this.state.currentUser}
+              addStory={this.addStory}
+              updateStoryData={this.updateStoryData}
+            />
+          )}
+          );
+        </Route>
+        <Route exact path="/story-edit">
+          {!this.state.currentUser.name ? (
+            <Redirect to="login" />
+          ) : (
+            <StoryEditView
+              updateStoryData={this.updateStoryData}
+              addStory={this.addStory}
+              author={this.state.currentUser}
+            />
+          )}
+        </Route>
         <Route
           exact
           path="/library"
@@ -195,12 +196,11 @@ class App extends Component {
             );
           }}
         />
-        <Route 
-          exact path='/login' 
-          render={ () => {
-            return <Login 
-              login={this.login}
-            /> 
+        <Route
+          exact
+          path="/login"
+          render={() => {
+            return <Login login={this.login} />;
           }}
         /> 
         <Route 
