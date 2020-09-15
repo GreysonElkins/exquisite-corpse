@@ -10,14 +10,27 @@ class ApiHelper {
 
   static postLogin = async (loginInfo) => {
     try {
-    const response = await fetch(apiHead + '/authors/login', {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(loginInfo),
-    })
-    return response
+      return await fetch(apiHead + "/authors/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(loginInfo),
+      })
+    } catch (error) {
+      return error
+    }
+  }
+
+  static postStory = async (story, id) => {
+    try {
+      return await fetch(`${apiHead}/stories/${id? id : ''}`, {
+        method: `${id? 'PATCH' : 'POST'}`,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(story)
+      }).then(response => response.json())
     } catch (error) {
       return error
     }

@@ -11,13 +11,15 @@ const StoryEditFields = ({ updateText, disabled, story }) => {
       {story.lastWords && 
         <h1 id="lastWords">LAST WORDS: {story.lastWords}</h1>
       }
-      <input
-        id="title"
-        type="text"
-        className="title-input-box"
-        onChange={updateText}
-        placeholder="Enter your title here"
-      />
+      {!story.title && 
+        <input
+          id="title"
+          type="text"
+          className="title-input-box"
+          onChange={updateText}
+          placeholder="Enter your title here"
+        />
+      }
       <textarea
         id="story"
         className="story-input-box"
@@ -27,7 +29,7 @@ const StoryEditFields = ({ updateText, disabled, story }) => {
         disabled={disabled ? "disabled" : false}
       />
     </Fragment>
-  );
+  )
 }
 
 export default StoryEditFields
