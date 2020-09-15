@@ -6,8 +6,15 @@ import WelcomePageView from '../WelcomePageView/WelcomePageView'
 import StorySetupView from '../StorySetupView/StorySetupView'
 import StoryEditView from '../StoryEditView/StoryEditView'
 import LibraryView from '../LibraryView/LibraryView'
+import Login from '../Login/Login'
 
 class App extends Component {
+  constructor() {
+    super()
+      this.state = {
+        loggedIn: false,
+      }
+  }
   render() {
     return (
       <main>
@@ -36,12 +43,12 @@ class App extends Component {
             return <LibraryView /> 
           }}
         />
-        {/* <Route 
-          exact path='/published-story/:id' 
+        <Route 
+          exact path='/login' 
           render={ () => {
-            return <PublishedStoryView /> 
+            return <Login /> 
           }}
-        />  */}
+        /> 
       </main>
     )
   }
