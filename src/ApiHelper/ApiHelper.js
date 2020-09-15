@@ -1,4 +1,5 @@
 const apiHead = 'http://localhost:3005/api/v1'
+const baseUrl = 'http://localhost:3005/api/v1'
 
 class ApiHelper {
   static getData = (type, id) => {
