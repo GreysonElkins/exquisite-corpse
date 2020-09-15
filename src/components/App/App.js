@@ -73,8 +73,7 @@ class App extends Component {
   }
 
   updateStoryData = (newStory) => {
-    const allStoriesCopy = this.state.stories
-    const withNewStory = allStoriesCopy.map(oldStory => {
+    const withNewStory = this.state.stories.map(oldStory => {
       if (newStory.id === oldStory.id) {
         return newStory
       } else {
@@ -90,6 +89,13 @@ class App extends Component {
   
   completedStories = () => {    
     return this.state.stories.filter(story => story.is_complete)
+  }
+
+  addStory = (story) => {
+    const newStories = [...this.state.stories, story]
+    this.setState({
+      stories: newStories
+    })
   }
 
   render() {
@@ -113,8 +119,11 @@ class App extends Component {
           render={() => {
             return (
               <WelcomePageView
+                author={this.state.currentUser}
                 stories={this.incompleteStories()}
                 authorUpdater={this.updateContributorData}
+                addStory={this.addStory}
+                updateStoryData={this.updateStoryData}
               />
             );
           }}
@@ -123,13 +132,23 @@ class App extends Component {
           exact
           path="/story-setup"
           render={() => {
-            return <StorySetupView prompts={this.state.prompts} />;
+            return (
+              <StorySetupView
+                prompts={this.state.prompts}
+                author={this.state.currentUser}
+                addStory={this.addStory}
+                updateStoryData={this.updateStoryData}
+              />
+            );
           }}
         />
         <Route
           exact
           path="/story-edit"
           render={(props) => {
+            props.updateStoryData = this.updateStoryData
+            props.addStory = this.addStory
+            props.author = this.state.currentUser
             return <StoryEditView {...props} />;
           }}
         />
