@@ -5,7 +5,7 @@ import ApiHelper from '../../ApiHelper/ApiHelper'
 import "../StoryEditFooter/StoryEditFooter.scss";
 import ApiHelper from "../../ApiHelper/ApiHelper";
 
-const StoryEditFooter = ({ disableStoryInput, textInputs, story, author }) => {
+const StoryEditFooter = ({ disableStoryInput, textInputs, story, author, addStory, updateStoryData }) => {
 
   const bodyBuilder = () => {
     const body = {
@@ -28,7 +28,13 @@ const StoryEditFooter = ({ disableStoryInput, textInputs, story, author }) => {
           id="post-button" 
           onClick={() => {
             const body = bodyBuilder()
-            !story.id ? ApiHelper.postStory(body) : ApiHelper.editStory(body)
+            if (!story.id) {
+              ApiHelper.postStory(body)  
+                .then(story => addStory(story))
+            } else {
+              ApiHelper.editStory(body)
+                .then(story => updateStoryData(story))
+            }
           }}
         >
           {!story.id ? "Continue Story" : "Start Story"}
@@ -43,6 +49,7 @@ const StoryEditFooter = ({ disableStoryInput, textInputs, story, author }) => {
               const body = bodyBuilder()
               body.is_complete = true
               ApiHelper.editStory(body)
+                .then(story => updateStoryData(story))
             }}
           >
             Finish Story

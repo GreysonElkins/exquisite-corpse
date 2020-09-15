@@ -35,7 +35,9 @@ class WelcomePageView extends Component {
         pathname: '/story-edit',
         state: {
           story: this.state.selectedStory,
-          author: this.props.author
+          author: this.props.author,
+          addStory: this.props.addStory,
+          updateStoryData: this.props.updateStoryData
         }
       }}
       />

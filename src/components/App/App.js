@@ -92,6 +92,13 @@ class App extends Component {
     return this.state.stories.filter(story => story.is_complete)
   }
 
+  addStory = (story) => {
+    const newStories = [...this.state.stories, story]
+    this.setState({
+      stories: newStories
+    })
+  }
+
   render() {
     return (
       <main className="App">
@@ -116,6 +123,8 @@ class App extends Component {
                 author={this.state.currentUser}
                 stories={this.incompleteStories()}
                 authorUpdater={this.updateContributorData}
+                addStory={this.addStory}
+                updateStoryData={this.updateStoryData}
               />
             );
           }}
@@ -128,6 +137,8 @@ class App extends Component {
               <StorySetupView
                 prompts={this.state.prompts}
                 author={this.state.currentUser}
+                addStory={this.addStory}
+                updateStoryData={this.updateStoryData}
               />
             );
           }}

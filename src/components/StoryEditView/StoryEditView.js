@@ -29,16 +29,18 @@ class StoryEditView extends Component {
           />
           <StoryEditFooter
             disableStoryInput={this.disableStoryInput}
-            story={this.props.location.state.story}
             textInputs={this.state}
+            story={this.props.location.state.story}
             author={this.props.location.state.author}
+            updateStoryData={this.props.location.state.updateStoryData}
+            addStory={this.props.location.state.addStory}
           />
         </div>
         <div id="live-display-container">
           <LiveDisplay textInputs={this.state} />
         </div>
       </main>
-    )
+    );
   }
 }
 

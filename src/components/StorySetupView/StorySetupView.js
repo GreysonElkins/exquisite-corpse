@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import StorySetup from '../StorySetup/StorySetup'
 import './StorySetupView.scss'
-import ApiHelper from '../../ApiHelper/ApiHelper'
 
 class StorySetupView extends Component {
   constructor(props) {
@@ -48,7 +47,9 @@ class StorySetupView extends Component {
             state: {story: {
               prompt: this.state.randomPrompt,
               title: undefined,
-              author: this.props.author
+              author: this.props.author,
+              addStory: this.addStory,
+              updateStoryData: this.props.updateStoryData
             }}
           }}
         />
