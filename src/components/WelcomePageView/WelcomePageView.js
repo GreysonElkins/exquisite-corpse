@@ -15,7 +15,7 @@ class WelcomePageView extends Component {
   displayHistory = () => {
     this.setState(prevState => {
       return {
-          showHistory: !prevState.showHistory
+        showHistory: !prevState.showHistory
       }
     })
   }
