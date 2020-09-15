@@ -212,6 +212,7 @@ class App extends Component {
           render={() => {
             return <Login
               signup={true}
+              login={this.login}
             />
           }}
         />

@@ -67,6 +67,8 @@ class Login extends Component {
       this.setState({ submitEmpty: true })
     } else if (userCredentials[0] !== userCredentials[1]) {
       this.setState({ error: 'bad passwords'})
+    } else if (!userCredentials[3].includes('@')) {
+      this.setState({ error: "that's not an email"})
     } else {
       const newUser = {
         password: userCredentials[0],
@@ -81,12 +83,41 @@ class Login extends Component {
       .then(createdUser => {
         if(response.status === 200) {
           this.props.login(createdUser)
-          this.state({ redirect: true })
+          this.setState({ redirect: true })
         } else {
-          this.setState({ error: 'Something went wrong'})
+          this.setState({ error: 'server'})
         }
       })
     }
+  }
+
+  displayError = () => {
+    let warning = ''
+    let error = this.state.error
+    if (this.state.submitEmpty === true) {
+      warning = `One or more fields are empty`
+    } else if (error === "Incorrect login credentials") {
+      warning = `We were unable to find a user with those credentials,`
+    } else if (error === "bad passwords") {
+      warning = `Those passwords don't match!`
+    } else if (error === "server") {
+      warning = 'Something went wrong,'
+    } else if (error === "That's not an email,") {
+      warning = error 
+    } else if (error) {
+      warning = 'That username and/or email is already taken,'
+      // This isn't quite accurate, server should beable to get more specific
+    }
+    return (
+      warning && (
+      <h3 className="Login-warning-text">
+        <p className="Login-warning-text">
+          {warning}
+          <br /> please try again!
+        </p>
+      </h3>
+      )
+    )
   }
 
   render() {
@@ -101,28 +132,13 @@ class Login extends Component {
         <form
           className="Login-form"
           onSubmit={(event) => {
-            this.verifyLogin(event);
-            this.verifySignup(event);
+            this.props.signup ? this.verifySignup(event): this.verifyLogin(event);
           }}
         >
           <h3 className="Login-header">
             {this.props.signup ? "Sign Up" : "Login"}
           </h3>
-          {this.state.submitEmpty === true && (
-            <p className="Login-warning-text">One or more fields are empty</p>
-          )}
-          {this.state.error === "Incorrect login credentials" && (
-            <p className="Login-warning-text">
-              We were unable to find a user with those credentials,
-              <br /> please try again!
-            </p>
-          )}
-          {this.state.error === "bad passwords" && (
-            <p className="Login-warning-text">
-              Those passwords don't match!
-              <br /> please try again!
-            </p>
-          )}
+          {this.displayError()}
           <input
             type="text"
             placeholder="Username"
@@ -148,16 +164,18 @@ class Login extends Component {
           />
           {this.props.signup && (
             <input
-              type="verifyPassword"
+              type="password"
               placeholder="Verify password"
               name="verifyPassword"
               id="verifyPassword"
               onChange={this.updateInputs}
             />
           )}
-          <span className="sign-up-link">
-            <Link to="/sign-up">Create an Account</Link>
-          </span>
+          {!this.props.signup 
+            && <span className="sign-up-link">
+              <Link to="/sign-up">Create an Account</Link>
+            </span>
+          }
           <button className="login-button">/Submit/</button>
         </form>
       </div>
