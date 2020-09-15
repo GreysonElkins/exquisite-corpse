@@ -48,12 +48,6 @@ class Login extends Component {
             this.setState({ error: 'Incorrect login credentials'})
           }
         })
-      // if (response.status === 200) {
-      //   this.props.login(response.json())
-      //   this.setState({ redirect: true })
-      // } else {
-      //   this.setState({ error: 'Incorrect login credentials'})
-      // }
     }
   }
 
