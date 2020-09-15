@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import './Header.scss'
 
-const Header = (props) => {
+const Header = ({ signOut, currentUser }) => {
   return (
     <header className="header">
       <Link to="/">
@@ -21,12 +21,12 @@ const Header = (props) => {
         <NavLink to="/library" className="nav" activeClassName="selected">
           / Library /
         </NavLink>
-        {props.currentUser.name && (
-          <NavLink className="nav" activeClassName="selected">
+        {currentUser.name && (
+          <NavLink onClick={signOut} className="nav" activeClassName="selected">
             / Sign Out /
           </NavLink>
         )}
-        {!props.currentUser.name && (
+        {!currentUser.name && (
           <NavLink to="/login" className="nav" activeClassName="selected">
             / Sign In /
           </NavLink>

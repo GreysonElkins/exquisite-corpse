@@ -142,7 +142,10 @@ class App extends Component {
           src={mainBackground}
           alt="Parchment Manuscript paper"
         />
-        <Header currentUser={this.state.currentUser}/>
+        <Header 
+          currentUser={this.state.currentUser}
+          signOut={this.signOut}
+        />
         {this.state.error && (
           <h2>
             I'm sorry, we are having some trouble. <br />
