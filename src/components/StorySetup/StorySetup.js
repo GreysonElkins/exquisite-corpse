@@ -6,7 +6,7 @@ class StorySetup extends Component {
     super(props)
     this.state = {
       promptRequested: false,
-      desiredGenre: ''
+      desiredGenre: 'any'
     }
   }
 
@@ -61,7 +61,7 @@ class StorySetup extends Component {
     return (
       <select
         name='desiredGenre'
-        value={'any'}
+        value={this.state.desiredGenre}
         onChange={(event) => {
           this.updateForm(event)
           this.props.getRandomPrompt(event.target.value);
