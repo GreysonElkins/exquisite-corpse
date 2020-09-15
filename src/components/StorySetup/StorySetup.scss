@@ -1,7 +1,23 @@
+@import '../../styles/fonts.scss';
+
+
 .StorySetup {
+  margin-top: 2em;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: rgba(255, 255, 255, 0.178);
+  border-radius: 50%;
+  box-shadow: 0 0 40px 40px rgba(255, 255, 255, 0.178);
+}
+
+.first-line {
+  font-size: 2em;
+  margin-bottom: .25em;
+}
+
+.last-line {
+  font-size: 1.5em;
 }
 
 form label, 
@@ -15,10 +31,16 @@ select,
   text-transform: capitalize;
 }
 
+.refresh-genre {
+  margin: 1em;
+}
+
 .prompt {
+  margin: .5em;
   font-size: 1.5em;
   color: forestgreen;
   width: 40em;
+  text-shadow: 0px 0px 1.5px black;
 }
 
 @media screen and (max-width: 654px) {
