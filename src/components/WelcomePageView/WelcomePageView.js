@@ -55,19 +55,17 @@ class WelcomePageView extends Component {
 
     return (
       <section className="WelcomePage">
-          <div>
-            <Instructions 
-              showHistory={this.state.showHistory}
-              displayHistory={this.displayHistory}
-            />
-          </div>
-          <Bookshelf
+        <div>
+          <Instructions
+            showHistory={this.state.showHistory}
+            displayHistory={this.displayHistory}
             stories={this.state.stories}
             onClick={this.takeToWritingSection}
             popup={this.state.popup}
           />
+        </div>
       </section>
-    )
+    );
   }
 }
   
