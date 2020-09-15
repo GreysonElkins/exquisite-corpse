@@ -162,7 +162,7 @@ class App extends Component {
           }}
         />
         <Route exact path="/story-setup">
-          {Object.keys(this.state.currentUser).length === 0 ? (
+          {!this.state.currentUser.name ? (
             <Redirect to="login" />
           ) : (
             <StorySetupView
@@ -175,7 +175,7 @@ class App extends Component {
           );
         </Route>
         <Route exact path="/story-edit">
-          {Object.keys(this.state.currentUser).length === 0 ? (
+          {!this.state.currentUser.name ? (
             <Redirect to="login" />
           ) : (
             <StoryEditView
