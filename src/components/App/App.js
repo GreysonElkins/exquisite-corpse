@@ -6,24 +6,24 @@ import WelcomePageView from '../WelcomePageView/WelcomePageView'
 import StorySetupView from '../StorySetupView/StorySetupView'
 import StoryEditView from '../StoryEditView/StoryEditView'
 import LibraryView from '../LibraryView/LibraryView'
-import ApiHelper from '../../ApiHelper/ApiHelper';
+import Login from '../Login/Login'
 import mainBackground from '../../assets/backgrounds/mainBackground.jpg'
 
 class App extends Component {
   constructor() {
-    super() 
-    this.state = {
-      stories: [],
-      prompts: [],
-      authors: []
-    }
+    super()
+      this.state = {
+        currentUser: {},
+        stories: [],
+        prompts: [],
+        authors: []
+      }
   }
 
   componentDidMount() {
     ApiHelper.getData('prompts')
       .then(allPrompts => {
         this.setState({prompts: allPrompts})
-
       })
       .then(() => {
         ApiHelper.getData('stories').then(allStories => {
@@ -43,9 +43,12 @@ class App extends Component {
         })
       })
   }
+  
+  login = (user) => {
+    this.setState({ currentUser: user})
+  }
 
   updateContributorData = (story) => {
-    
       story.contributors.forEach((contributor, i) => {
         const existingAuthor = this.state.authors
           .find(author => author.id === contributor)
@@ -129,6 +132,14 @@ class App extends Component {
             );
           }}
         />
+        <Route 
+          exact path='/login' 
+          render={ () => {
+            return <Login 
+              login={this.login}
+            /> 
+          }}
+        /> 
       </main>
     );
   }
