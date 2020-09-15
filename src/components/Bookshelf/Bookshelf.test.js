@@ -14,7 +14,7 @@ describe('Bookshelf component', () => {
 
   it('should render a button for each story', () => {
     const buttons = screen.getAllByRole('button')
-    expect(buttons).toHaveLength(4)
+    expect(buttons).toHaveLength(5)
   })
 
   it('should pass story info to each book to be rendered', () => {

@@ -12,8 +12,9 @@ describe('LibraryView component', () => {
     render(<LibraryView />)
   })
   
-  it('should fetch stories on render', () => {
-    expect(ApiHelper.getData).toHaveBeenCalledTimes(1)
+  it('should fetch stories, authors, and prompts on render', () => {
+    ApiHelper.getData.mockResolvedValue(testData)
+    expect(ApiHelper.getData).toHaveBeenCalledTimes(4)
   })
   
   it('should render a book button for every COMPLETED story', () => {
@@ -23,7 +24,7 @@ describe('LibraryView component', () => {
   
   it('should display a story when a button is clicked', () => {
     const button = screen.getByText('Birdhouse in Your Soul')
-    ApiHelper.getData.mockResolvedValueOnce(['Khalid Williams'])
+    ApiHelper.getData.mockResolvedValue(testData.authors[0])
     fireEvent.click(button)
     const title = screen.getByRole('heading', { 
       name: 'Birdhouse in Your Soul'
@@ -36,10 +37,10 @@ describe('LibraryView component', () => {
     const button1 = screen.getByText('Birdhouse in Your Soul')
     const button2 = screen.getByText('Greyson has a good morning')
     
-    ApiHelper.getData.mockResolvedValueOnce(['Khalid Williams'])
+    ApiHelper.getData.mockResolvedValueOnce([1])
     fireEvent.click(button1)
     
-    ApiHelper.getData.mockResolvedValueOnce(['Greyson Elkins'])
+    ApiHelper.getData.mockResolvedValueOnce([2])
     fireEvent.click(button2)
 
     expect(screen.queryByRole('heading', {
