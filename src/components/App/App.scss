@@ -7,6 +7,23 @@
   text-shadow: 0px 0px 1.5px $graphite;
 }
 
+.book-hover { 
+  width: 20em;
+  margin: auto;
+  background-color: rgb(252, 246, 214);
+  position: absolute;
+  top: 33%;
+  left: 36%;
+  padding: 2em;
+  z-index: 4;
+
+  span {
+    margin: .05em;
+  }
+}
+
+
+
 .background {
   width: 100%;
   position: fixed;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.scss';
+import '../GameHistory/GameHistory.scss'
 import { Route } from 'react-router-dom'
 import Header from '../Header/Header'
 import WelcomePageView from '../WelcomePageView/WelcomePageView'
@@ -18,7 +19,8 @@ class App extends Component {
       currentUser: {},
       stories: [],
       prompts: [],
-      authors: []
+      authors: [],
+      hover: {show: false}
     }
   }
 
@@ -38,7 +40,7 @@ class App extends Component {
               }
               if (story.contributions[0] !== null) {
                 const lastEntry = story.contributions[story.contributions.length - 1];
-                story.lastWords = `. . . ${lastEntry.substring(15)}`;
+                story.lastWords = `. . . ${lastEntry.slice(-150)}`;
               }
               updatedStories.push(story)
             })
@@ -98,8 +100,39 @@ class App extends Component {
     })
   }
 
+  toggleHover = (event, info) => {
+    info ? this.setState({ hover: info }) : this.setState({ hover: {show: false} })
+  }
+
+  makeHover = () => {
+    return (
+      <div className="book-hover">
+        <p>  
+          <span>
+            TITLE: {this.state.hover.title}
+          <br/>
+          </span>
+          {this.state.hover.prompt 
+            && <span>
+              PROMPT: {this.state.hover.prompt.prompt}
+              <br />
+            </span>
+          }
+          <span>
+            LAST WORDS: {this.state.hover.lastWords}
+            <br />
+          </span>
+          <span>
+            LAST UPDATED: {this.state.hover.lastUpdate}
+          </span>
+        </p>
+      </div>
+    )
+  }
+
   render() {
     return (
+    
       <main className="App">
         <img
           className="background"
@@ -124,6 +157,7 @@ class App extends Component {
                 authorUpdater={this.updateContributorData}
                 addStory={this.addStory}
                 updateStoryData={this.updateStoryData}
+                toggleHover={this.toggleHover}
               />
             );
           }}
@@ -160,6 +194,7 @@ class App extends Component {
               <LibraryView
                 stories={this.completedStories()}
                 authorUpdater={this.updateContributorData}
+                toggleHover={this.toggleHover}
               />
             );
           }}
@@ -172,6 +207,9 @@ class App extends Component {
             /> 
           }}
         /> 
+        <span>
+          {this.state.hover.show && this.makeHover()}
+        </span>
       </main>
     );
   }
