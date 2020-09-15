@@ -7,6 +7,7 @@ import StorySetupView from '../StorySetupView/StorySetupView'
 import StoryEditView from '../StoryEditView/StoryEditView'
 import LibraryView from '../LibraryView/LibraryView'
 import Login from '../Login/Login'
+import mainBackground from '../../assets/backgrounds/mainBackground.jpg'
 
 class App extends Component {
   constructor() {
