@@ -1,0 +1,13 @@
+
+@import '../../styles/fonts.scss';
+
+.App {
+  font-family: $main-font;
+}
+
+.background {
+  width: 100%;
+  position: fixed;
+  z-index: -2;
+}
+

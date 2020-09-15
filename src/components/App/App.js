@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.scss';
 import { Route } from 'react-router-dom'
 import Header from '../Header/Header'
 import WelcomePageView from '../WelcomePageView/WelcomePageView'
@@ -17,7 +17,8 @@ class App extends Component {
   }
   render() {
     return (
-      <main>
+      <main className='App'>
+        <img className='background' src={mainBackground} alt='Parchment Manuscript paper' />
         <Header />
         <Route 
           exact path='/' 

@@ -1,0 +1,58 @@
+@import '../../styles/fonts.scss';
+
+.Instructions-sec {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10em;
+  margin-right: 10em;
+}
+
+.Instructions-header-text {
+  display: block;
+  font-size: 3.24em;
+}
+
+.game-instructions {
+  width: 80%;
+  font-size: 1.5em;
+}
+
+.show-history-button {
+  font-family: $main-font;
+  height: 20px;
+  background: none;
+  border: none;
+  outline: none;
+  color: black;
+  margin: 0 0 2em;
+  cursor: pointer;
+  font-size: 2em;
+  transition: $shadow-transition;
+
+  &:hover {
+    text-shadow: $font-shadow;
+  }
+}
+
+.start-new-story-link {
+  font-size: 2em;
+  color: black;
+  transition: $shadow-transition;
+
+  &:hover {
+    text-shadow: $font-shadow;
+  }
+}
+
+.Instructions-sec a {
+  margin: 0;
+  text-decoration: none;
+}
+
+.text {
+  font-size: 30px;
+  font-weight: 400;
+}
+

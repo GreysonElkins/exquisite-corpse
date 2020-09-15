@@ -1,8 +1,0 @@
-#story-edit-container {
-  display: flex;
-  flex-flow: column nowrap;
-  text-align: center;
-  width: 80%;
-  max-width: 650px;
-  margin: auto;
-}

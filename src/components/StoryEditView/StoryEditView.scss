@@ -1,0 +1,35 @@
+#story-edit-container {
+  display: flex;
+  flex-flow: column;
+  text-align: center;
+  width: 40%;
+  max-width: 650px;
+  margin: auto;
+}
+
+#live-display-container {
+  width: 450px;;
+  margin: auto;
+  min-height: 500px;
+  padding: 20px;
+  font-family: 'Homemade Apple';
+  background-image: url(../../assets/old-paper.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: flex;
+  justify-content: center;
+}
+
+#story-edit-section {
+  display: flex;
+  flex-direction: column 2;
+  align-items: center;
+}
+
+#script-writing-sec {
+  width: 70%;
+  overflow: auto;
+  height: 500px
+}
+

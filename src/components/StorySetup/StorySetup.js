@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import ApiHelper from '../../ApiHelper/ApiHelper'
-import './StorySetup.css'
+import './StorySetup.scss'
 
 class StorySetup extends Component {
   constructor(props) {
@@ -97,7 +97,7 @@ class StorySetup extends Component {
         <p>
           You will have 60 seconds to free-write on the next screen.<br/>
           {this.state.promptRequested && 
-          <span>Your prompt will be displayed at the top if the view.<br/></span>
+          <span>Your prompt will be displayed at the top of the view.<br/></span>
           }
           The countdown will begin when you start typing.<br/>
           When the timer runs out you will no longer be able to type.<br/>
