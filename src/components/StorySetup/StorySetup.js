@@ -1,67 +1,111 @@
-import React from 'react'
-import { Redirect } from 'react-router-dom'
-import ApiHelper from '../../ApiHelper/ApiHelper'
+import React, { Component } from 'react'
+// import { Redirect } from 'react-router-dom'
+// import ApiHelper from '../../ApiHelper/ApiHelper'
 import './StorySetup.scss'
 
-const StorySetup = (props) => {
-  return (
-    <form className='StorySetup' onSubmit={props.handleSubmit}>
-      {!props.userName && 
-      <label>
-        Who Are You?<br/>
-        <input
-          name='authorName'
-          type='text'
-          placeholder='create your pen name'
-          value={props.authorname}
-          onChange={props.handleChange}
-        />
-      </label>
-      }
-      {props.userName && <p>Hello {props.userName},</p>}
-      <br/>
+class StorySetup extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      promptRequested: false,
+      desiredGenre: ''
+    }
+  }
+
+  updateForm = (event) => {
+    const target = event.target
+    const value = target.type === "checkbox" ? target.checked : target.value
+    const name = target.name
+
+    this.setState({ [name]: value })
+  }
+
+  promptCheckBox = (isChecked) => {
+    return (
       <label>
         Would you like to start with a prompt? <br/>
         Check box for <b><i>"Yes"</i></b> - 
         <input
           name='promptRequested'
           type='checkbox'
-          checked={props.promptRequested}
-          onChange={props.handleChange}
+          checked={isChecked}
+          onChange={this.updateForm}
         />
       </label>
-      <br/>
-      {props.promptRequested &&
-      <label>
-        Please select a genre:
-        <select
-          name='genre'
-          value={props.genre}
-          onChange={props.handleChange}
-        >
-          <option value='any'>Any</option>
-          <option value='dystopian'>Dystopian</option>
-          <option value='fantasy'>Fantasy</option>
-          <option value='mystery'>Mystery</option>
-          <option value='romance'>Romance</option>
-          <option value='science fiction'>Science Fiction</option>
-          <option value='superhero'>Superhero</option>
-        </select>
-      </label>
+    )
+  }
+
+  genreDropDown = (prompts) => {
+    debugger
+    const options = prompts.reduce((genreList, prompt) => {
+      if (genreList.includes(prompt.genre) === false) {
+        genreList.push(prompt.genre)
       }
-      <p>
-        You will have 60 seconds to free-write on the next screen.<br/>
-        {props.promptRequested && 
-        <span>Your prompt will be displayed at the top if the view.<br/></span>
+      return genreList
+    }, [])
+    
+    const dropDown = options.reduce((selectOptions, genre) => {
+      selectOptions.push(
+        <option value={genre}>
+          {genre}
+        </option>
+      )
+      return selectOptions
+    }, [<option value='any'>any</option>])
+
+    return (
+      <select
+        name='desiredGenre'
+        value={this.state.desiredGenre}
+        onChange={this.updateForm}
+      >
+        {dropDown}
+      </select>
+    )
+  }
+
+  rulesOfTheGame = () => {
+    return (
+      <>
+        <p>
+          You will have 60 seconds to free-write on the next screen.<br/>
+          {this.state.promptRequested && 
+          <span>Your prompt will be displayed at the top of the view.<br/></span>
+          }
+          The countdown will begin when you start typing.<br/>
+          When the timer runs out you will no longer be able to type.<br/>
+          <br/>
+          Have Fun!
+        </p>
+        <button>Start Story</button>
+      </>
+    )
+  }
+
+  render() {
+    return (
+      <form 
+        className='StorySetup' 
+        onSubmit={(event) => {
+          this.props.startWriting(event, this.state.desiredGenre)
+        }}
+      >
+        {this.props.userName && 
+          <><p>Hello {this.props.userName},</p><br/></>}
+        {this.promptCheckBox(this.state.promptRequested)}
+        {this.state.promptRequested &&
+          <>
+            <label>
+              Please select a genre:
+              {this.genreDropDown(this.props.prompts)}
+            </label>
+            <br/>
+          </>
         }
-        The countdown will begin when you start typing.<br/>
-        When the timer runs out you will no longer be able to type.<br/>
-        <br/>
-        Have Fun!
-      </p>
-      <button>Start Story</button>
-    </form>
-  )
+        {this.rulesOfTheGame()}
+      </form>
+    )
+  }
 }
 
 export default StorySetup

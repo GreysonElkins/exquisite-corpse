@@ -19,7 +19,6 @@ const getBookSpine = () => {
 };
 
 const findLastWords = (story) => {
-  debugger
   const lastEntry = story.contributions[story.contributions.length - 1]
   return `. . . ${lastEntry.substring(5)}`
 } 

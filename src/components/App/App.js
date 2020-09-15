@@ -99,7 +99,11 @@ class App extends Component {
           exact
           path="/story-setup"
           render={() => {
-            return <StorySetupView />;
+            return (
+              <StorySetupView 
+                prompts={this.state.prompts}
+              />
+            )
           }}
         />
         <Route

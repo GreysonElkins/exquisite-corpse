@@ -6,57 +6,50 @@ import ApiHelper from '../../ApiHelper/ApiHelper'
 
 class StorySetupView extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      allPrompts: this.props.prompts,
       error: "",
-      prompt: "",
-      genre: "any",
       submitOk: false,
       promptRequested: false,
-      authorName: ""
-    };
-  }
-
-  handleChange = (event) => {
-    const target = event.target;
-    const value = target.type === "checkbox" ? target.checked : target.value;
-    const name = target.name;
-
-    this.setState({
-      [name]: value,
-    });
-  };
-
-  getPrompt = async genre => {
-    return await ApiHelper.getData("prompts", genre);
-  }
-
-  handleSubmit = async (event) => {
-    event.preventDefault();
-    const genre = this.state.genre;
-    let prompt;
-
-    if (this.state.promptRequested) {
-      prompt = await this.getPrompt(genre)
+      randomPrompt: null
     }
+  }
 
+  startWriting = async (event, desiredGenre) => {
+    event.preventDefault()
+    let prompt = null;
+    if(desiredGenre) {
+      prompt = this.getRandomPrompt(desiredGenre)
+    }
     if (!this.state.error) {
       this.setState({
-        genre: genre,
-        prompt: prompt,
+        randomPrompt: prompt,
         submitOk: true
       });
     }
-  };
+  }
 
-  render() {
+  getRandomPrompt(genre) {
+    let prompts
+    let qty
+    if (genre === 'any') {
+      prompts = this.props.prompts
+    } else {
+      prompts = this.props.prompts.filter(prompt => prompt.genre === genre) 
+    }
+    qty = prompts.length
+    const randomIndex = Math.floor(Math.random() * (qty - 1))
+    return prompts[randomIndex]
+  }
+
+  render = () => {
     if (this.state.submitOk) {
+      console.log('PASSED ON REDIRECT:', this.state.randomPrompt)
       return (
         <Redirect
           to={{
             pathname: "/story-edit",
-            state: { story: {prompt: null}, prompt: this.state.prompt, genre: this.state.genre }
+            state: {story: {prompt: this.state.randomPrompt}}
           }}
         />
       )
@@ -70,13 +63,9 @@ class StorySetupView extends Component {
           </h2>
         )}
         <StorySetup
+          prompts={this.props.prompts}
           userName={"Bango Zango" /*this.props.username*/}
-          setPrompt={this.setPrompt}
-          handleSubmit={this.handleSubmit}
-          handleChange={this.handleChange}
-          genre={this.state.genre}
-          promptRequested={this.state.promptRequested}
-          prompt={this.state.prompt}
+          startWriting={this.startWriting}
           error={this.state.error}
         />
       </section>
