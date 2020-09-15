@@ -27,12 +27,12 @@ form p {
   font-size: 1.5em;
 }
 
-select, 
-.refresh-genre {
+select {
   text-transform: capitalize;
+  text-align: center;
 }
 
-.refresh-genre {
+.refresh-prompt {
   background: none;
   outline: none;
   border: none;

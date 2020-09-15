@@ -125,7 +125,7 @@ class StorySetup extends Component {
               </span>
             )}
             <button
-              className="refresh-genre"
+              className="refresh-prompt"
               type="button"
               onClick={() => {
                 this.props.getRandomPrompt(this.state.desiredGenre);
