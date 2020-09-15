@@ -9,7 +9,7 @@
 .title {
   font-family: $main-font;
   font-size: 3em;
-  color: black;
+  color: $graphite;
   margin: 13px 0;
   transition: $shadow-transition;
 
@@ -26,11 +26,14 @@
 .header a {
   margin: 10px 0 10px 35px;
   text-decoration: none;
-  color:black;
+  color: $graphite;
 }
 
 .navbar {
   margin: 0px 35px 0 0;
+  background-color: rgba(255, 255, 255, 0.178);
+  border-radius: 2em;
+  box-shadow: 0 0 20px 20px rgba(255, 255, 255, 0.178);
 }
 
 .nav {
