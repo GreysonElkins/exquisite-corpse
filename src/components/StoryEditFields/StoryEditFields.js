@@ -29,7 +29,7 @@ const StoryEditFields = ({ updateText, disabled, story }) => {
         disabled={disabled ? "disabled" : false}
       />
     </Fragment>
-  );
+  )
 }
 
 export default StoryEditFields
