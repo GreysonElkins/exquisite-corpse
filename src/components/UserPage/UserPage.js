@@ -17,7 +17,7 @@ class UserPage extends Component {
   constructor(props) {
     super(props)
       this.state = {
-        userInQuestion: {},
+        userInQuestion: {id: null},
         pageOwner: false,
         enableField: '',
         bio: '',
@@ -37,7 +37,7 @@ class UserPage extends Component {
   componentDidMount() {
     const authorMatch = this.props.authors.find(author => author.id === this.props.pageId)
     if (parseInt(this.props.pageId) === this.props.currentUser.id) {
-      this.setState({ userInQuestion: this.props.currentUser, pageOwner: true })
+      this.setState({ pageOwner: true })
     } else if (authorMatch) {
       this.setState({ userInQuestion: authorMatch })
     } else {
@@ -55,15 +55,22 @@ class UserPage extends Component {
       this.setState({ error: "You haven't entered anything!" })
     } else {
       try {
+        let user = this.state.userInQuestion.id ? this.state.userInQuestion : this.props.currentUser
         let response
-        ApiHelper.postAuthor(update, this.state.userInQuestion.id)
+        ApiHelper.postAuthor(update, user.id)
           .then(res => {
             response = res
             return res.json()
           })
           .then(updatedUser => {
             if (response.status === 200) {
-              this.props.login(updatedUser)
+              this.setState({
+                enableField: "",
+                bio: "",
+                password: "",
+                email: "",
+              });
+              this.props.login(updatedUser[0])
             }
             else {
               this.setState({ error: 'Something went wrong!' })
@@ -77,10 +84,12 @@ class UserPage extends Component {
   }
 
   makeEmailSection = () => {
+    let user
     if (this.state.pageOwner) {
+      user = this.state.userInQuestion.id ? this.state.userInQuestion : this.props.currentUser
       return (
         <>
-          <span class="email">this.state.userInQuestion.email</span>
+          <span class="email">{user.email}</span>
           {this.state.enableField === "email" && (
             <input
               type="email"
@@ -129,6 +138,8 @@ class UserPage extends Component {
   }
 
   makeBioSection = () => {
+    const user = this.state.userInQuestion.id ? this.state.userInQuestion : this.props.currentUser
+
     let editTools = ''
     if (this.state.pageOwner) {
       editTools = (
@@ -149,8 +160,8 @@ class UserPage extends Component {
       <>
         <span className="about">
           ABOUT THE AUTHOR: <br />
-          {this.state.userInQuestion.bio
-            ? this.state.userInQuestion.bio
+          {user.bio
+            ? user.bio
             : `This author hasn't written about themselves yet`}
         </span>
         {this.state.enableField === "bio" && (
@@ -168,10 +179,14 @@ class UserPage extends Component {
   }
 
   findAuthorStories() {
+    const user = this.state.userInQuestion.id
+      ? this.state.userInQuestion
+      : this.props.currentUser;
+
     return this.props.stories.filter(story => {
-      if (story.contributors.includes(this.state.userInQuestion.id)){
+      if (story.contributors.includes(user.id)){
         return story
-      } else if (story.contributors.includes(this.state.userInQuestion)) {
+      } else if (story.contributors.includes(user)) {
         return story
       }
     })
@@ -183,13 +198,16 @@ class UserPage extends Component {
 
 
   render() {
+    const user = this.state.userInQuestion.id
+      ? this.state.userInQuestion
+      : this.props.currentUser;
     return (
       <section className="user-page-container">
         <img src={drawing1} alt="An exquisite corpse drawing"/>
         <section className="author-info">
-          <span className="authorName">{this.state.userInQuestion.name}</span>
+          <span className="authorName">{user.name}</span>
           <span className="memberSince">
-            Member Since: {moment(this.state.userInQuestion.created_at).format('MMM YYYY')}
+            Member Since: {moment(user.created_at).format('MMM YYYY')}
           </span>
           {this.makeEmailSection()}
           {this.makeBioSection()}
