@@ -125,6 +125,10 @@ class App extends Component {
     this.checkStoryData(this.state.stories)
   }
 
+  signOut = () => {
+    this.setState({ currentUser: {} })
+  }
+
   toggleHover = (event, info) => {
     info ? this.setState({ hover: info }) : this.setState({ hover: {show: false} })
     console.log(info)
@@ -168,7 +172,10 @@ class App extends Component {
           src={mainBackground}
           alt="Parchment Manuscript paper"
         />
-        <Header currentUser={this.state.currentUser}/>
+        <Header 
+          currentUser={this.state.currentUser}
+          signOut={this.signOut}
+        />
         {this.state.error && (
           <h2>
             I'm sorry, we are having some trouble. <br />
