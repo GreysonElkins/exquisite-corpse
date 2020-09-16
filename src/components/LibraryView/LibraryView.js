@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Bookshelf from '../Bookshelf/Bookshelf'
 import PublishedStory from '../PublishedStory/PublishedStory'
+import './LibraryView.scss'
 
 class LibraryView extends Component {
   constructor() {
@@ -23,7 +24,7 @@ class LibraryView extends Component {
 
   render() {
     return (
-      <>
+      <section className="LibraryView">
         <Bookshelf
           stories={this.props.stories}
           authorUpdater={this.props.authorUpdater}
@@ -33,7 +34,7 @@ class LibraryView extends Component {
         {this.state.currentStory.title !== "" && (
           <PublishedStory currentStory={this.state.currentStory} />
         )}
-      </>
+      </section>
     );
   }
 }
