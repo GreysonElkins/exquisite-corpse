@@ -1,0 +1,45 @@
+.user-page-container {
+  display: flex;
+  flex-direction:row; 
+  // justify-content: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.author-info {
+  // width: min-content;
+  font-size: 1.5em;
+  min-width: 50em;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  
+  h3 {
+    text-align: left;
+    width: min-content;
+  }
+  
+  .bookContainer {
+    width: min-content;
+    max-width: 40em;
+  }
+  .update {
+    width: min-content;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  button {
+    width: min-content;
+    font-size: 1em;
+    margin: .1em
+  }
+  
+}
+.drawing {
+  width: min-content;
+    min-height: 200px;
+    min-width: 150px;
+    background-size: cover;
+    margin: 10px;
+  }

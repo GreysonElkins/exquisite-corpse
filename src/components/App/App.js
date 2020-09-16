@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import './App.scss';
 import '../GameHistory/GameHistory.scss'
 import { Route, Redirect } from 'react-router-dom'
@@ -7,6 +7,7 @@ import WelcomePageView from '../WelcomePageView/WelcomePageView'
 import StorySetupView from '../StorySetupView/StorySetupView'
 import StoryEditView from '../StoryEditView/StoryEditView'
 import LibraryView from '../LibraryView/LibraryView'
+import UserPage from '../UserPage/UserPage'
 import Login from '../Login/Login'
 import ApiHelper from '../../ApiHelper/ApiHelper'
 import mainBackground from '../../assets/backgrounds/mainBackground.jpg'
@@ -16,7 +17,14 @@ class App extends Component {
     super() 
     this.state = {
       error: '',
-      currentUser: {},
+      currentUser: {
+        id: null,
+        name: '',
+        email: '',
+        bio: null,
+        created_at: '',
+        updated_at: ''
+      },
       stories: [],
       prompts: [],
       authors: [],
@@ -32,28 +40,44 @@ class App extends Component {
         })
         .then(() => {
           ApiHelper.getData('stories').then(allStories => {
-            const updatedStories = []
-            allStories.forEach(story => {
-              if (story.prompt) {
-                story.prompt = this.state.prompts
-                  .find(prompt => prompt.id === story.prompt)
-              }
-              if (story.contributions[0] !== null) {
-                const lastEntry = story.contributions[story.contributions.length - 1];
-                story.lastWords = `. . . ${lastEntry.slice(-150)}`;
-              }
-              updatedStories.push(story)
-            })
-            this.setState({ stories: updatedStories })
+            this.checkStoryData(allStories)
           })
         })
     } catch (error) {
       this.setState({error: error})
     }
   }
+
+  addAuthor = (author) => {
+    if (!this.state.authors.includes(author)) {
+      const update = this.state.authors.concat(author)
+      this.setState({ authors: update})
+    }
+  }
+  
+  checkStoryData = (stories) => {
+    const updatedStories = [];
+    stories.forEach((story) => {
+      if (story.prompt) {
+        story.prompt = this.state.prompts.find(
+          (prompt) => prompt.id === story.prompt
+        );
+      }
+      if (story.contributions[0] !== null) {
+        const lastEntry = story.contributions[story.contributions.length - 1];
+        story.lastWords = `. . . ${
+          !lastEntry.slice(-150) ? lastEntry : lastEntry.slice(-150)
+        }`;
+      }
+      updatedStories.push(story);
+    });
+    this.setState({ stories: updatedStories }); 
+  }
+  
   
   login = (user) => {
     this.setState({ currentUser: user})
+    this.addAuthor(user)
   }
 
   updateContributorData = (story) => {
@@ -98,6 +122,11 @@ class App extends Component {
     this.setState({
       stories: newStories
     })
+    this.checkStoryData(this.state.stories)
+  }
+
+  signOut = () => {
+    this.setState({ currentUser: {} })
   }
 
   toggleHover = (event, info) => {
@@ -124,6 +153,10 @@ class App extends Component {
           </span>
           <span>
             LAST UPDATED: {this.state.hover.lastUpdate}
+            <br />
+          </span>
+          <span>
+            COMPLETED?: {this.state.hover.is_complete}
           </span>
         </p>
       </div>
@@ -138,7 +171,10 @@ class App extends Component {
           src={mainBackground}
           alt="Parchment Manuscript paper"
         />
-        <Header />
+        <Header 
+          currentUser={this.state.currentUser}
+          signOut={this.signOut}
+        />
         {this.state.error && (
           <h2>
             I'm sorry, we are having some trouble. <br />
@@ -159,30 +195,30 @@ class App extends Component {
             );
           }}
         />
-        <Route exact path="/story-setup">
-          {!this.state.currentUser.name ? (
-            <Redirect to="login" />
-          ) : (
-            <StorySetupView
-              prompts={this.state.prompts}
-              author={this.state.currentUser}
-              addStory={this.addStory}
-              updateStoryData={this.updateStoryData}
-            />
-          )}
-          );
-        </Route>
-        <Route exact path="/story-edit">
-          {!this.state.currentUser.name ? (
-            <Redirect to="login" />
-          ) : (
-            <StoryEditView
-              updateStoryData={this.updateStoryData}
-              addStory={this.addStory}
-              author={this.state.currentUser}
-            />
-          )}
-        </Route>
+        <Route 
+          exact path="/story-setup"
+          render={() => {
+            return (
+              <StorySetupView
+                prompts={this.state.prompts}
+                author={this.state.currentUser}
+                addStory={this.addStory}
+                updateStoryData={this.updateStoryData}
+                stories={this.state.stories}
+                currentUser={this.state.currentUser}
+              />
+            )
+          }}
+        />
+        <Route 
+          exact path="/story-edit"
+          render={(props) => {
+            props.updateStoryData = this.updateStoryData
+            props.addStory = this.addStory
+            props.author = this.state.currentUser
+            return <StoryEditView {...props} />
+          }}
+        />
         <Route
           exact
           path="/library"
@@ -196,25 +232,37 @@ class App extends Component {
             );
           }}
         />
-        <Route
-          exact
-          path="/login"
-          render={() => {
-            return <Login login={this.login} />;
-          }}
-        /> 
         <Route 
-          exact path='/sign-up'
-          render={() => {
-            return <Login
-              signup={true}
-              login={this.login}
+          exact path='/user/:id'
+          render={({ match }) => {
+            return <UserPage 
+            currentUser={this.state.currentUser}
+            pageId={match.params.id}
+            authors={this.state.authors}
+            addAuthor={this.addAuthor}
+            toggleHover={this.toggleHover}
+            authorUpdater={this.authorUpdater}
+            stories={this.state.stories}
+            login={this.login}
             />
           }}
+          />
+        <Route 
+          exact path='/login' 
+          render={() => {
+            return <Login 
+              login={this.login}
+            /> 
+          }}
         />
-        <span>
-          {this.state.hover.show && this.makeHover()}
-        </span>
+        <Route
+          exact
+          path="/sign-up"
+          render={() => {
+            return <Login signup={true} login={this.login} />;
+          }}
+        />
+        <span>{this.state.hover.show && this.makeHover()}</span>
       </main>
     );
   }

@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import StoryEditFields from '../StoryEditFields/StoryEditFields'
 import StoryEditFooter from '../StoryEditFooter/StoryEditFooter'
 import './StoryEditView.scss'
+import storyRead from '../../assets/backgrounds/storyRead.jpg'
 import LiveDisplay from './LiveDisplay'
 
 class StoryEditView extends Component {
@@ -19,8 +21,12 @@ class StoryEditView extends Component {
   }
 
   render() {
+    if (!this.props.author) {
+      return <Redirect to="/login" />;
+    }
     return (
       <main id="story-edit-section">
+        <img id="story-background" src={storyRead} alt/>
         <div id="story-edit-container">
           <StoryEditFields
             story={this.props.location.state.story}
