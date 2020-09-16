@@ -13,7 +13,7 @@ const StoryEditFooter = ({ disableStoryInput, textInputs, story, author, addStor
     }
     if (!story.id) {
       body.title = textInputs.title
-      body.prompt = story.prompt.id
+      body.prompt = story.prompt ? story.prompt.id : null
     }
     if (isFinished) body.is_complete = true
     return body

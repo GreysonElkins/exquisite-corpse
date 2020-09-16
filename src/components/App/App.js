@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import './App.scss';
 import '../GameHistory/GameHistory.scss'
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import Header from '../Header/Header'
 import WelcomePageView from '../WelcomePageView/WelcomePageView'
 import StorySetupView from '../StorySetupView/StorySetupView'
@@ -40,19 +40,7 @@ class App extends Component {
         })
         .then(() => {
           ApiHelper.getData('stories').then(allStories => {
-            const updatedStories = []
-            allStories.forEach(story => {
-              if (story.prompt) {
-                story.prompt = this.state.prompts
-                  .find(prompt => prompt.id === story.prompt)
-              }
-              if (story.contributions[0] !== null) {
-                const lastEntry = story.contributions[story.contributions.length - 1];
-                story.lastWords = `. . . ${lastEntry.slice(-150)}`;
-              }
-              updatedStories.push(story)
-            })
-            this.setState({ stories: updatedStories })
+            this.checkStoryData(allStories)
           })
         })
     } catch (error) {
@@ -66,6 +54,26 @@ class App extends Component {
       this.setState({ authors: update})
     }
   }
+  
+  checkStoryData = (stories) => {
+    const updatedStories = [];
+    stories.forEach((story) => {
+      if (story.prompt) {
+        story.prompt = this.state.prompts.find(
+          (prompt) => prompt.id === story.prompt
+        );
+      }
+      if (story.contributions[0] !== null) {
+        const lastEntry = story.contributions[story.contributions.length - 1];
+        story.lastWords = `. . . ${
+          !lastEntry.slice(-150) ? lastEntry : lastEntry.slice(-150)
+        }`;
+      }
+      updatedStories.push(story);
+    });
+    this.setState({ stories: updatedStories }); 
+  }
+  
   
   login = (user) => {
     this.setState({ currentUser: user})
@@ -114,10 +122,12 @@ class App extends Component {
     this.setState({
       stories: newStories
     })
+    this.checkStoryData(this.state.stories)
   }
 
   toggleHover = (event, info) => {
     info ? this.setState({ hover: info }) : this.setState({ hover: {show: false} })
+    console.log(info)
   }
 
   makeHover = () => {
@@ -152,7 +162,6 @@ class App extends Component {
 
   render() {
     return (
-    
       <main className="App">
         <img
           className="background"
@@ -175,16 +184,13 @@ class App extends Component {
                 author={this.state.currentUser}
                 stories={this.incompleteStories()}
                 authorUpdater={this.updateContributorData}
-                addStory={this.addStory}
-                updateStoryData={this.updateStoryData}
                 toggleHover={this.toggleHover}
               />
             );
           }}
         />
-        <Route
-          exact
-          path="/story-setup"
+        <Route 
+          exact path="/story-setup"
           render={() => {
             return (
               <StorySetupView
@@ -192,18 +198,19 @@ class App extends Component {
                 author={this.state.currentUser}
                 addStory={this.addStory}
                 updateStoryData={this.updateStoryData}
+                stories={this.state.stories}
+                currentUser={this.state.currentUser}
               />
-            );
+            )
           }}
         />
-        <Route
-          exact
-          path="/story-edit"
+        <Route 
+          exact path="/story-edit"
           render={(props) => {
             props.updateStoryData = this.updateStoryData
             props.addStory = this.addStory
             props.author = this.state.currentUser
-            return <StoryEditView {...props} />;
+            return <StoryEditView {...props} />
           }}
         />
         <Route
@@ -240,20 +247,14 @@ class App extends Component {
             return <Login 
               login={this.login}
             /> 
-          }}
-        /> 
-        <Route 
-          exact path='/sign-up'
+        <Route
+          exact
+          path="/sign-up"
           render={() => {
-            return <Login
-              signup={true}
-              login={this.login}
-            />
+            return <Login signup={true} login={this.login} />;
           }}
         />
-        <span>
-          {this.state.hover.show && this.makeHover()}
-        </span>
+        <span>{this.state.hover.show && this.makeHover()}</span>
       </main>
     );
   }
