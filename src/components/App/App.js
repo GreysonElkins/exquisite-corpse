@@ -247,6 +247,8 @@ class App extends Component {
             return <Login 
               login={this.login}
             /> 
+          }}
+        />
         <Route
           exact
           path="/sign-up"
