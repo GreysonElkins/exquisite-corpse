@@ -28,7 +28,7 @@ const Header = ({ signOut, currentUser }) => {
               className='nav' 
               activeClassName='selected'
             >
-              / {props.currentUser.name} /
+              / {currentUser.name} /
           </NavLink>
         }
         {currentUser.name && (
