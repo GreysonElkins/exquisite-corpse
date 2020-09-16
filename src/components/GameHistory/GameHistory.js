@@ -12,7 +12,7 @@ const GameHistory = ( { displayHistory } ) => {
   return (
     <div className="game-history-box">
       <div className="game-history-content">
-        <span className="close" onClick={displayHistory}>
+        <span className="close" role="close-pop-up" onClick={displayHistory}>
           &times;
         </span>
         <p>

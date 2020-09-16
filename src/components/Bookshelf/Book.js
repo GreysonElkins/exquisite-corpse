@@ -17,8 +17,7 @@ const getBookSpine = () => {
   return bookSpines[random];
 };
 
-const Book = ({ story, onClick, popup, authorUpdater, toggleHover }) => {
-
+const Book = ({ story, onClick, authorUpdater, toggleHover }) => {
   const hoverObject = {
     show: true,
     title: story.title,
@@ -32,6 +31,7 @@ const Book = ({ story, onClick, popup, authorUpdater, toggleHover }) => {
       data-tip data-for='global'
       className="book" 
       style={{ backgroundImage: `url(${spine})` }}
+      aria-label="button"
       role="button"
       onMouseEnter={(event) => {
         toggleHover(event, hoverObject)
