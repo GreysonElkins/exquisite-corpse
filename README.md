@@ -1,68 +1,45 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Exquisite Corpse
 
-## Available Scripts
+ Exquisite Corpse is a collaborative creative writing game. Participants take turns writing a story, and pass their last sentence as a a prompt to the nex contributor. The result is a fun and unpredictable collection of ideas and writing styles that form very unique bodies of text.
 
-In the project directory, you can run:
+ Users of Exquisite Corpse are able to:
+ * Read published (completed) stories.
+ * Log in with a username and password (or create a new username if it doesn't already exist).
+ * When logged in, users can contribute to stories in progress, or start new stories. 
+ * When starting a new story, users can select a prompt from a variety of genres, or start from scratch.
+ * A user has 2 minutes to write, and then they can pass their story on for contribution. 
+ * Stories in progress will show up on the home page. 
+ * Any user who is continuing a story can choose to end and publish a story if they see fit!
 
-### `npm start`
+This was a Mod 3 project in Turing School of Software and Design's Front End Engineering program during the 2008 inning. This project was designed to help students better understand how to:
+- Build an application with a React architecture.
+- Learn a new technology in under a week.
+- Test component and asynchronous functionality with the React Testing Library.
+- Understand and utilize CRUD requests to interact with data. 
+- Practice a professional GitHub workflow
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The biggest learning goal of this project was to research and implement a completely new technology. For our project, we decided to build a back end and a homespun API using PostgresQL, Knex, and Express. this back end keeps track of all of our user's data, all of the stories and writing prompts. 
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `npm test`
+## Setup/Installation
+- Clone the front-end repo using `git clone git@github.com:GreysonElkins/exquisite-corpse.git`
+- Run `npm install` in the root of the newly created directory to install the necessary dependencies
+- Running `npm start` in your terminal should launch the application in your browser. If not, navigate to `http://localhost:3000/` to view the application in action
+- If you'd like to log in as a user and use the application, you will need to create your own username on the `sign in` page on the application.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## App in Action
 
-### `npm run build`
+#### A user can log in, and contribute to any of the stories in progress
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### A user can begina new story, and select a prompt from a list of genres. 
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+#### A user can visit the library, and read any of the published (completed) stories.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Wins/Challenges
+#### Wins
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### Challenges
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Contributors
+This project was submitted on 9/15/2020 by [Aaron Burris-DeBoskey](https://github.com/Abdeboskey), [Carly Clift](https://github.com/carlymclift), [Greyson Elkins](https://github.com/GreysonElkins), and [Nick Hart](https://github.com/nickhartdev)
