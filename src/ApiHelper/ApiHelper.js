@@ -1,4 +1,4 @@
-const apiHead = 'http://localhost:3005/api/v1'
+const apiHead = 'https://localhost:3005/api/v1'
 
 class ApiHelper {
   static getData = (type, id) => {
