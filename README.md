@@ -11,6 +11,19 @@
  * Stories in progress will show up on the home page. 
  * Any user who is continuing a story can choose to end and publish a story if they see fit!
 
+## Technologies Used:
+* React
+* Jest
+* Sass
+* Express
+* Knex
+* PostgreSQL
+* Babel
+* React Testing Library
+* moment.js
+* React Compound Timer
+
+
 This was a Mod 3 project in Turing School of Software and Design's Front End Engineering program during the 2008 inning. This project was designed to help students better understand how to:
 - Build an application with a React architecture.
 - Learn a new technology in under a week.
@@ -38,8 +51,10 @@ The biggest learning goal of this project was to research and implement a comple
 
 ## Wins/Challenges
 #### Wins
+We built a full-stack app end-to-end! Learning new technology was challenging, but right down to the last minute, it hasn't overwhelmed us and we worked as a team to keep our spirits up and excited about the project (we even want to keep to developing it!) The application is engaging and imaginitive, even before execution, our planning and "product design" was a win.
 
 #### Challenges
+Finding a direction to move forward was often challenging, with four people and such a wide range of strategies available. Of course, time played a big factor in this and had this project been allotted more than 6 days it would have made a million bucks.
 
 ## Contributors
 This project was submitted on 9/15/2020 by [Aaron Burris-DeBoskey](https://github.com/Abdeboskey), [Carly Clift](https://github.com/carlymclift), [Greyson Elkins](https://github.com/GreysonElkins), and [Nick Hart](https://github.com/nickhartdev)
