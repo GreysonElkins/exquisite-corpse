@@ -13,17 +13,20 @@
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
-    "react-tooltip": "^4.2.10"
+    "react-tooltip": "^4.2.10",
+    "serve": "^11.3.2"
   },
   "engines": {
     "node": "14.x"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
+"scripts": {
+  "dev": "react-scripts start",
+  "start": "serve -s build",
+  "build": "react-scripts build",
+  "test": "react-scripts test --env=jsdom",
+  "eject": "react-scripts eject",
+  "heroku-postbuild": "npm run build"
+}
   "eslintConfig": {
     "extends": "react-app"
   },
