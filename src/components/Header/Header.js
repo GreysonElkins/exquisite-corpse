@@ -32,7 +32,7 @@ const Header = ({ signOut, currentUser }) => {
           </NavLink>
         }
         {currentUser.name && (
-          <NavLink onClick={signOut} to="/" className="nav" activeClassName="selected">
+          <NavLink onClick={signOut} exact to="/" className="nav" activeClassName="selected">
             / Sign Out /
           </NavLink>
         )}
