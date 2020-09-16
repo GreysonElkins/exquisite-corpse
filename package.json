@@ -15,7 +15,7 @@
     "react-scripts": "3.4.3",
     "react-tooltip": "^4.2.10"
   },
-    "engines": {
+  "engines": {
     "node": "14.x"
   },
   "scripts": {

@@ -33,15 +33,15 @@ const PublishedStory = ({ currentStory }) => {
   return (
     <article>
       <header>
-        <h2>{currentStory.title}</h2>
-        <h4>
+        <h2 className='story-title'>{currentStory.title}</h2>
+        <h3 className='date-genre'>
           {moment(currentStory.updated_at).format('MMMM DD, YYYY')} 
           <br /> 
           {currentStory.prompt && `Genre: ${currentStory.prompt.genre}`}
-        </h4>
-        <h3>{presentAuthors(currentStory.contributors)}</h3>
+        </h3>
+        <h4 className='contributors'>{presentAuthors(currentStory.contributors)}</h4>
       </header>
-      <section>
+      <section className='story-body'>
         {buildStory(currentStory.contributions)}
       </section>
     </article>
