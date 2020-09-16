@@ -6,6 +6,7 @@ const TimerDisplay = (props) => {
     <Timer 
       initialTime={119000} 
       direction="backward"
+      startImmediately={false}
       checkpoints={[
         {
           time: 0,
