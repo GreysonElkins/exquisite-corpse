@@ -44,10 +44,15 @@ The biggest learning goal of this project was to research and implement a comple
 
 #### A user can log in, and contribute to any of the stories in progress
 
-#### A user can begina new story, and select a prompt from a list of genres. 
+![User log in and continue story](./src/assets/gifs/login-continue.gif)
+
+#### A user can begin a new story, and select a prompt from a list of genres. 
+
+![User starts new story](./src/assets/gifs/start-story.gif)
 
 #### A user can visit the library, and read any of the published (completed) stories.
 
+![Visit the library](./src/assets/gifs/visit-library.gif)
 
 ## Wins/Challenges
 #### Wins
