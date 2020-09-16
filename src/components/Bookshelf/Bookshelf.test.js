@@ -9,23 +9,36 @@ describe('Bookshelf component', () => {
   beforeEach(() => {
     stories = testData.stories
     mockClick = jest.fn()
-    render(<Bookshelf stories={stories} onClick={mockClick}/>)
   })
 
-  it('should render a button for each story', () => {
+  it('Should render a story as a button', () => {
+    render(
+        <Bookshelf
+          stories={stories}
+          takeToWritingSection={mockClick}
+        />
+    )
+
     const buttons = screen.getAllByRole('button')
     expect(buttons).toHaveLength(5)
   })
 
-  it('should pass story info to each book to be rendered', () => {
-    const title = screen.getByText('Birdhouse in Your Soul')
-    expect(title).toBeInTheDocument()
-  })
-  
-  it('should pass an onClick function to books', () => {
-    const title = screen.getByText('Birdhouse in Your Soul')
-    fireEvent.click(title)
-    expect(mockClick).toHaveBeenCalledTimes(1)
+  it(`Should fire a function with it's story when clicked`, () => {
+    render(
+        <Bookshelf
+          stories={stories}
+          takeToWritingSection={mockClick}
+          authorUpdater={mockClick}
+          onClick={mockClick}
+          toggleHover={mockClick}
+        />
+    )
+    const allButtons = screen.getAllByRole('button')
+    const story = testData.stories[0]
+    const book = allButtons[0]
+    fireEvent.click(book)
+    expect(mockClick).toHaveBeenCalledTimes(3)
+    expect(mockClick).toHaveBeenCalledWith(story)
   })
 })
 

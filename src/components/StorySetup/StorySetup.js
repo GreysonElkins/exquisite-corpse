@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './StorySetup.scss'
+import PropTypes from 'prop-types'
 
 class StorySetup extends Component {
   constructor(props) {
@@ -139,6 +140,15 @@ class StorySetup extends Component {
       </form>
     );
   }
+}
+
+StorySetup.propTypes = {
+  error: PropTypes.string,
+  getRandomPrompt: PropTypes.func,
+  prompts: PropTypes.array,
+  removePrompt: PropTypes.func,
+  startWriting: PropTypes.func,
+  userName: PropTypes.string,
 }
 
 export default StorySetup

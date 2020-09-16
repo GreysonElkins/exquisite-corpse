@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import Instructions from '../Instructions/Instructions'
 import { Redirect } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 class WelcomePageView extends Component {
   constructor(props) {
@@ -53,5 +54,14 @@ class WelcomePageView extends Component {
     );
   }
 }
+
+WelcomePageView.propTypes = {
+  addStory: PropTypes.func,
+  author: PropTypes.object,
+  authorUpdater: PropTypes.func,
+  stories: PropTypes.array,
+  toggleHover: PropTypes.func,
+  updateStoryData: PropTypes.func,
+}
   
-  export default WelcomePageView
+export default WelcomePageView

@@ -5,6 +5,7 @@ import StoryEditFooter from '../StoryEditFooter/StoryEditFooter'
 import './StoryEditView.scss'
 import storyRead from '../../assets/backgrounds/storyRead.jpg'
 import LiveDisplay from './LiveDisplay'
+import PropTypes from 'prop-types'
 
 class StoryEditView extends Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class StoryEditView extends Component {
     }
     return (
       <main id="story-edit-section">
-        <img id="story-background" src={storyRead} alt/>
+        <img id="story-background" src={storyRead} alt="writing desk"/>
         <div id="story-edit-container">
           <StoryEditFields
             story={this.props.location.state.story}
@@ -48,6 +49,15 @@ class StoryEditView extends Component {
       </main>
     );
   }
+}
+
+StoryEditView.propTypes = {
+  addStory: PropTypes.func,
+  author: PropTypes.object,
+  history: PropTypes.object,
+  location: PropTypes.object,
+  match: PropTypes.object,
+  updateStoryData: PropTypes.func,
 }
 
 export default StoryEditView;

@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react'
 import '../StoryEditFields/StoryEditFields.scss';
+import PropTypes from 'prop-types'
 
 const StoryEditFields = ({ updateText, disabled, story }) => {
-
   return (
     <Fragment>
       {story.prompt && 
@@ -30,6 +30,12 @@ const StoryEditFields = ({ updateText, disabled, story }) => {
       />
     </Fragment>
   )
+}
+
+StoryEditFields.propTypes = {
+  updateText: PropTypes.func,
+  disabled: PropTypes.bool,
+  story: PropTypes.object
 }
 
 export default StoryEditFields

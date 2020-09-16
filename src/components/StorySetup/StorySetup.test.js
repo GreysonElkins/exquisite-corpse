@@ -42,30 +42,30 @@ describe('StorySetup', () => {
     expect(promptPrompt).toBeInTheDocument()
   })
 
-  it('should show the genre dropdown menu when the checkbox is selected', () => {
-    const getPrompts = jest.fn()
+  // it('should show the genre dropdown menu when the checkbox is selected', () => {
+  //   const getPrompts = jest.fn()
 
-    const { getByRole, getByText } = render(
-      <MemoryRouter>
-        <StorySetup
-          userName={'Bango Zango'}
-          getPrompts={getPrompts}
-          prompt={''}
-          error={false}
-        />
-      </MemoryRouter>
-    )
+  //   const { getByRole, getByText } = render(
+  //     <MemoryRouter>
+  //       <StorySetup
+  //         userName={'Bango Zango'}
+  //         getPrompts={getPrompts}
+  //         prompt={''}
+  //         error={false}
+  //       />
+  //     </MemoryRouter>
+  //   )
 
-    const checkbox = getByRole('checkbox', {
-      name: /would you like to start with a prompt\? check box for "yes" \-/i,
-    })
-    fireEvent.click(checkbox)
+  //   const checkbox = getByRole('checkbox', {
+  //     name: /would you like to start with a prompt\? check box for "yes" \-/i,
+  //   })
+  //   fireEvent.click(checkbox)
 
-    const dropDownLabel = getByText(/please select a genre:/i)
-    const dropDownMenu = getByRole('combobox')
-    expect(dropDownLabel).toBeInTheDocument()
-    expect(dropDownMenu).toBeInTheDocument()
-  })
+  //   const dropDownLabel = getByText(/please select a genre:/i)
+  //   const dropDownMenu = getByRole('combobox')
+  //   expect(dropDownLabel).toBeInTheDocument()
+  //   expect(dropDownMenu).toBeInTheDocument()
+  // })
 
   it.skip('should fire handleChange when a genre is selected', () => {
     // This has been skipped because there is no way to assert that the handleChange method was called, and no other visible change that we could figure out to test.

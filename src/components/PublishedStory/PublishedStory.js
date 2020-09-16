@@ -1,9 +1,10 @@
 import React from 'react'
 import moment from 'moment'
 import './PublishedStory.scss'
+import PropTypes from 'prop-types'
 
-const PublishedStory = ({ currentStory, currentAuthors }) => {  
-    
+const PublishedStory = ({ currentStory }) => {  
+
   const buildStory = (story = []) => {
     return story.map((section, i) => {
       return (
@@ -44,8 +45,11 @@ const PublishedStory = ({ currentStory, currentAuthors }) => {
         {buildStory(currentStory.contributions)}
       </section>
     </article>
-
   )
+}
+
+PublishedStory.propTypes = {
+  currentStory: PropTypes.object
 }
 
 export default PublishedStory

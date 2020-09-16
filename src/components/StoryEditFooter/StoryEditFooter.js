@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import TimerDisplay from "../TimerDisplay/TimerDisplay";
 import ApiHelper from '../../ApiHelper/ApiHelper'
 import "../StoryEditFooter/StoryEditFooter.scss";
+import PropTypes from 'prop-types'
 
 const StoryEditFooter = ({ disableStoryInput, textInputs, story, author, addStory, updateStoryData }) => {
-
   const bodyBuilder = isFinished => {
     const body = {
       contributions: textInputs.story,
@@ -53,6 +53,15 @@ const StoryEditFooter = ({ disableStoryInput, textInputs, story, author, addStor
       )}
     </section>
   )
+}
+
+StoryEditFooter.propTypes = {
+  disableStoryInput: PropTypes.func,
+  textInputs: PropTypes.object,
+  story: PropTypes.object,
+  author: PropTypes.object,
+  addStory: PropTypes.func,
+  updateStoryData: PropTypes.func,
 }
 
 export default StoryEditFooter

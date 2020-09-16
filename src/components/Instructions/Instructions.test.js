@@ -3,51 +3,70 @@ import Instructions from './Instructions'
 import { fireEvent, render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { MemoryRouter } from 'react-router-dom'
+import testData from "../../assets/testData/testData"
 
 describe('Instructions', () => {
+
   it('Should have the correct content when rendered', () => {
+    let stories = testData.stories
     render(
       <MemoryRouter>
-        <Instructions />
+        <Instructions 
+          stories={stories}
+        />
       </MemoryRouter>
     )
-    
-    const heading = screen.getByText('Rules of Play')
-    const button = screen.getByRole('button', {name: 'History of Exquisite Corpse'})
-    const bulletPoint = screen.getByText('Exquisite Corpse is a collaborative', { exact: false })
-    const instrOne = screen.getByText('Select a new prompt', { exact: false })
-    const instrTwo = screen.getByText('Start your section', { exact: false })
-    const instrThree = screen.getByText('Be creative and write fast', { exact: false })
-    
-    expect(heading).toBeInTheDocument()
-    expect(button).toBeInTheDocument()
-    expect(bulletPoint).toBeInTheDocument()
-    expect(instrOne).toBeInTheDocument()
-    expect(instrTwo).toBeInTheDocument()
-    expect(instrThree).toBeInTheDocument()
+
+    expect(screen.getAllByRole('button')).toHaveLength(6)
+    expect(screen.getByRole('heading', { name: 'R ules of Play' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Continue a story:' })).toBeInTheDocument()
+    expect(screen.getByRole('list')).toBeInTheDocument()
+    expect(screen.getAllByRole('listitem')).toHaveLength(3)
+    expect(screen.getByRole('button', {name: '☞ History of Exquisite Corpse' })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: '☞ Start a new story' })).toBeInTheDocument()
+    expect(screen.getByText('xquisite Corpse is a collaborative', { exact: false })).toBeInTheDocument()
+    expect(screen.getByText('Begin a new story', { exact: false })).toBeInTheDocument()
+    expect(screen.getByText('Start your section', { exact: false })).toBeInTheDocument()
+    expect(screen.getByText('Be creative and write fast', { exact: false })).toBeInTheDocument()
   })
 
-  it('Should fire method when button is clicked', () => {
+  it('Should fire method when button is clicked and change state', () => {
     const mockFun = jest.fn()
+    let stories = testData.stories
 
     const { getByRole } = render(
       <MemoryRouter>
         <Instructions 
           displayHistory={mockFun}
+          stories={stories}
+          showHistory={false}
         />
       </MemoryRouter>
-      )
+    )
 
-    fireEvent.click(getByRole('button', { name: 'History of Exquisite Corpse' }))
+    fireEvent.click(getByRole('button', { name: '☞ History of Exquisite Corpse' }))
 
     expect(mockFun).toHaveBeenCalledTimes(1)
-  })
 
-  it('Should render history when state changes', () => {
     render(
       <MemoryRouter>
         <Instructions 
-         showHistory={true}
+          displayHistory={mockFun}
+          stories={stories}
+          showHistory={true}
+        />
+      </MemoryRouter>
+    )
+  })
+
+  it('Should render history when state changes', () => {
+    let stories = testData.stories
+
+    render(
+      <MemoryRouter>
+        <Instructions 
+          stories={stories}
+          showHistory={true}
         />
       </MemoryRouter>
     )

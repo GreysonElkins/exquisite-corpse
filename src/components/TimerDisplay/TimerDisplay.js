@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import Timer from 'react-compound-timer'
+import PropTypes from 'prop-types'
 
 const TimerDisplay = (props) => {
   return(
@@ -18,6 +19,10 @@ const TimerDisplay = (props) => {
       </Fragment>
     </Timer>
   )
+}
+
+TimerDisplay.propTypes = {
+  disableStoryInput: PropTypes.func
 }
 
 export default TimerDisplay
