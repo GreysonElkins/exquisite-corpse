@@ -131,7 +131,6 @@ class App extends Component {
 
   toggleHover = (event, info) => {
     info ? this.setState({ hover: info }) : this.setState({ hover: {show: false} })
-    console.log(info)
   }
 
   makeHover = () => {

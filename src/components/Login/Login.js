@@ -32,8 +32,8 @@ class Login extends Component {
       this.setState({ submitEmpty: true })
     } else {
       const loginInfo = {
-        "username": this.state.username, 
-        "password": this.state.password
+        "username": this.state.username.trim(), 
+        "password": this.state.password.trim()
       }
       let response
       ApiHelper.postLogin(loginInfo)
