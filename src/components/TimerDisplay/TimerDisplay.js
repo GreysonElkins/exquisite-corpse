@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 const TimerDisplay = (props) => {
   return(
     <Timer 
-      initialTime={59000} 
+      initialTime={119000}
       direction="backward"
       checkpoints={[
         {
@@ -15,7 +15,7 @@ const TimerDisplay = (props) => {
       ]}
     >
       <Fragment>
-        <Timer.Seconds />
+        <Timer.Minutes />:<Timer.Seconds />
       </Fragment>
     </Timer>
   )

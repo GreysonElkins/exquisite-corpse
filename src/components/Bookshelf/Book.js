@@ -21,9 +21,10 @@ const Book = ({ story, onClick, authorUpdater, toggleHover }) => {
   const hoverObject = {
     show: true,
     title: story.title,
-    prompt: story.prompt,
+    prompt: story.is_complete ? null : story.prompt,
     lastWords: story.lastWords,
-    lastUpdate: moment(story.updated_at).format("MMMM DD, YYYY")
+    lastUpdate: moment(story.updated_at).format("MMMM DD, YYYY"),
+    is_complete: story.is_complete ? 'yes' : 'no'
   }
   const spine = getBookSpine()
   return (

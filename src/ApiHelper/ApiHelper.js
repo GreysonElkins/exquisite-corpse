@@ -49,6 +49,20 @@ class ApiHelper {
       return error
     }
   }
+
+  static postAuthor = async (user, id) => {
+    try {
+      return await fetch(`${apiHead}/authors/${id ? id : ""}`, {
+        method: `${id ? "PATCH" : "POST"}`,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      })
+    } catch (error) {
+      return error;
+    }
+  }
 }
 
 export default ApiHelper

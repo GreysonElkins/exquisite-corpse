@@ -21,6 +21,13 @@
   justify-content: center;
 }
 
+#story-background {
+  width: 100%;
+  position: fixed;
+  filter: contrast(90%);
+  z-index: -1;
+}
+
 #story-edit-section {
   display: flex;
   flex-direction: column 2;
