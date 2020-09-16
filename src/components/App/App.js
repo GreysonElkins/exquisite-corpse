@@ -7,6 +7,7 @@ import WelcomePageView from '../WelcomePageView/WelcomePageView'
 import StorySetupView from '../StorySetupView/StorySetupView'
 import StoryEditView from '../StoryEditView/StoryEditView'
 import LibraryView from '../LibraryView/LibraryView'
+import UserPage from '../UserPage/UserPage'
 import Login from '../Login/Login'
 import ApiHelper from '../../ApiHelper/ApiHelper'
 import mainBackground from '../../assets/backgrounds/mainBackground.jpg'
@@ -16,7 +17,14 @@ class App extends Component {
     super() 
     this.state = {
       error: '',
-      currentUser: {},
+      currentUser: {
+        id: null,
+        name: '',
+        email: '',
+        bio: null,
+        created_at: '',
+        updated_at: ''
+      },
       stories: [],
       prompts: [],
       authors: [],
@@ -37,6 +45,13 @@ class App extends Component {
         })
     } catch (error) {
       this.setState({error: error})
+    }
+  }
+
+  addAuthor = (author) => {
+    if (!this.state.authors.includes(author)) {
+      const update = this.state.authors.concat(author)
+      this.setState({ authors: update})
     }
   }
   
@@ -62,6 +77,7 @@ class App extends Component {
   
   login = (user) => {
     this.setState({ currentUser: user})
+    this.addAuthor(user)
   }
 
   updateContributorData = (story) => {
@@ -138,6 +154,10 @@ class App extends Component {
           </span>
           <span>
             LAST UPDATED: {this.state.hover.lastUpdate}
+            <br />
+          </span>
+          <span>
+            COMPLETED?: {this.state.hover.is_complete}
           </span>
         </p>
       </div>
@@ -213,11 +233,27 @@ class App extends Component {
             );
           }}
         />
-        <Route
-          exact
-          path="/login"
+        <Route 
+          exact path='/user/:id'
+          render={({ match }) => {
+            return <UserPage 
+            currentUser={this.state.currentUser}
+            pageId={match.params.id}
+            authors={this.state.authors}
+            addAuthor={this.addAuthor}
+            toggleHover={this.toggleHover}
+            authorUpdater={this.authorUpdater}
+            stories={this.state.stories}
+            login={this.login}
+            />
+          }}
+          />
+        <Route 
+          exact path='/login' 
           render={() => {
-            return <Login login={this.login} />;
+            return <Login 
+              login={this.login}
+            /> 
           }}
         />
         <Route

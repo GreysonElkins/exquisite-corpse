@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import './Header.scss'
 
+
 const Header = ({ signOut, currentUser }) => {
   return (
     <header className="header">
@@ -21,6 +22,15 @@ const Header = ({ signOut, currentUser }) => {
         <NavLink to="/library" className="nav" activeClassName="selected">
           / Library /
         </NavLink>
+        {currentUser.id
+          && <NavLink 
+              to={`/user/${currentUser.id}`} 
+              className='nav' 
+              activeClassName='selected'
+            >
+              / {props.currentUser.name} /
+          </NavLink>
+        }
         {currentUser.name && (
           <NavLink onClick={signOut} to="/" className="nav" activeClassName="selected">
             / Sign Out /
