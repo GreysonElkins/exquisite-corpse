@@ -5,28 +5,60 @@ import StoryEditFields from './StoryEditFields'
 import '@testing-library/jest-dom'
 
 describe('StoryEditFields', () => {
-  it('should render at least two input fields', () => {
+  it('Should render prompt and a input box and title for new story', () => {
+    const story = {
+      id: 1,
+      title: "",
+      contributions: [
+        "He sleeps until 9:30, wow!",
+        "He makes himself coffee, yes!",
+        "He feels well rested and equipped to write tests, yes!",
+      ],
+      prompt: "journal",
+      created_at: "2020-09-10T22:37:51.103Z",
+      updated_at: "2020-09-10T22:37:51.103Z",
+      is_complete: true,
+    }
+
     render(
       <Router>
-        <StoryEditFields />
+        <StoryEditFields 
+          story={story}
+        />
       </Router>
     )
-    const titleInputField = screen.getByPlaceholderText(/enter your title here/i)
-    const storyInputField = screen.getByPlaceholderText(/type your story here/i)
     
-    expect(titleInputField).toBeInTheDocument()
-    expect(storyInputField).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /PROMPT:/i })).toBeInTheDocument()
+    expect(screen.getByPlaceholderText(/Type your story here/i)).toBeInTheDocument()
+    expect(screen.getByPlaceholderText(/Enter your title here/i)).toBeInTheDocument()
   })
 
-  it('should render a header if a prompt is passed in', () => {
+  it('Should render last words and input if not a new story', () => {
+    const story = {
+      id: 1,
+      title: "",
+      lastWords: "Last words",
+      contributions: [
+        "He sleeps until 9:30, wow!",
+        "He makes himself coffee, yes!",
+        "He feels well rested and equipped to write tests, yes!",
+      ],
+      prompt: "",
+      created_at: "2020-09-10T22:37:51.103Z",
+      updated_at: "2020-09-10T22:37:51.103Z",
+      is_complete: true,
+    }
+    
     render(
       <Router>
-        <StoryEditFields prompt={{prompt: 'This is a prompt'}} />
+        <StoryEditFields 
+          story={story}
+        />
       </Router>
     )
     
-    const header = screen.getByText(/this is a prompt/i)
-
-    expect(header).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /LAST WORDS: Last words/i })).toBeInTheDocument()
+    expect(screen.getByPlaceholderText(/Type your story here/i)).toBeInTheDocument()
+    expect(screen.getByPlaceholderText(/Enter your title here/i)).toBeInTheDocument()
   })
 })

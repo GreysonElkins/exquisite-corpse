@@ -42,6 +42,7 @@ const testData = {
       created_at: "2020-10-10T22:37:51.103Z",
       updated_at: "2020-10-10T22:37:51.103Z",
       is_complete: true,
+      genre: 'sci-fi'
     },
     {
       id: 4,
