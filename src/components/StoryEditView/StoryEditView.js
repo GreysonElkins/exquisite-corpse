@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import StoryEditFields from '../StoryEditFields/StoryEditFields'
 import StoryEditFooter from '../StoryEditFooter/StoryEditFooter'
-import { start } from 'react-compound-timer'
 import './StoryEditView.scss'
 import LiveDisplay from './LiveDisplay'
 
@@ -13,7 +12,6 @@ class StoryEditView extends Component {
   }
 
   updateText = e => {
-    start()
     this.setState({ [e.target.id]: e.target.value })
   }
 

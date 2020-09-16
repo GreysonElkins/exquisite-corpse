@@ -22,7 +22,7 @@ const Header = ({ signOut, currentUser }) => {
           / Library /
         </NavLink>
         {currentUser.name && (
-          <NavLink onClick={signOut} className="nav" activeClassName="selected">
+          <NavLink onClick={signOut} to="/" className="nav" activeClassName="selected">
             / Sign Out /
           </NavLink>
         )}

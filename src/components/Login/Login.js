@@ -23,7 +23,6 @@ class Login extends Component {
       [event.target.id]: event.target.value,
       error: '' 
     })
-
   }
 
   verifyLogin = async (event) => {
