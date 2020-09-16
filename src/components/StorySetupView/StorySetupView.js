@@ -40,6 +40,11 @@ class StorySetupView extends Component {
   }
 
   render = () => {
+    if (!this.props.currentUser.name) {
+      return (
+        <Redirect to="/login" />
+      )
+    }
     if (this.state.submitOk) {
       return (
         <Redirect
@@ -58,7 +63,7 @@ class StorySetupView extends Component {
       <section className="StorySetupView">
         <StorySetup
           prompts={this.props.prompts}
-          userName={"Bango Zango" /*this.props.username*/}
+          userName={this.props.username}
           startWriting={this.startWriting}
           getRandomPrompt={this.getRandomPrompt}
           removePrompt={this.removePrompt}

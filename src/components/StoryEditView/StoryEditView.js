@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import StoryEditFields from '../StoryEditFields/StoryEditFields'
 import StoryEditFooter from '../StoryEditFooter/StoryEditFooter'
 import './StoryEditView.scss'
@@ -19,6 +20,9 @@ class StoryEditView extends Component {
   }
 
   render() {
+    if (!this.props.author) {
+      return <Redirect to="/login" />;
+    }
     return (
       <main id="story-edit-section">
         <div id="story-edit-container">

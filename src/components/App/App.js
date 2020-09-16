@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import './App.scss';
 import '../GameHistory/GameHistory.scss'
 import { Route, Redirect } from 'react-router-dom'
@@ -32,25 +32,33 @@ class App extends Component {
         })
         .then(() => {
           ApiHelper.getData('stories').then(allStories => {
-            const updatedStories = []
-            allStories.forEach(story => {
-              if (story.prompt) {
-                story.prompt = this.state.prompts
-                  .find(prompt => prompt.id === story.prompt)
-              }
-              if (story.contributions[0] !== null) {
-                const lastEntry = story.contributions[story.contributions.length - 1];
-                story.lastWords = `. . . ${lastEntry.slice(-150)}`;
-              }
-              updatedStories.push(story)
-            })
-            this.setState({ stories: updatedStories })
+            this.checkStoryData(allStories)
           })
         })
     } catch (error) {
       this.setState({error: error})
     }
   }
+  
+  checkStoryData = (stories) => {
+    const updatedStories = [];
+    stories.forEach((story) => {
+      if (story.prompt) {
+        story.prompt = this.state.prompts.find(
+          (prompt) => prompt.id === story.prompt
+        );
+      }
+      if (story.contributions[0] !== null) {
+        const lastEntry = story.contributions[story.contributions.length - 1];
+        story.lastWords = `. . . ${
+          !lastEntry.slice(-150) ? lastEntry : lastEntry.slice(-150)
+        }`;
+      }
+      updatedStories.push(story);
+    });
+    this.setState({ stories: updatedStories }); 
+  }
+  
   
   login = (user) => {
     this.setState({ currentUser: user})
@@ -98,10 +106,12 @@ class App extends Component {
     this.setState({
       stories: newStories
     })
+    this.checkStoryData(this.state.stories)
   }
 
   toggleHover = (event, info) => {
     info ? this.setState({ hover: info }) : this.setState({ hover: {show: false} })
+    console.log(info)
   }
 
   makeHover = () => {
@@ -159,30 +169,30 @@ class App extends Component {
             );
           }}
         />
-        <Route exact path="/story-setup">
-          {!this.state.currentUser.name ? (
-            <Redirect to="login" />
-          ) : (
-            <StorySetupView
-              prompts={this.state.prompts}
-              author={this.state.currentUser}
-              addStory={this.addStory}
-              updateStoryData={this.updateStoryData}
-            />
-          )}
-          );
-        </Route>
-        <Route exact path="/story-edit">
-          {!this.state.currentUser.name ? (
-            <Redirect to="login" />
-          ) : (
-            <StoryEditView
-              updateStoryData={this.updateStoryData}
-              addStory={this.addStory}
-              author={this.state.currentUser}
-            />
-          )}
-        </Route>
+        <Route 
+          exact path="/story-setup"
+          render={() => {
+            return (
+              <StorySetupView
+                prompts={this.state.prompts}
+                author={this.state.currentUser}
+                addStory={this.addStory}
+                updateStoryData={this.updateStoryData}
+                stories={this.state.stories}
+                currentUser={this.state.currentUser}
+              />
+            )
+          }}
+        />
+        <Route 
+          exact path="/story-edit"
+          render={(props) => {
+            props.updateStoryData = this.updateStoryData
+            props.addStory = this.addStory
+            props.author = this.state.currentUser
+            return <StoryEditView {...props} />
+          }}
+        />
         <Route
           exact
           path="/library"
@@ -202,19 +212,15 @@ class App extends Component {
           render={() => {
             return <Login login={this.login} />;
           }}
-        /> 
-        <Route 
-          exact path='/sign-up'
+        />
+        <Route
+          exact
+          path="/sign-up"
           render={() => {
-            return <Login
-              signup={true}
-              login={this.login}
-            />
+            return <Login signup={true} login={this.login} />;
           }}
         />
-        <span>
-          {this.state.hover.show && this.makeHover()}
-        </span>
+        <span>{this.state.hover.show && this.makeHover()}</span>
       </main>
     );
   }
