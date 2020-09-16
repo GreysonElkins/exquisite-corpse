@@ -61,5 +61,12 @@ We built a full-stack app end-to-end! Learning new technology was challenging, b
 #### Challenges
 Finding a direction to move forward was often challenging, with four people and such a wide range of strategies available. Of course, time played a big factor in this and had this project been allotted more than 6 days it would have made a million bucks.
 
+## Future Iterations
+In future devlopment of this application, users will be able to:
+* Add additional writing prompts (with new genres).
+* Pass corpses directly to other users, (opt for corpses to be 'private') which would prevent those corpses from being displayed directly on the welcome page.
+* Customize the length of the timer when starting a story. 
+* The Timer would begin when user begins typing in story input.
+
 ## Contributors
 This project was submitted on 9/15/2020 by [Aaron Burris-DeBoskey](https://github.com/Abdeboskey), [Carly Clift](https://github.com/carlymclift), [Greyson Elkins](https://github.com/GreysonElkins), and [Nick Hart](https://github.com/nickhartdev)
