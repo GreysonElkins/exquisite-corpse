@@ -27,7 +27,7 @@ class StoryEditView extends Component {
     }
     return (
       <main id="story-edit-section">
-        <img id="story-background" src={storyRead} alt/>
+        <img id="story-background" src={storyRead} alt="writing desk"/>
         <div id="story-edit-container">
           <StoryEditFields
             story={this.props.location.state.story}
