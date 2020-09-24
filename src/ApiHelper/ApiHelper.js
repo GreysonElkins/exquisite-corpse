@@ -1,4 +1,4 @@
-const apiHead = 'http://exquisite-server.herokuapp.com/api/v2'
+const apiHead = 'https://exquisite-server.herokuapp.com/api/v2'
 
 class ApiHelper {
   static getData = (type, id) => {
