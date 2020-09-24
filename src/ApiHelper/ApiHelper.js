@@ -1,4 +1,5 @@
 const apiHead = 'https://exquisite-server.herokuapp.com/api/v2'
+const proxyUrl = "https://cors-anywhere.herokuapp.com/";
 
 class ApiHelper {
   static getData = (type, id) => {
@@ -9,7 +10,7 @@ class ApiHelper {
 
   static postLogin = async (loginInfo) => {
     try {
-      return await fetch(apiHead + "/authors/login", {
+      return await fetch(proxyUrl + apiHead + "/authors/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -23,13 +24,13 @@ class ApiHelper {
 
   static postStory = async (story, id) => {
     try {
-      return await fetch(`${apiHead}/stories/${id? id : ''}`, {
-        method: `${id? 'PATCH' : 'POST'}`,
+      return await fetch(proxyUrl + `${apiHead}/stories/${id ? id : ""}`, {
+        method: `${id ? "PATCH" : "POST"}`,
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(story)
-      }).then(response => response.json())
+        body: JSON.stringify(story),
+      }).then((response) => response.json());
     } catch (error) {
       return error
     }
@@ -37,13 +38,13 @@ class ApiHelper {
 
   static createUser = async (user) => {
     try {
-      return await fetch(`${apiHead}/authors`, {
-        method: 'POST',
+      return await fetch(proxyUrl + `${apiHead}/authors`, {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(user)
-      })
+        body: JSON.stringify(user),
+      });
     } catch (error) {
       return error
     }
@@ -51,13 +52,13 @@ class ApiHelper {
 
   static postAuthor = async (user, id) => {
     try {
-      return await fetch(`${apiHead}/authors/${id ? id : ""}`, {
+      return await fetch(proxyUrl + `${apiHead}/authors/${id ? id : ""}`, {
         method: `${id ? "PATCH" : "POST"}`,
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(user),
-      })
+      });
     } catch (error) {
       return error;
     }
