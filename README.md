@@ -35,6 +35,7 @@ The biggest learning goal of this project was to research and implement a comple
 
 
 ## Setup/Installation
+- Set-up the back-end repo by following the instructions [here](https://github.com/nickhartdev/exquisite-corpse-server) 
 - Clone the front-end repo using `git clone git@github.com:GreysonElkins/exquisite-corpse.git`
 - Run `npm install` in the root of the newly created directory to install the necessary dependencies
 - Running `npm start` in your terminal should launch the application in your browser. If not, navigate to `http://localhost:3000/` to view the application in action
